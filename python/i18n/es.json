@@ -1,0 +1,10 @@
+{
+    "toc":{ "id": "home", "caption":"Inicio", "client":"client", "width":"100%", "children":[
+        {"id":"topic1", "icon":"fa-file-text-o", "caption": "Tema 1"},
+        {"id":"topic2", "icon":"fa-youtube", "caption": "Tema 2"},
+        {"id":"IDE", "caption": "IDE Simple", "icon":"fa-desktop"}
+    ]},
+    "language":"Idioma",
+    "run":"Ejecutar",
+    "stop":"Parar"
+}

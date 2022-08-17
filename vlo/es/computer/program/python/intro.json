@@ -19,12 +19,6 @@
 					{"time":191, "end":1848, "add":""}, 
 					{"time":207, "add":""} 
 		  		]		
-		  	},
-		  	{"target":"pythonCoder", "mark":[
-		  			{"time":50, "end":20, "add":""},
-		  			{"time":59, "end":45, "add":""},
-		  			{"time":65, "add":""}
-		  		]
 		  	}
 		  ] }
 }

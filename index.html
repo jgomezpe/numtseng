@@ -22,11 +22,11 @@
 				if(page=='konekti')
 					window.open("https://jgomezpe.github.io/konekti/demo/"+this.lang, '_self')
 				else if(page != 'home')	
-                    window.open("https://numtseng.com/"+page+"/index.html?page=home&lang="+this.lang, '_self')				
+                    window.open("https://jgomezpe.github.io/numtseng/"+page+"/index.html?page=home&lang="+this.lang, '_self')				
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open("https://numtseng.com/index.html?page=home&lang="+lang,"_self")
+				if( lang != this.lang ) window.open("https://jgomezpe.github.io/numtseng/index.html?page=home&lang="+lang,"_self")
 			}
 		}
 
@@ -36,7 +36,7 @@
 			var callback = function(json){ 
 				if(json===undefined || json===null){
 					lang = 'en'
-					Konekti.resource.JSON('https://numtseng.com/i18n/'+lang+'.json', callback)
+					Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/i18n/'+lang+'.json', callback)
 				}else{
 					var client = new KMain(lang)
 					document.title = json.Title

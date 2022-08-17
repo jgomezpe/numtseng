@@ -1,3 +1,3 @@
 # Numtseng
 
-Professor's Jonatan Gomez school
+The school of Professor Jonatan Gomez

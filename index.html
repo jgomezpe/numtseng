@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Numtseng: School of Professor Jonatan Gomez.</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+</head>
+
+<body>
+
+	<script>
+		Konekti.uses('accordion','sidebar','youtube','header','dropdown')
+
+		class KMain extends Client{
+			constructor(lang){ 
+				super('client')
+				this.page = 'home'
+				this.lang = lang
+			}
+
+			select(page){
+				if(page=='konekti')
+					window.open("https://jgomezpe.github.io/konekti/demo/"+this.lang, '_self')
+				else if(page != 'home')	
+                    window.open("https://numtseng.com/"+page+"/index.html?page=home&lang="+this.lang, '_self')				
+			}
+
+			language(lang){
+				if( lang != this.lang ) window.open("https://numtseng.com/index.html?page=home&lang="+lang,"_self")
+			}
+		}
+
+		function KonektiMain(){
+			var lang = Konekti.dom.getUserLanguage()
+
+			var callback = function(json){ 
+				if(json===undefined || json===null){
+					lang = 'en'
+					Konekti.resource.JSON('https://numtseng.com/i18n/'+lang+'.json', callback)
+				}else{
+					var client = new KMain(lang)
+					document.title = json.Title
+					var toc = Konekti.tocConfig(json.toc, 4, '', {'client':'client', 'method':'select'},true)
+					var header = Konekti.headerConfig('title','', json.Title, 3, 'w3-orange w3-center' )
+					var langBtn = Konekti.dropdownListConfig( "language", "fa-language", "", 'w3-blue-grey', json.language, [
+							{'id':'en', 'caption':"English"}, 
+							{'id':'es','caption':"Español"}], 					
+						{"client":'client', "method":"language"}
+					)
+					header.children.push(langBtn)
+
+					var youtube = Konekti.youtubeConfig( 'youtube', '100%', 'rest', json.video )
+					var main = Konekti.divConfig('main-content','100%','100%', '', [header,youtube])
+
+					Konekti.sidebar('root', '100%', '100%', toc, main)
+					Konekti.resize()
+				}
+			}
+
+			Konekti.resource.JSON('https://numtseng.com/i18n/'+lang+'.json', callback)
+		}	
+	</script>
+</body>
+</html>

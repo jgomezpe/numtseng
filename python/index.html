@@ -35,8 +35,12 @@
 							x.pdown = nav_json.down
 							var url = 'https://jgomezpe.github.io/numtseng/vlo/'+x.lang+'/computer/program/python/'+nav_json.vlo
 							Konekti.resource.JSON(url, function(json){
+								Konekti.resource.load(jso.info, function(info){ 
+									Konekti.client['info'].setText(info); 
+									Konekti.resize()
+								})
 								Konekti.client['pythonCoder'].setText(json.pythonCoder) 
-								Konekti.client['info'].setText(json.info)
+								
 								Konekti.client['mediacontrol'].update(json.mediacontrol)
 								Konekti.client['script'].update(json.script)
 								Konekti.resize()

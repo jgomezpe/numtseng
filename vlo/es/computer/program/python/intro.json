@@ -1,6 +1,6 @@
 {
 	"pythonCoder" : "https://replit.com/@JonatanGomezP/pythonintroes?embed=true",
-	"info":"https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.html",
+	"info":"*",
 	"mediacontrol":"https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3",
 	"script":{"media":"mediacontrol",
 		  "scripts":[ {"target":"info", "mark":[

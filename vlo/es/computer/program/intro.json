@@ -1,5 +1,5 @@
 {
-    "info":"Desde un punto de vista informal, la <b>programación</b> de computadores es la tarea de ordenarle a un computador (una máquina de cómputo) que ejecute cierto procedimiento o realice un cálculo predeterminado. Desde un punto de vista formal, la programación de computadores es la tarea de resolver problemas algorítmicos.<br><br>Para realizar esta tarea, se desarrollan programas de computador en alguno de los lenguajes de programación disponibles, por ejemplo en <i>Java, C, C++, JavaScript</i> o <i>Python</i>. Los lenguajes de programación son formales y están bien definidos, es decir, los significados de las frases que se escriben en ellos son únicos y en general precisos (no ambiguos). <br><br>Es por esto que para desarrollar un programa de computador se debe pensar de manera clara y precisa lo que se desea que el computador haga para poderlo expresar en el lenguaje de programación. Esta característica de la programación de computadores ha dado lugar al famoso lamento del programador: <i>\"Los computadores hacen exactamente lo que les digo, no lo que deseo\"</i>.",
+    "info":"*",
     "mediacontrol":"",
     "examples":"",
     "script":{}

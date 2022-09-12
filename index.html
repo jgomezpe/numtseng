@@ -9,24 +9,28 @@
 <body>
 
 	<script>
-		Konekti.uses('accordion','sidebar','youtube','header','dropdown')
+		let I18N_URL = "https://jgomezpe.github.io/numtseng/i18n/" // Internationalization resources are stored in github
+		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
+		let KONEKTI_URL = "https://jgomezpe.github.io/konekti/demo/" // Change this to your server name
 
-		class KMain extends Client{
+		Konekti.uses('toc','sidebar','youtube','header','dropdown', 'navbar')
+
+		class KMain extends MainClient{
 			constructor(lang){ 
-				super('client')
+				super()
 				this.page = 'home'
 				this.lang = lang
 			}
 
 			select(page){
 				if(page=='konekti')
-					window.open("https://jgomezpe.github.io/konekti/demo/index.html?page=home&lang="+this.lang, '_self')
+					window.open(KONEKTI_URL+"index.html?page=home&lang="+this.lang, '_self')
 				else if(page != 'home')	
-                    window.open("https://jgomezpe.github.io/numtseng/"+page+"/index.html?page=home&lang="+this.lang, '_self')				
+                    window.open(SERVER_URL+page+"/index.html?page=home&lang="+this.lang, '_self')				
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open("https://jgomezpe.github.io/numtseng/index.html?page=home&lang="+lang,"_self")
+				if( lang != this.lang ) window.open(SERVER_URL+"index.html?page=home&lang="+lang,"_self")
 			}
 		}
 
@@ -36,28 +40,30 @@
 			var callback = function(json){ 
 				if(json===undefined || json===null){
 					lang = 'en'
-					Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/i18n/'+lang+'.json', callback)
+					Konekti.resource.JSON(I18N_URL+lang+'.json', callback)
 				}else{
 					var client = new KMain(lang)
 					document.title = json.Title
-					var toc = Konekti.tocConfig(json.toc, 4, '', {'client':'client', 'method':'select'},true)
-					var header = Konekti.headerConfig('title','', json.Title, 3, 'w3-orange w3-center' )
-					var langBtn = Konekti.dropdownListConfig( "language", "fa-language", "", 'w3-blue-grey', json.language, [
+					var toc = {'plugin':'toc', 'setup':[4, '', {'client':'client', 'method':'select'}, json.toc]}
+					var header = {'plugin':'header', 'setup':['title','', json.Title, 3, 'w3-orange w3-center']}
+					var langBtn = {'plugin':'dropdown', 'setup':["language", "fa-language", "", 'w3-blue-grey', json.language, 'list', {'options':[
 							{'id':'en', 'caption':"English"}, 
 							{'id':'es','caption':"Español"}], 					
-						{"client":'client', "method":"language"}
-					)
-					header.children.push(langBtn)
+							'onclick':{"client":'client', "method":"language"}
+						}
+					]}
 
-					var youtube = Konekti.youtubeConfig( 'youtube', '100%', 'rest', json.video )
-					var main = Konekti.divConfig('main-content','100%','100%', '', [header,youtube])
+					var navbar = {'plugin':'navbar', 'setup':['navbar', 'w3-blue-grey', [header, langBtn],'','']}
+
+					var youtube = {'plugin':'youtube', 'setup':['youtube', '100%', 'rest', json.video]}
+					var main = {'plugin':'container', 'setup':['main-content','100%','100%', '', [navbar,youtube]]}
 
 					Konekti.sidebar('root', '100%', '100%', toc, main)
 					Konekti.resize()
 				}
 			}
 
-			Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/i18n/'+lang+'.json', callback)
+			Konekti.resource.JSON(I18N_URL+lang+'.json', callback)
 		}	
 	</script>
 </body>

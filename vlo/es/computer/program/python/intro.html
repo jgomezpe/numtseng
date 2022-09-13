@@ -50,8 +50,6 @@
         Konekti.uses('hypermedia', 'header')
 
 		function KonektiMain(){
-            Konekti.header('title','', 'Hipermedio de Konekti', 3, 'w3-green w3-center' )
-
             var audio = {'plugin':'media', 'setup':["mediacontrol", "100%", "", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3"]}
             var text = {'plugin':'latex', 'setup':["info", '100%', 'rest', Konekti.vc('infotext').innerHTML]}
             var left = {'plugin':'container', 'setup':['explain','100%','100%', '', [audio,text]]}

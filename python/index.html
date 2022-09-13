@@ -91,7 +91,12 @@
 					Konekti.resize()
 
 					var page = Konekti.dom.getURLSearchParam('page', 'home')
-					client.select(page)
+
+					function check(){
+						if(Konekti.vc('vlo') !== undefined ) client.select(page)
+						else setTimeout(check, 100)
+					}
+					check()	
 				}
 			}
 

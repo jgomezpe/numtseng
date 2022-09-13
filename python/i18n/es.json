@@ -5,6 +5,7 @@
         {"id":"IDE", "caption": "IDE Simple", "icon":"fa-desktop"}
     ]},
     "language":"Idioma",
+    "title":"Escuela de Python",
     "run":"Ejecutar",
     "stop":"Parar"
 }

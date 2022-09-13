@@ -8,64 +8,51 @@
 </head>
 
 <body>
-
 	<script>
+		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
+		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
 
-        Konekti.uses('accordion', 'latex', 'media', 'sidebar','navbar','dropdown','ace','split','iframe')
+        Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
-		class KMain extends Client{
+		class KMain extends MainClient{
 			constructor(lang){
-				super('client')
+				super()
 				this.page = ''
 				this.lang = lang
 			}
 
 			select(page){
 				var x = this
-				if( page == 'IDE' ) window.open("https://jgomezpe.github.io/numtseng/python/ide/?lang="+this.lang)
-				else if( this.page != page ){			
-					this.page = page
+				if( x.page != page ){			
+					x.page = page
 					Konekti.dom.setURLSearchParam('page',page)
-					Konekti.dom.setURLSearchParam('lang',this.lang)
-					Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/python/navigation/'+page+'.json', 
+					Konekti.dom.setURLSearchParam('lang',x.lang)
+
+					Konekti.resource.JSON(RES_URL+'python/navigation/'+page+'.json', 
 						function(nav_json){
+							console.log(nav_json)
 							x.pleft = nav_json.left
 							x.pright = nav_json.right
 							x.pup = nav_json.up
 							x.pdown = nav_json.down
-							var url = 'https://jgomezpe.github.io/numtseng/vlo/'+x.lang+'/computer/program/python/'+nav_json.vlo
-							Konekti.resource.JSON(url, function(json){
-								if( json.info=='*' ){
-									if(url.endsWith('.json')) url = url.substring(0,url.length-5)
-									json.info = url + '.html'
-								}
-								Konekti.resource.load(json.info, function(info){ 
-									Konekti.client['info'].setText(info); 
-									Konekti.resize()
-								})
-								Konekti.client['pythonCoder'].setText(json.pythonCoder) 
-								
-								Konekti.client['mediacontrol'].update(json.mediacontrol)
-								Konekti.client['script'].update(json.script)
-								Konekti.resize()
-							})
+							var url = RES_URL+'vlo/'+x.lang+'/'+nav_json.vlo
+							Konekti.client['vlo'].setText(url)
+								//Konekti.resize()
 						}
 					)
 				}
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open("https://jgomezpe.github.io/numtseng/python/index.html?lang="+lang+"&page="+this.page,"_self")
+				if( lang != this.lang ) window.open(SERVER_URL+"/python/index.html?lang="+lang+"&page="+this.page,"_self")
 			}
-
-			run(){ Konekti.client['viewer'].setText( Konekti.client['coder'].getText() ) }
 
 			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
 
 			right(){ if( this.pright !== undefined) this.select(this.pright) }
 
 			up(){
-				if(this.pup=='/') window.open("https://jgomezpe.github.io/numtseng/index.html?lang="+this.lang,"_self")
+				if(this.pup=='/') window.open(SERVER_URL+"/index.html?lang="+this.lang,"_self")
 				else if( this.pup !== undefined ) this.select(this.pup)
 			}
 
@@ -78,36 +65,28 @@
 			var callback = function(json){ 
 				if(json===undefined || json===null){
 					lang = 'es'
-					Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/python/i18n/'+lang+'.json', callback)
+					Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
 				}else{
 					var client = new KMain(lang)
-					var toc = Konekti.tocConfig(json.toc, 4, '', {'client':'client', 'method':'select'},true)
-
+					var toc = {'plugin':'toc', 'setup':[4, '', {'client':'client', 'method':'select'}, json.toc]}
 					var btn=[
-						Konekti.btnConfig("left","fa-arrow-circle-o-left", '', {'client':'client'}, "w3-blue-grey", ""),
-						Konekti.btnConfig("up","fa-arrow-circle-o-up", '', {'client':'client'}, "w3-blue-grey", ""),
-						Konekti.btnConfig("down","fa-arrow-circle-o-down", '', {'client':'client'}, "w3-blue-grey", ""),
-						Konekti.btnConfig("right","fa-arrow-circle-o-right", '', {'client':'client'}, "w3-blue-grey", ""),
-						Konekti.dropdownListConfig( "language", "fa-language", "", 'w3-blue-grey', json.language, [
+						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'}, "w3-blue-grey", ""]},
+						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'}, "w3-blue-grey", ""]},
+						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'}, "w3-blue-grey", ""]},
+						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'}, "w3-blue-grey", ""]},
+						{'plugin':'dropdown', 'setup':["language", "fa-language", "", 'w3-blue-grey', json.language, 'list', {
+							'options':[
 								{'id':'en', 'caption':"English"}, 
-								{'id':'es','caption':"Español"}], 
-							{"client":'client', "method":"language"}
-						)
+								{'id':'es','caption':"Español"}], 					
+							'onclick':{"client":'client', "method":"language"}
+							}
+						]}
 					]
-					var navbar = Konekti.navbarConfig('main-navbar', 'w3-blue-grey', btn, 'client', 'select' ) 
-
-					var audio = Konekti.mp3Config("mediacontrol", "")
-					var text = Konekti.latexConfig("info", '100%', 'rest', '')
-					var left = Konekti.divConfig('explain','100%','100%', '', [audio,text])
-					var py = Konekti.iframeConfig("pythonCoder", "100%", "100%", '')
-			
-					var control = Konekti.splitConfig('coderviewer', '100%', 'rest', 'col', 50, left, py )
-
-					var main = Konekti.divConfig('main-content','100%','100%', '', [navbar,control])
-
+					var title = {'plugin':'header', 'setup':['title','', json.title, 3, 'w3-green w3-center']}
+					var navbar = {'plugin':'navbar', 'setup':['navbar', 'w3-blue-grey', btn,'','']}			
+					var control = {'plugin':'iframe', 'setup':['vlo', '100%', 'rest', '']}
+					var main = {'plugin':'container', 'setup':['main-content','100%','100%', '', [title,navbar,control]]}
 					Konekti.sidebar('root', '100%', '100%', toc, main)	
-
-					new HyperMedia({'id':'script', 'media':'mediacontrol'})
 
 					Konekti.resize()
 
@@ -116,7 +95,7 @@
 				}
 			}
 
-			Konekti.resource.JSON('https://jgomezpe.github.io/numtseng/python/i18n/'+lang+'.json', callback)
+			Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
 			
         }
 	</script>

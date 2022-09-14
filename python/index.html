@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Numtseng: Escuela de Python</title>
-	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
-	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/hypermedia.js'></script> 
+	<script type='text/javascript' src='../../konekti/src/konekti.js'></script> 
 </head>
 
 <body>
@@ -30,14 +29,16 @@
 
 					Konekti.resource.JSON(RES_URL+'python/navigation/'+page+'.json', 
 						function(nav_json){
-							console.log(nav_json)
 							x.pleft = nav_json.left
 							x.pright = nav_json.right
 							x.pup = nav_json.up
 							x.pdown = nav_json.down
 							var url = RES_URL+'vlo/'+x.lang+'/'+nav_json.vlo
-							Konekti.client['vlo'].setText(url)
-								//Konekti.resize()
+							function check(){
+								if(Konekti.vc('vlo') !== undefined ) Konekti.client['vlo'].setText(url)
+								else setTimeout(check, 100)
+							}
+							check()	
 						}
 					)
 				}
@@ -92,11 +93,7 @@
 
 					var page = Konekti.dom.getURLSearchParam('page', 'home')
 
-					function check(){
-						if(Konekti.vc('vlo') !== undefined ) client.select(page)
-						else setTimeout(check, 100)
-					}
-					check()	
+					client.select(page)
 				}
 			}
 

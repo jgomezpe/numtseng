@@ -1,14 +1,14 @@
 {
     "Title":"Numtseng: La Escuela del Profesor Jonatan Gomez",
     "developed":"Desarrollado por el profesor Jonatan Gomez",
-    "toc":{ "id": "home", "icon":"fa fa-home", "caption":"Inicio", "client":"client", "width":"100%", "open":true, "children":[ 		
-        {"id":"konekti", "icon":"fa fa-cubes", "caption": "Konekti"},
-        {"id":"languages", "caption": "Lenguajes", "action":false, "children":[
-            {"id":"python", "icon":"fa fa-edit", "caption":"Python"},
-            {"id":"quilt", "icon":"fa fa-th", "caption":"Quilt"},
-            {"id":"toyplus", "icon":"fa fa-plus", "caption":"Toy+"}
-        ]}
-    ]},
+    "toc":[ 		
+        ["konekti", "fa fa-cubes",  "Konekti"],
+        ["languages",  "Lenguajes", {}, true, false, [
+            ["python", "fa fa-edit", "Python"],
+            ["quilt", "fa fa-th", "Quilt"],
+            ["toyplus", "fa fa-plus", "Toy+"]
+        ]]
+    ],
     "video":"rPjpA4sn7yI",
     "language":"Idiomas"
-  }  
+  }

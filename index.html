@@ -11,7 +11,7 @@
 	<script>
 		let I18N_URL = "https://jgomezpe.github.io/numtseng/i18n/" // Internationalization resources are stored in github
 		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
-		let KONEKTI_URL = "https://jgomezpe.github.io/konekti/demo/" // Change this to your server name
+		let KONEKTI_URL = "https://jgomezpe.github.io/konekti/" // Change this to your server name
 
 		Konekti.uses('toc','sidebar','youtube','header','dropdown', 'navbar')
 
@@ -44,21 +44,18 @@
 				}else{
 					var client = new KMain(lang)
 					document.title = json.Title
-					var toc = {'plugin':'toc', 'setup':[4, '', {'client':'client', 'method':'select'}, json.toc]}
-					var header = {'plugin':'header', 'setup':['title','', json.Title, 3, 'w3-orange w3-center']}
-					var langBtn = {'plugin':'dropdown', 'setup':["language", "fa-language", "", 'w3-blue-grey', json.language, 'list', {'options':[
-							{'id':'en', 'caption':"English"}, 
-							{'id':'es','caption':"Español"}], 					
-							'onclick':{"client":'client', "method":"language"}
-						}
-					]}
+					var toc = {'plugin':'toc', 'setup':['tocNumtseng', {}, {'client':'client', 'method':'select'}, json.toc]}
+					var header = {'plugin':'header', 'setup':['title','', json.Title, 3, {'class':'w3-center'}]}
+					var dd = {'plugin':'toc', 'setup': ['sel_lang', {}, {"client":'client', "method":"language"},
+						 ["English", "Español"]]}	
+					var langBtn={'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd, {'title':json.language}]}	
 
-					var navbar = {'plugin':'navbar', 'setup':['navbar', 'w3-blue-grey', [header, langBtn],'','']}
+					var navbar = {'plugin':'navbar', 'setup':['navbar', [langBtn, header], '', {'class':'w3-black '}]}
 
 					var youtube = {'plugin':'youtube', 'setup':['youtube', '100%', 'rest', json.video]}
-					var main = {'plugin':'container', 'setup':['main-content','100%','100%', '', [navbar,youtube]]}
+					var main = {'plugin':'container', 'setup':['container', 'main-content', [navbar,youtube],'100%','100%']}
 
-					Konekti.sidebar('root', '100%', '100%', toc, main)
+					Konekti.sidebar('body', 'root', '100%', '100%', toc, main)
 					Konekti.resize()
 				}
 			}

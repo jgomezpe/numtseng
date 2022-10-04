@@ -34,9 +34,13 @@
 							x.pup = nav_json.up
 							x.pdown = nav_json.down
 							var url = RES_URL+'vlo/'+x.lang+'/'+nav_json.vlo
+							console.log(url)
+							var tout
 							function check(){
-								if(Konekti.vc('vlo') !== undefined ) Konekti.client['vlo'].setText(url)
-								else setTimeout(check, 100)
+								if(Konekti.client['vlo'] !== undefined ){
+									clearTimeout(tout)
+									Konekti.client['vlo'].setText(url)
+								}else tout = setTimeout(check, Konekti.TIMER)
 							}
 							check()	
 						}
@@ -45,7 +49,7 @@
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open(SERVER_URL+"/python/index.html?lang="+lang+"&page="+this.page,"_self")
+				if( lang != this.lang ) window.open(SERVER_URL+"python/index.html?lang="+lang+"&page="+this.page,"_self")
 			}
 
 			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
@@ -53,7 +57,7 @@
 			right(){ if( this.pright !== undefined) this.select(this.pright) }
 
 			up(){
-				if(this.pup=='/') window.open(SERVER_URL+"/index.html?lang="+this.lang,"_self")
+				if(this.pup=='/') window.open(SERVER_URL+"index.html?lang="+this.lang,"_self")
 				else if( this.pup !== undefined ) this.select(this.pup)
 			}
 
@@ -69,25 +73,22 @@
 					Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
 				}else{
 					var client = new KMain(lang)
-					var toc = {'plugin':'toc', 'setup':[4, '', {'client':'client', 'method':'select'}, json.toc]}
+					document.title = json.title
+					var toc = {'plugin':'toc', 'setup':['tockonekti', json.toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
+					var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
+						{"client":'client', "method":"language"}, {'title':'Selecting language'}]}	
 					var btn=[
-						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'}, "w3-blue-grey", ""]},
-						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'}, "w3-blue-grey", ""]},
-						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'}, "w3-blue-grey", ""]},
-						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'}, "w3-blue-grey", ""]},
-						{'plugin':'dropdown', 'setup':["language", "fa-language", "", 'w3-blue-grey', json.language, 'list', {
-							'options':[
-								{'id':'en', 'caption':"English"}, 
-								{'id':'es','caption':"Español"}], 					
-							'onclick':{"client":'client', "method":"language"}
-							}
-						]}
+						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'}]},
+						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}
 					]
-					var title = {'plugin':'header', 'setup':['title','', json.title, 3, 'w3-green w3-center']}
-					var navbar = {'plugin':'navbar', 'setup':['navbar', 'w3-blue-grey', btn,'','']}			
-					var control = {'plugin':'iframe', 'setup':['vlo', '100%', 'rest', '']}
-					var main = {'plugin':'container', 'setup':['main-content','100%','100%', '', [title,navbar,control]]}
-					Konekti.sidebar('root', '100%', '100%', toc, main)	
+					var title = {'plugin':'header', 'setup':['title','', json.title, 3, {'class':'w3-green w3-center'}]}
+					var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
+					var control = {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:90%;'}]}
+					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:100%;'}]}
+					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
 					Konekti.resize()
 

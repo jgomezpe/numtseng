@@ -1,9 +1,9 @@
 {
-    "toc":{ "id": "home", "caption":"Inicio", "client":"client", "width":"100%", "children":[
-        {"id":"topic1", "icon":"fa-file-text-o", "caption": "Tema 1"},
-        {"id":"topic2", "icon":"fa-youtube", "caption": "Tema 2"},
-        {"id":"IDE", "caption": "IDE Simple", "icon":"fa-desktop"}
-    ]},
+    "toc":[
+        ["topic1", "fa-file-text-o", "Tema 1"],
+        ["topic2", "fa-youtube", "Tema 2"],
+        ["IDE", "fa-desktop", "IDE Simple"]
+    ],
     "language":"Idioma",
     "title":"Escuela de Python",
     "run":"Ejecutar",

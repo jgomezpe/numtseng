@@ -3,7 +3,7 @@
     "developed":"Developed by professor Jonatan Gomez",
     "toc":[ 		
         ["konekti", "fa fa-cubes",  "Konekti"],
-        ["languages",  "", "Languages", [
+        ["languages",  "", "Languages", {}, [
             ["python", "fa fa-edit", "Python"],
             ["quilt", "fa fa-th", "Quilt"],
             ["toyplus", "fa fa-plus", "Toy+"]], 

@@ -1,14 +1,13 @@
 {
-    "Title":"Numtseng: The School of Professor Jonatan Gomez",
+    "title":"Numtseng: The School of Professor Jonatan Gomez",
     "developed":"Developed by professor Jonatan Gomez",
     "toc":[ 		
         ["konekti", "fa fa-cubes",  "Konekti"],
-        ["languages",  "", "Languages", {}, true, false, [
+        ["languages",  "", "Languages", [
             ["python", "fa fa-edit", "Python"],
             ["quilt", "fa fa-th", "Quilt"],
-            ["toyplus", "fa fa-plus", "Toy+"]
-        ]]
-    ],
+            ["toyplus", "fa fa-plus", "Toy+"]], 
+            true, false]],
     "video":"rPjpA4sn7yI",
     "language":"Language"
   }  

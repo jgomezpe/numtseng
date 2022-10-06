@@ -1,5 +1,7 @@
 {
     "toc":[
+        ["home","","Introducción"],
+        ["io","","Entrada/Salida"],
         ["datatype", "", "Tipos de Datos y Expresiones", {}, [
             ["id", "", "Identificadores"], 
             ["var", "", "Variables"],

@@ -88,7 +88,7 @@
 
 					// Konekti.resize()
 					Konekti.resource.JSON(RES_URL+'python/navigation.json', function(navigation){
-						x.navigation = navigation
+						client.navigation = navigation
 						client.select(Konekti.dom.getURLSearchParam('page', 'home'))
 					})
 				}

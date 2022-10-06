@@ -24,7 +24,7 @@
             ["if", "", "Solo si"],
             ["ifelse", "", "Si, sino"],
             ["elif", "", "Si, sinosi, sino"],
-            ], false, true],
+            ], false, true]
         ["loop", "", "Ciclos", {}, [
             ["for", "", "Para"], 
             ["while", "", "Mientras"],

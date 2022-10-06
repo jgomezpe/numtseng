@@ -6,16 +6,16 @@
             ["id", "", "Identificadores"], 
             ["var", "", "Variables"],
             ["type","", "Tipos", {}, [
-                ["integer","","Enteros"],
-                ["real","","Reales"],
-                ["char","","Caracter"],
-                ["stringb","","Cadenas"],
-                ["bool":"","Booleanos"]
+                ["integer", "", "Enteros"],
+                ["real", "", "Reales"],
+                ["char", "", "Caracter"],
+                ["stringb", "", "Cadenas"],
+                ["bool", "", "Booleanos"]
                 ], false, true], 
             ["expr", "", "Expresiones", {}, [
-                ["numeric","","Numéricas"],
-                ["relational","","Relacionales"],
-                ["logic":"","Lógicas"]
+                ["numeric", "", "Numéricas"],
+                ["relational", "", "Relacionales"],
+                ["logic", "", "Lógicas"]
                 ], false, true],
             ["eval", "", "Evaluación"]
         ], false, true],
@@ -28,17 +28,17 @@
         ["loop", "", "Ciclos", {}, [
             ["for", "", "Para"], 
             ["while", "", "Mientras"],
-            ["dowhile","", "Hacer mientras"]
+            ["dowhile", "", "Hacer mientras"]
         ], false, true],  
-        ["string","", "Cadenas"],
-        ["tuple","", "Tuplas"],
-        ["list","", "Listas"],
-        ["array","", "Arreglos"],
-        ["matrix","", "Matrices"],
-        ["dict","", "Diccionarios"],
-        ["file","", "Archivos"],
-        ["json","", "JSON"],
-        ["recursion","", "Recursión"],
+        ["string", "", "Cadenas"],
+        ["tuple", "", "Tuplas"],
+        ["list", "", "Listas"],
+        ["array", "", "Arreglos"],
+        ["matrix", "", "Matrices"],
+        ["dict", "", "Diccionarios"],
+        ["file", "", "Archivos"],
+        ["json", "", "JSON"],
+        ["recursion", "", "Recursión"],
         ["module", "", "Módulos"]
     ],
     "language":"Idioma",

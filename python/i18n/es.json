@@ -1,8 +1,43 @@
 {
     "toc":[
-        ["topic1", "fa-file-text-o", "Tema 1"],
-        ["topic2", "fa-youtube", "Tema 2"],
-        ["IDE", "fa-desktop", "IDE Simple"]
+        ["datatype", "", "Tipos de Datos y Expresiones", {}, [
+            ["id", "", "Identificadores"], 
+            ["var", "", "Variables"],
+            ["type","", "Tipos", {}, [
+                ["integer","","Enteros"],
+                ["real","","Reales"],
+                ["char","","Caracter"],
+                ["stringb","","Cadenas"],
+                ["bool":"","Booleanos"]
+                ], false, true], 
+            ["expr", "", "Expresiones", {}, [
+                ["number","","Numéricas"],
+                ["relation","","Relacionales"],
+                ["logic":"","Lógicas"]
+                ], false, true],
+            ["eval", "", "Evaluación"]
+        ], false, true],
+        ["function", "", "Funciones"],
+        ["condition", "", "Condicionales", [
+            ["if", "", "Solo si"],
+            ["ifelse", "", "Si, sino"],
+            ["elif", "", "Si, sinosi, sino"],
+            ], false, true],
+        ["loop", "", "Ciclos", {}, [
+            ["for", "", "Para"], 
+            ["while", "", "Mientras"],
+            ["dowhile","", "Hacer mientras"]
+        ], false, true],  
+        ["string","", "Cadenas"],
+        ["tuple","", "Tuplas"],
+        ["list","", "Listas"],
+        ["array","", "Arreglos"],
+        ["matrix","", "Matrices"],
+        ["dict","", "Diccionarios"],
+        ["file","", "Archivos"],
+        ["json","", "JSON"],
+        ["recursion","", "Recursión"],
+        ["module", "", "Módulos"]
     ],
     "language":"Idioma",
     "title":"Escuela de Python",

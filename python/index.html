@@ -10,7 +10,7 @@
 	<script>
 		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
 		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
-
+		
         Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
 		class KMain extends MainClient{
@@ -27,29 +27,24 @@
 					Konekti.dom.setURLSearchParam('page',page)
 					Konekti.dom.setURLSearchParam('lang',x.lang)
 
-					Konekti.resource.JSON(RES_URL+'python/navigation/'+page+'.json', 
-						function(nav_json){
-							x.pleft = nav_json.left
-							x.pright = nav_json.right
-							x.pup = nav_json.up
-							x.pdown = nav_json.down
-							var url = RES_URL+'vlo/'+x.lang+'/'+nav_json.vlo
-							console.log(url)
-							var tout
-							function check(){
-								if(Konekti.client['vlo'] !== undefined ){
-									clearTimeout(tout)
-									Konekti.client['vlo'].setText(url)
-								}else tout = setTimeout(check, Konekti.TIMER)
-							}
-							check()	
-						}
-					)
+					x.pleft = x.navigation[page].left
+					x.pright = x.navigation[page].right
+					x.pup = x.navigation[page].up
+					x.pdown = x.navigation[page].down
+					var url = RES_URL+'vlo/'+x.lang+'/'+x.page+'.html'
+					var tout
+					function check(){
+						if(Konekti.client['vlo'] !== undefined ){
+							clearTimeout(tout)
+							Konekti.client['vlo'].setText(url)
+						}else tout = setTimeout(check, Konekti.TIMER)
+					}
 				}
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open(SERVER_URL+"python/index.html?lang="+lang+"&page="+this.page,"_self")
+				console.log(lang)
+				if( lang != this.lang ) window.open(SERVER_URL+"/index.html?lang="+lang+"&page="+this.page,"_self")
 			}
 
 			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
@@ -65,6 +60,7 @@
 		}
 
 		function KonektiMain(){
+			console.log('Here...')
 			var lang = Konekti.dom.getUserLanguage()
 
 			var callback = function(json){ 
@@ -90,11 +86,11 @@
 					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:100%;'}]}
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
-					Konekti.resize()
-
-					var page = Konekti.dom.getURLSearchParam('page', 'home')
-
-					client.select(page)
+					// Konekti.resize()
+					Konekti.resource.JSON(RES_URL+'/navigation.json', function(navigation){
+						x.navigation = navigation
+						client.select(Konekti.dom.getURLSearchParam('page', 'home'))
+					})
 				}
 			}
 

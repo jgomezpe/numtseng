@@ -2,7 +2,7 @@
     "toc":[
         ["home","","Introducción"],
         ["io","","Entrada/Salida"],
-        ["datatype", "", "Tipos de Datos y Expresiones", {}, [
+        ["typexpr", "", "Tipos de Datos y Expresiones", {}, [
             ["id", "", "Identificadores"], 
             ["var", "", "Variables"],
             ["type","", "Tipos", {}, [
@@ -13,8 +13,8 @@
                 ["bool":"","Booleanos"]
                 ], false, true], 
             ["expr", "", "Expresiones", {}, [
-                ["number","","Numéricas"],
-                ["relation","","Relacionales"],
+                ["numeric","","Numéricas"],
+                ["relational","","Relacionales"],
                 ["logic":"","Lógicas"]
                 ], false, true],
             ["eval", "", "Evaluación"]

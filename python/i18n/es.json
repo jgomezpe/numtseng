@@ -23,7 +23,7 @@
         ["condition", "", "Condicionales", [
             ["if", "", "Solo si"],
             ["ifelse", "", "Si, sino"],
-            ["elif", "", "Si, sinosi, sino"],
+            ["elif", "", "Si, sinosi, sino"]
             ], false, true]
         ["loop", "", "Ciclos", {}, [
             ["for", "", "Para"], 

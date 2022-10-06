@@ -1,5 +1,5 @@
 {
-    "home":{"up":"/", "right":"io", "left":"/" },
+    "home":{"vlo":"computer/program/python/intro.html", "up":"/", "right":"io", "left":"/" },
     "io":{"up":"home", "left":"home", "right":"typexpr" },
     "typexpr":{ "up":"home", "left":"io", "right":"function", "down":"integer" },
         "type":{"up":"typexpr", "down":"expr", "left":"typexpr", "right":"expr"},

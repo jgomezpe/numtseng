@@ -31,7 +31,8 @@
 					x.pright = x.navigation[page].right
 					x.pup = x.navigation[page].up
 					x.pdown = x.navigation[page].down
-					var url = RES_URL+'vlo/'+x.lang+'/'+x.page+'.html'
+					var url = x.navigation[page].vlo 
+					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + url
 					var tout
 					function check(){
 						if(Konekti.client['vlo'] !== undefined ){
@@ -44,7 +45,7 @@
 
 			language(lang){
 				console.log(lang)
-				if( lang != this.lang ) window.open(SERVER_URL+"/index.html?lang="+lang+"&page="+this.page,"_self")
+				if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")
 			}
 
 			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
@@ -60,7 +61,6 @@
 		}
 
 		function KonektiMain(){
-			console.log('Here...')
 			var lang = Konekti.dom.getUserLanguage()
 
 			var callback = function(json){ 
@@ -87,7 +87,7 @@
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
 					// Konekti.resize()
-					Konekti.resource.JSON(RES_URL+'/navigation.json', function(navigation){
+					Konekti.resource.JSON(RES_URL+'python/navigation.json', function(navigation){
 						x.navigation = navigation
 						client.select(Konekti.dom.getURLSearchParam('page', 'home'))
 					})

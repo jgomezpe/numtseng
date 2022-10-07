@@ -32,7 +32,7 @@
 					x.pup = x.navigation[page].up
 					x.pdown = x.navigation[page].down
 					var url = x.navigation[page].vlo 
-					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + url
+					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
 					var tout
 					function check(){
 						if(Konekti.client['vlo'] !== undefined ){
@@ -40,6 +40,7 @@
 							Konekti.client['vlo'].setText(url)
 						}else tout = setTimeout(check, Konekti.TIMER)
 					}
+					check()
 				}
 			}
 
@@ -86,7 +87,6 @@
 					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:100%;'}]}
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
-					// Konekti.resize()
 					Konekti.resource.JSON(RES_URL+'python/navigation.json', function(navigation){
 						client.navigation = navigation
 						client.select(Konekti.dom.getURLSearchParam('page', 'home'))

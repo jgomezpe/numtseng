@@ -2,23 +2,21 @@
     "toc":[
         ["home","","Introducción"],
         ["io","","Entrada/Salida"],
-        ["typexpr", "", "Tipos de Datos y Expresiones", {}, [
-            ["id", "", "Identificadores"], 
-            ["var", "", "Variables"],
-            ["type","", "Tipos", {}, [
-                ["integer", "", "Enteros"],
-                ["real", "", "Reales"],
-                ["char", "", "Caracter"],
-                ["stringb", "", "Cadenas"],
-                ["bool", "", "Booleanos"]
-                ], false, true], 
-            ["expr", "", "Expresiones", {}, [
-                ["numeric", "", "Numéricas"],
-                ["relational", "", "Relacionales"],
-                ["logic", "", "Lógicas"]
-                ], false, true],
+        ["id", "", "Identificadores"], 
+        ["var", "", "Variables"],
+        ["type","", "Tipos", {}, [
+            ["integer", "", "Enteros"],
+            ["real", "", "Reales"],
+            ["char", "", "Caracter"],
+            ["stringb", "", "Cadenas"],
+            ["bool", "", "Booleanos"]
+            ], false, true], 
+        ["expr", "", "Expresiones", {}, [
+            ["numeric", "", "Numéricas"],
+            ["relational", "", "Relacionales"],
+            ["logic", "", "Lógicas"],
             ["eval", "", "Evaluación"]
-        ], false, true],
+            ], false, true],
         ["function", "", "Funciones"],
         ["condition", "", "Condicionales", [
             ["if", "", "Solo si"],

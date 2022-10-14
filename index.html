@@ -10,8 +10,6 @@
 
 	<script>
 		let I18N_URL = "https://jgomezpe.github.io/numtseng/i18n/" // Internationalization resources are stored in github
-		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
-		let KONEKTI_URL = "https://jgomezpe.github.io/konekti/demo/" // Change this to your server name
 
 		Konekti.uses('toc','sidebar','youtube','header','dropdown', 'navbar')
 
@@ -23,14 +21,11 @@
 			}
 
 			select(page){
-				if(page=='konekti')
-					window.open(KONEKTI_URL+"index.html?page=home&lang="+this.lang, '_self')
-				else if(page != 'home')	
-                    window.open(SERVER_URL+page+"/index.html?page=home&lang="+this.lang, '_self')				
+				if(page != 'home') window.open(page+"/index.html?page=home&lang="+this.lang, '_self')				
 			}
 
 			language(lang){
-				if( lang != this.lang ) window.open(SERVER_URL+"index.html?page=home&lang="+lang,"_self")
+				if( lang != this.lang ) window.open("index.html?page=home&lang="+lang,"_self")
 			}
 		}
 

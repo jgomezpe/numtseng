@@ -4,13 +4,13 @@
   "@":"@ : Rotate/Unrotate a quilt or remnant",
   "|":"| : Sew/Unsew two quilts or remnants", 
   "toc":[ 
-    ["language", "fa-language", "Language", {}, 
-      [
-        ["lang-es", "", "Español"], 
-        ["lang-en", "", "English"]
-      ]
-    ],
-    ["IDE", "fa-desktop", "IDE"],
+    ["home", "fa-home", "Home"],
+    ["parrot", "&#129436;", "Parrot"],
+    ["paisaje", "fa-photo", "Landscape"],
+    ["self", "fa-exchange", "Self"],
+    ["cuisenaire", "fa-cubes", "Cuisenaire"],
+    ["aliendecoder", "&#128125;", "Alien decoder"],    
+    ["loops", "fa-spinner", "Loops"],    
     ["java", "fa-desktop", "Java IDE"],    
     ["github", "fa-github", "Source code"]
   ],

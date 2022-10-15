@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<title>Quilt Programing Language</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/quilt/src/js/quilt_wrap.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/funpl/src/js/funplIDE.js'></script>
+</head>
+
+<body>
+
+	<script>
+		let GITHUB = "https://jgomezpe.github.io/" // Resources are stored in github
+		let QUILT = GITHUB + "numtseng/quilt/"
+		let SRC = "https://github.com/jgomezpe/quilt/"
+		let I18N = QUILT + "i18n/"
+		Konekti.uses( 'toc', 'sidebar', 'latex', 'canvas', 'ace', 'dropdown', 'split')
+
+		class KMain extends MainClient{
+			constructor(lang){
+				super()
+				this.page = ''
+				this.lang = lang
+			}
+
+			select(page){
+				console.log(page)
+				if( page == 'java' ) window.open(SRC+"tree/master/run/quilt.jar", "_parent", "download")
+				else if( page == 'github' ) window.open(SRC)
+				else if( this.page != page ){
+					console.log(page)			
+					this.page = page
+					Konekti.dom.setURLSearchParam('page',page)
+					Konekti.dom.setURLSearchParam('lang',this.lang)
+					var url = QUILT+this.lang+'/'+page+'.json'
+					console.log(url)
+					Konekti.resource.JSON(url, function(json){
+						console.log(json)
+						function check(){
+							if(Konekti.client['QuiltCoder'] !== undefined){
+								Konekti.client['QuiltCoder'].setText(json.coder) 
+								Konekti.client['QuiltCommand'].setText(json.command) 
+								Konekti.client['info'].setText(json.info)
+							}else setTimeout(check, 100)	
+						}
+						check()		
+					})
+				}
+			}
+
+			language(lang){
+				if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")
+			}
+		}
+
+		function KonektiMain(){
+			var lang = Konekti.dom.getUserLanguage()
+
+			var callback = function(quilt_json){ 
+				if(quilt_json===undefined || quilt_json===null){
+					lang = 'en'
+					Konekti.resource.JSON(I18N+lang+'.json', callback)
+				}else{
+					var client = new KMain(lang)
+					var toc = {'plugin':'toc', 'setup':['tocQuilt', quilt_json.toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
+
+					Konekti.resource.JSON('https://jgomezpe.github.io/quilt/cfg/basic.qmc', function(json){
+						document.title = quilt_json.Title
+						var info = {'plugin':'latex', 'setup':['info', 'Hello', {"style":'padding:8px;overflow:auto;width:100%;height:100%;'}]}
+						var quilt = {'plugin':'funpl', 'setup':['Quilt', "col", json.editor.mode, json.editor.code, new QuiltAPI(json.fun),
+							{'plugin':'canvas', 'setup':['QuiltRender','{}', json.render.custom, {'style':'width:100%;height:100%;'}]}, 
+							{'style':'width:100%;height:100%;'}]}
+						var main = {'plugin':'split', 'setup':['main', 'row', 20, info, quilt, {'style':'width:100%;height:100%;'}]}
+
+						Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})
+
+						function check(){
+							if( Konekti.client['Quilt'] !== undefined ){
+								quilt = Konekti.client['Quilt']
+								var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
+								{"client":'client', "method":"language"}, {'title':'Selecting language'}]}	
+								Konekti.dropdown('funpl-navbar', "dd3", "fa-language", "", dd)
+
+								quilt.render = function(obj){ Konekti.client['QuiltRender'].setText(JXON.stringify(obj.jxon()))}
+								Konekti.client['Quilt'].msg = quilt_json 
+								Konekti.resize()
+								var page = Konekti.dom.getURLSearchParam('page', 'home')
+								client.select(page)
+							}else setTimeout(check,100)	
+						}
+						check()
+					})
+				}
+			}
+
+			Konekti.resource.JSON(I18N+lang+'.json', callback)
+		}		
+	</script>
+</body>
+</html>

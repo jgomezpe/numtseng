@@ -1,0 +1,18 @@
+{
+  "Title":"Quilt Machine",
+  "developed":"Developed by professor Jonatan Gomez",
+  "@":"@ : Rotate/Unrotate a quilt or remnant",
+  "|":"| : Sew/Unsew two quilts or remnants", 
+  "toc":[ 
+    ["language", "fa-language", "Language", {}, 
+      [
+        ["lang-es", "", "Español"], 
+        ["lang-en", "", "English"]
+      ]
+    ],
+    ["IDE", "fa-desktop", "IDE"],
+    ["java", "fa-desktop", "Java IDE"],    
+    ["github", "fa-github", "Source code"]
+  ],
+  "language":"Language"
+}  

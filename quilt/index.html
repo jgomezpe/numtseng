@@ -27,18 +27,14 @@
 			}
 
 			select(page){
-				console.log(page)
 				if( page == 'java' ) window.open(SRC+"tree/master/run/quilt.jar", "_parent", "download")
 				else if( page == 'github' ) window.open(SRC)
 				else if( this.page != page ){
-					console.log(page)			
 					this.page = page
 					Konekti.dom.setURLSearchParam('page',page)
 					Konekti.dom.setURLSearchParam('lang',this.lang)
 					var url = QUILT+this.lang+'/'+page+'.json'
-					console.log(url)
 					Konekti.resource.JSON(url, function(json){
-						console.log(json)
 						function check(){
 							if(Konekti.client['QuiltCoder'] !== undefined){
 								Konekti.client['QuiltCoder'].setText(json.coder) 

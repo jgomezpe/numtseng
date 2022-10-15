@@ -44,15 +44,15 @@
   "Cancel":"Cancelar", 
   "No errors":"Sin errores de compilación...!!!!",
   "toc":[ 
-    ["home", "fa-home", "Home"],
-    ["parrot", "&#129436;", "Parrot"],
-    ["paisaje", "fa-photo", "Landscape"],
-    ["self", "fa-exchange", "Self"],
+    ["home", "fa-home", "Inicio"],
+    ["parrot", "&#129436;", "Perico"],
+    ["paisaje", "fa-photo", "Paisaje"],
+    ["self", "fa-exchange", "En si mismo"],
     ["cuisenaire", "fa-cubes", "Cuisenaire"],
-    ["aliendecoder", "&#128125;", "Alien decoder"],    
-    ["loops", "fa-spinner", "Loops"],    
-    ["java", "fa-desktop", "Java IDE"],    
-    ["github", "fa-github", "Source code"]
+    ["aliendecoder", "&#128125;", "Deco Alienígena"],    
+    ["loops", "fa-spinner", "Ciclos"],    
+    ["java", "fa-desktop", "IDE de Java"],
+    ["github", "fa-github", "Código fuente"]
   ],
   "language":"Idioma"
 }  

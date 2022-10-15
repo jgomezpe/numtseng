@@ -44,6 +44,8 @@
 								Konekti.client['QuiltCoder'].setText(json.coder) 
 								Konekti.client['QuiltCommand'].setText(json.command) 
 								Konekti.client['info'].setText(json.info)
+								Konekti.client['Quilt'].compile()
+								Konekti.client['Quilt'].run()
 							}else setTimeout(check, 100)	
 						}
 						check()		

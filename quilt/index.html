@@ -71,7 +71,7 @@
 
 					Konekti.resource.JSON('https://jgomezpe.github.io/quilt/cfg/basic.qmc', function(json){
 						document.title = quilt_json.Title
-						var info = {'plugin':'latex', 'setup':['info', 'Hello', {"style":'padding:8px;overflow:auto;width:100%;height:100%;'}]}
+						var info = {'plugin':'latex', 'setup':['info', '', {"style":'padding:8px;overflow:auto;width:100%;height:100%;'}]}
 						var quilt = {'plugin':'funpl', 'setup':['Quilt', "col", json.editor.mode, json.editor.code, new QuiltAPI(json.fun),
 							{'plugin':'canvas', 'setup':['QuiltRender','{}', json.render.custom, {'style':'width:100%;height:100%;'}]}, 
 							{'style':'width:100%;height:100%;'}]}

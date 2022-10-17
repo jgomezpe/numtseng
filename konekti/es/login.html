@@ -11,7 +11,6 @@
 
 Konekti.uses('accordion', 'header', 'loginbtn')
 
-
 class TheClient extends MainClient{
 	constructor(){ 
 		super() 
@@ -22,14 +21,15 @@ class TheClient extends MainClient{
 	 * Login response (simulates a sever)
 	 * @param user User information (email)
 	 * @param password Password information
-	 * @param callback Method called when the server replies
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
 	 */
-	login(user, password, callback){
+	login(user, password, onsuccess, onerror){
 		if(this.users[user] !== undefined && this.users[user].password == password){
 			this.current = {'user':user, 'password':password}
-			callback(true)
+			onsuccess()
 		}else{
-			callback(false)
+			onerror()
 		}
 	}
 
@@ -37,40 +37,44 @@ class TheClient extends MainClient{
 	 * Register response (simulates a sever)
 	 * @param user User information (email)
 	 * @param password Password information
-	 * @param callback Method called when the server replies
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
 	 */
-	 register(user, password, callback){
+	 register(user, password, onsuccess, onerror){
 		if(this.users[user] !== undefined){
-			callback(false)
+			onsuccess()
 		}else{
 			this.signing = {'user':user, 'password':password}
-			callback(true)
+			onerror()
 		}
 	}
 
 	/**
 	 * Registers code response (simulates a sever)
 	 * @param code Code information
-	 * @param callback Method called when the server replies
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
 	 */
-	 registercode(code,callback){
+	 registercode(code, onsuccess, onerror){
 		if(code=='12345'){
 			this.users[this.signing.user] = {'password':this.signing.password}
 			this.current = {'user':this.signing.user, 'password':this.signing.password}
 			this.signing = {}
-			callback(true)
+			onsuccess()
 		}else{
-			callback(false)
+			onerror()
 		}
 	}
 
 	/**
 	 * Remember response (simulates a sever)
 	 * @param user User information (email)
-	 * @param callback Method called when the server replies
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
 	 */
-	 remember(user, callback){
-		callback(this.users.user !== undefined)
+	 remember(user, onsuccess, onerror){
+		if(this.users.user !== undefined) onsuccess()
+		else onerror()
 	}
 
 	/**
@@ -84,15 +88,16 @@ class TheClient extends MainClient{
 	 * Change password response (simulates a sever)
 	 * @param newpassword New user's password information
 	 * @param oldpassword Current user's password information
-	 * @param callback Method called when the server replies
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
 	 */
-	updatepwd(newpassword, oldpassword, callback){
+	updatepwd(newpassword, oldpassword, onsuccess, onerror){
 		if(this.current.password==oldpassword){
 			this.current.password = newpassword
 			this.users[this.current.user].password = newpassword
-			callback(true)
+			onsuccess()
 		}else{
-			callback(false)
+			onerror()
 		}
 	}
 }

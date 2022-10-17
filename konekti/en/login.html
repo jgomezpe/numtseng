@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Konekti login's button</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+</head>
+
+<body>
+<script>
+
+Konekti.uses('accordion', 'header', 'loginbtn')
+
+
+class TheClient extends MainClient{
+	constructor(){ 
+		super() 
+		this.users = {}
+	}
+
+	/**
+	 * Login response (simulates a sever)
+	 * @param user User information (email)
+	 * @param password Password information
+	 * @param callback Method called when the server replies
+	 */
+	login(user, password, callback){
+		if(this.users[user] !== undefined && this.users[user].password == password){
+			this.current = {'user':user, 'password':password}
+			callback(true)
+		}else{
+			callback(false)
+		}
+	}
+
+	/**
+	 * Register response (simulates a sever)
+	 * @param user User information (email)
+	 * @param password Password information
+	 * @param callback Method called when the server replies
+	 */
+	 register(user, password, callback){
+		if(this.users[user] !== undefined){
+			callback(false)
+		}else{
+			this.signing = {'user':user, 'password':password}
+			callback(true)
+		}
+	}
+
+	/**
+	 * Registers code response (simulates a sever)
+	 * @param code Code information
+	 * @param callback Method called when the server replies
+	 */
+	 registercode(code,callback){
+		if(code=='12345'){
+			this.users[this.signing.user] = {'password':this.signing.password}
+			this.current = {'user':this.signing.user, 'password':this.signing.password}
+			this.signing = {}
+			callback(true)
+		}else{
+			callback(false)
+		}
+	}
+
+	/**
+	 * Remember response (simulates a sever)
+	 * @param user User information (email)
+	 * @param callback Method called when the server replies
+	 */
+	 remember(user, callback){
+		callback(this.users.user !== undefined)
+	}
+
+	/**
+	 * Logout response (simulates a sever)
+	 */
+	logout(){
+		this.current = {}
+	}
+
+	/**
+	 * Change password response (simulates a sever)
+	 * @param newpassword New user's password information
+	 * @param oldpassword Current user's password information
+	 * @param callback Method called when the server replies
+	 */
+	updatepwd(newpassword, oldpassword, callback){
+		if(this.current.password==oldpassword){
+			this.current.password = newpassword
+			this.users[this.current.user].password = newpassword
+			callback(true)
+		}else{
+			callback(false)
+		}
+	}
+}
+
+function KonektiMain(){
+	var client = new TheClient()
+	Konekti.header('body','aHeader', '', 'Testing a login button', 3, {'class':'w3-green'})
+	var extra = {'plugin':'accordion', 'setup':['anAccordion', 'fa-link', 'Showing wikipedia',
+		{'plugin':'iframe', 'setup':['aIframe', 'https://wikipedia.com', {'style':'width:100%;height:40%;'}]}, false, "",
+		{'class':'w3-blue-grey'}]}
+	Konekti.loginbtn('body', "userbtn", extra, client, {'email':'&#128231; email', 'password': '&#128273; Password', 
+		'remember':'Remember password', 'login':'Login', 
+		'register':'Sign in', 'code':'&#8943; Signing code', 'send':'Send',
+		'invaliduser':'Invalid user or password', 'invalidpassword':'Invalid password',
+		'invalidcode':'Invalid code', 'send':'Sending password to email '}, 
+		{'input':{'class':"w3-round-xxlarge", 'style':"margin:2px;"}, 'btn':{}, 'user':{'class':'w3-small' }})
+}
+
+</script>
+
+</body>
+</html>

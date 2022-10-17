@@ -10,6 +10,7 @@
         ["div", "fa fa-code",  "HTML"],
         ["iframe", "fa fa-link",  "IFrame"],
         ["latex", "fa fa-superscript",  "Latex"],
+        ["login", "fa fa-user",  "Botón de Login"],
         ["media", "fa fa-film", "Medio", {}, [
             ["audio", "fa fa-volume-up", "Audio"],
             ["video", "fa fa-video-camera", "Video"]

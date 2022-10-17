@@ -40,13 +40,11 @@ class TheClient extends MainClient{
 	 * @param onsuccess Method called when the server replies ok
 	 * @param onerror Method called when the server replies error
 	 */
-	 register(user, password, onsuccess, onerror){
-		if(this.users[user] !== undefined){
-			onsuccess()
-		}else{
+	register(user, password, onsuccess, onerror){
+		if(this.users[user] === undefined){
 			this.signing = {'user':user, 'password':password}
-			onerror()
-		}
+			onsuccess()
+		}else{ onerror() }
 	}
 
 	/**

@@ -47,7 +47,7 @@
 					var btn=[{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}, header]
 					var navbar = {'plugin':'navbar', 'setup':['main-navbar', btn, {'client':'client', 'method':'select'}, {'class':'w3-blue-grey'}]}
 
-					var youtube = {'plugin':'youtube', 'setup':['youtube', json.video, {'style':'width:100%;height:94%;'}]}
+					var youtube = {'plugin':'youtube', 'setup':['youtube', json.video, {'style':'width:100%;height:fit;'}]}
 					var main = {'plugin':'raw', 'setup':['main-content',[navbar,youtube], {'style':'width:100%;height:100%;'}]}
 
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;margin:0px;padding:0px;border:0px;'})

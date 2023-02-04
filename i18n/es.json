@@ -1,13 +1,30 @@
 {
     "title":"Numtseng: La Escuela del Profesor Jonatan Gomez",
-    "developed":"Desarrollado por el profesor Jonatan Gomez",
-    "toc":[ 		
-        ["konekti", "fa fa-cubes",  "Konekti"],
-        ["languages",  "", "Lenguajes", {}, [
-            ["python", "fa fa-edit", "Python"],
-            ["quilt", "fa fa-th", "Quilt"],
-            ["toyplus", "fa fa-plus", "Toy+"]], 
-            true, false]],
+    "developed":"Desarrollado por el profesor Jonatan Gomez (jgomezpe@unal.edu.co)",
+    "toc":[
+        ["home", "fa fa-home", "Inicio"],	
+        ["learn", "fa fa-paw", "Aprender", {}, 
+            [
+                ["welldefined", "fa fa-edit", "Bien-definido"],
+                ["problem", "fa fa-question-circle-o", "Problema"]
+            ], 
+            true, true
+        ],	
+        ["math", "fa fa-superscript",  "Matemáticas"],
+        ["computer", "fa fa-desktop", "Computación", {}, 
+            [
+                ["konekti", "fa fa-cubes",  "Konekti"],
+                ["languages",  "", "Lenguajes", {}, 
+                    [
+                        ["python", "fa fa-edit", "Python"],
+                        ["quilt", "fa fa-th", "Quilt"],
+                        ["toyplus", "fa fa-plus", "Toy+"]
+                    ], 
+                    true, false
+                ]
+            ]
+        ]
+    ],
     "video":"rPjpA4sn7yI",
     "language":"Idiomas"
   }

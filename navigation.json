@@ -1,0 +1,13 @@
+{
+    "home":{"vlo":"general/intro.html", "up":"/", "right":"learn", "left":"/" },
+    "learn":{"vlo":"general/learn/intro.html", "up":"home", "left":"home", "right":"math", "down":"welldefined" },
+        "welldefined":{ "up":"learn", "right":"problem", "left":"learn" },
+        "problem":{ "up":"learn", "left":"welldefined", "right":"math" },
+    "math":{"up":"home", "left":"learn", "right":"computer", "change":true},
+    "computer":{ "up":"home", "left":"math", "down":"konekti" },
+        "konekti":{ "up":"computer", "right":"languages", "left":"computer", "change":true },
+        "languages":{ "up":"computer", "left":"konekti", "down":"python" },
+            "python":{ "up":"languages", "left":"languages", "right":"quilt" },
+            "quilt":{ "up":"languages", "left":"python", "right":"toyplus" },
+            "toyplus":{ "up":"languages", "left":"quilt" }
+}

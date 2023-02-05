@@ -27,7 +27,17 @@
         ["video", "fa fa-video-camera", "Videos", {}, 
             [
                 ["unkids",  "fa-child", "Kids University"],
-                ["cyberspy", "fa fa-user-secret",  "Cyber espionage"]
+                ["ai",  "fa-magic", "A.I."],
+                ["aiindustry",  "fa-industry", "Industry 4.0"],
+                ["cyber", "fa fa-cloud", "Cyber space", {}, 
+                    [
+                        ["cyberspy", "fa fa-user-secret",  "Espionage"],
+                        ["cybercrime", "fa fa-bomb", "Crime"],
+                        ["cybersecurity", "fa fa-lock", "Security"],
+                        ["cybersuicide", "fa  fa-frown-o", "Suicide"]
+                    ], false, false
+                ],    
+                ["smartcity", "fa fa-map-signs",  "Smart city"]
             ], false, false
         ],
         ["about", "fa fa-info-circle",  "About"]

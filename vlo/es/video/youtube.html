@@ -13,9 +13,11 @@
 Konekti.uses('header','youtube')
 
 function KonektiMain(){
-	Konekti.header('body', 'title','fa-child', 'UNiversidad de los niños', 4, {'class':'w3-black'} )
+    title = Konekti.dom.getURLSearchParam('title')
+    id = Konekti.dom.getURLSearchParam('id')
+	Konekti.header('body', 'title','fa-child', title, 4, {'class':'w3-black'} )
 	// Connects the youtube video with the HTML component
-	Konekti.youtube( 'body', 'myyoutube', 'rPjpA4sn7yI', {'style':'width:100%;height:fit;'})	
+	Konekti.youtube( 'body', 'myyoutube', id, {'style':'width:100%;height:fit;'})	
 }
 
 </script>

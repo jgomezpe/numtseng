@@ -2,31 +2,64 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Numtseng: School of Professor Jonatan Gomez.</title>
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+ 	<title>Numtseng: School of Professor Jonatan Gomez.</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 </head>
 
 <body>
 
 	<script>
-		let I18N_URL = "https://jgomezpe.github.io/numtseng/i18n/" // Internationalization resources are stored in github
-
-		Konekti.uses('toc','sidebar','youtube','header','dropdown', 'navbar')
+		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
+		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
+		
+        Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
 		class KMain extends MainClient{
-			constructor(lang){ 
+			constructor(lang){
 				super()
-				this.page = 'home'
+				this.page = ''
 				this.lang = lang
 			}
 
 			select(page){
-				if(page != 'home') window.open(page+"/index.html?page=home&lang="+this.lang, '_self')				
+				var x = this
+				if( x.page != page ){
+					x.page = page
+					if(x.navigation[page].change==undefined || !x.navigation[page].change){	
+						Konekti.dom.setURLSearchParam('page',page)
+						Konekti.dom.setURLSearchParam('lang',x.lang)
+
+						x.pleft = x.navigation[page].left
+						x.pright = x.navigation[page].right
+						x.pup = x.navigation[page].up
+						x.pdown = x.navigation[page].down
+						var url = x.navigation[page].vlo 
+						if(url!==undefined && !url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
+						var tout
+						function check(){
+							if(Konekti.client['vlo'] !== undefined ){
+								clearTimeout(tout)
+								Konekti.client['vlo'].setText(url)
+							}else tout = setTimeout(check, Konekti.TIMER)
+						}
+						check()
+					}else{ window.open(page+"/index.html?page=home&lang="+this.lang, '_self') }
+				}
 			}
 
-			language(lang){
-				if( lang != this.lang ) window.open("index.html?page=home&lang="+lang,"_self")
-			}
+			language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
+
+			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
+
+			right(){ if( this.pright !== undefined) this.select(this.pright) }
+
+			up(){ if( this.pup !== undefined ) this.select(this.pup) }
+
+			down(){ if( this.pdown !== undefined) this.select(this.pdown) }
 		}
 
 		function KonektiMain(){
@@ -34,29 +67,37 @@
 
 			var callback = function(json){ 
 				if(json===undefined || json===null){
-					lang = 'en'
-					Konekti.resource.JSON(I18N_URL+lang+'.json', callback)
+					lang = 'es'
+					Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
 				}else{
 					var client = new KMain(lang)
 					document.title = json.title
 					var toc = {'plugin':'toc', 'setup':['tockonekti', json.toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
-
-					var header = {'plugin':'header', 'setup':['title','', json.title, 3, {'class':'w3-center'}]}
 					var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
 						{"client":'client', "method":"language"}, {'title':'Selecting language'}]}	
-					var btn=[{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}, header]
-					var navbar = {'plugin':'navbar', 'setup':['main-navbar', btn, {'client':'client', 'method':'select'}, {'class':'w3-blue-grey'}]}
+					var btn=[
+						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'}]},
+						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'}]},
+						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}
+					]
+					var title = {'plugin':'header', 'setup':['title','', json.title, 3, {'class':'w3-green w3-center'}]}
+					var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
+					var control = {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]}
+					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
+					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
-					var youtube = {'plugin':'youtube', 'setup':['youtube', json.video, {'style':'width:100%;height:fit;'}]}
-					var main = {'plugin':'raw', 'setup':['main-content',[navbar,youtube], {'style':'width:100%;height:100%;'}]}
-
-					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;margin:0px;padding:0px;border:0px;'})
-					Konekti.resize()
+					Konekti.resource.JSON(RES_URL+'navigation.json', function(navigation){
+						client.navigation = navigation
+						client.select(Konekti.dom.getURLSearchParam('page', 'home'))
+					})
 				}
 			}
 
-			Konekti.resource.JSON(I18N_URL+lang+'.json', callback)
-		}	
+			Konekti.resource.JSON(RES_URL+'i18n/'+lang+'.json', callback)
+			
+        }
 	</script>
 </body>
 </html>

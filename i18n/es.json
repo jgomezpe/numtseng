@@ -13,18 +13,24 @@
         ["math", "fa fa-superscript",  "Matemáticas"],
         ["computer", "fa fa-desktop", "Computación", {}, 
             [
-                ["konekti", "fa fa-cubes",  "Konekti"],
                 ["languages",  "", "Lenguajes", {}, 
                     [
                         ["python", "fa fa-edit", "Python"],
                         ["quilt", "fa fa-th", "Quilt"],
                         ["toyplus", "fa fa-plus", "Toy+"]
                     ], 
-                    true, false
-                ]
-            ]
-        ]
+                    false, false
+                ],
+                ["konekti", "fa fa-cubes",  "Konekti"]
+            ], false, false
+        ],
+        ["video", "fa fa-video-camera", "Videos", {}, 
+            [
+                ["unkids",  "fa-child", "Universidad Niños"],
+                ["cyberspy", "fa fa-user-secret",  "Ciber espionaje"]
+            ], false, false
+        ],
+        ["about", "fa fa-info-circle",  "Acerca de"]
     ],
-    "video":"rPjpA4sn7yI",
     "language":"Idiomas"
   }

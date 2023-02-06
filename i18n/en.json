@@ -29,6 +29,12 @@
                 ["unkids",  "fa-child", "Kids University"],
                 ["ai",  "fa-magic", "A.I."],
                 ["aiindustry",  "fa-industry", "Industry 4.0"],
+                ["programmer", "fa fa-laptop", "Programmer", {}, 
+                    [
+                        ["programmerspath", "fa fa-map-signs",  "Path"],
+                        ["programmersawake", "fa fa-fire", "Awake"]
+                    ], false, false
+                ],    
                 ["cyber", "fa fa-cloud", "Cyber space", {}, 
                     [
                         ["cyberspy", "fa fa-user-secret",  "Espionage"],

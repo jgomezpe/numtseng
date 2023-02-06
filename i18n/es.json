@@ -27,6 +27,12 @@
         ["video", "fa fa-video-camera", "Videos", {}, 
             [
                 ["unkids",  "fa-child", "Universidad Niños"],
+                ["programmer", "fa fa-laptop", "Programador", {}, 
+                    [
+                        ["programmerspath", "fa fa-map-signs",  "Camino"],
+                        ["programmersawake", "fa fa-fire", "Despertar"]
+                    ], false, false
+                ],    
                 ["ai",  "fa-magic", "I.A."],
                 ["aiindustry",  "fa-industry", "Industria 4.0"],
                 ["cyber", "fa fa-cloud", "Ciber espacio", {}, 

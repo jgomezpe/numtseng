@@ -39,19 +39,21 @@
 					Konekti.dom.setURLSearchParam('lang',this.lang)
 					var url = QUILT+this.lang+'/'+page+'.json'
 					Konekti.resource.JSON(url, function(json){
-						function check(){
-							if(Konekti.client['QuiltCoder'] !== undefined){
+						Konekti.deamon(function(){ 
+								var c = Konekti.client['Quilt']
+								return c!=undefined && c!=null && c.vc('Coder') !== undefined && 
+										c.vc('Command') !== undefined && Konekti.vc('info') !== undefined
+							}, function(){
 								Konekti.client['QuiltCoder'].setText(json.coder) 
 								Konekti.client['QuiltCommand'].setText(json.command) 
 								Konekti.client['info'].setText(json.info)
 								Konekti.client['Quilt'].compile()
 								Konekti.client['Quilt'].run()
-							}else setTimeout(check, 100)	
-						}
-						check()		
+							}
+						)
 					})
 				}
-			}
+			}		
 
 			language(lang){
 				if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")

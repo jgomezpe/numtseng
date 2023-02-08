@@ -39,21 +39,14 @@
 					Konekti.dom.setURLSearchParam('lang',this.lang)
 					var url = QUILT+this.lang+'/'+page+'.json'
 					Konekti.resource.JSON(url, function(json){
-						Konekti.deamon(function(){ 
-								var c = Konekti.client['Quilt']
-								return c!=undefined && c!=null && c.vc('Coder') !== undefined && 
-										c.vc('Command') !== undefined && Konekti.vc('info') !== undefined
-							}, function(){
-								Konekti.client['QuiltCoder'].setText(json.coder) 
-								Konekti.client['QuiltCommand'].setText(json.command) 
-								Konekti.client['info'].setText(json.info)
-								Konekti.client['Quilt'].compile()
-								Konekti.client['Quilt'].run()
-							}
-						)
+						Konekti.client['QuiltCoder'].setText(json.coder) 
+						Konekti.client['QuiltCommand'].setText(json.command) 
+						Konekti.client['info'].setText(json.info)
+						Konekti.client['Quilt'].compile()
+						Konekti.client['Quilt'].run()
 					})
 				}
-			}		
+			}
 
 			language(lang){
 				if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")
@@ -83,8 +76,12 @@
 
 						Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})
 
-						function check(){
-							if( Konekti.client['Quilt'] !== undefined ){
+
+						Konekti.deamon(function(){ 
+								var c = Konekti.client['Quilt']
+								return c!==undefined && c.vc()!==undefined && c.vc('Coder') !== undefined && 
+										c.vc('Command') !== undefined && Konekti.vc('info') !== undefined
+							}, function(){								
 								quilt = Konekti.client['Quilt']
 								var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
 								{"client":'client', "method":"language"}, {'title':'Selecting language'}]}	
@@ -95,9 +92,8 @@
 								Konekti.resize()
 								var page = Konekti.dom.getURLSearchParam('page', 'home')
 								client.select(page)
-							}else setTimeout(check,100)	
-						}
-						check()
+							}	
+						)
 					})
 				}
 			}

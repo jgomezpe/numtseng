@@ -49,6 +49,10 @@
         ["about", "fa fa-info-circle",  "About"]
     ],
     "language":"Language",
+    "basic":"Basic",
+    "medium":"Medium",
+    "advance":"Advance",
+    "level":"Level",
     "unkidsinfo":{
         "title":"UNiversity%20of$20Kids",
         "id":"rPjpA4sn7yI"

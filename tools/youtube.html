@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<title>UNiversidad de los Niños</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+</head>
+
+<body>
+
+<script>
+
+Konekti.uses('header','youtube')
+
+function KonektiMain(){
+    title = Konekti.dom.getURLSearchParam('title')
+    id = Konekti.dom.getURLSearchParam('id')
+	Konekti.header('body', 'title','fa-child', title, 4, {'class':'w3-black'} )
+	// Connects the youtube video with the HTML component
+	Konekti.youtube( 'body', 'myyoutube', id, {'style':'width:100%;height:fit;'})	
+}
+
+</script>
+
+</body>
+</html>

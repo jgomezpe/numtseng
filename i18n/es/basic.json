@@ -48,11 +48,19 @@
         ],
         ["about", "fa fa-info-circle",  "Acerca de"]
     ],
-    "language":"Idiomas",
-    "basic":"Básico",
-    "medium":"Medio",
-    "advance":"Avanzado",
-    "level":"Nivel",
+    "navbar":{
+        "left":"Tema previo",
+        "right":"Tema siguiente",
+        "up": "Tema padre",
+        "down": "Tema hijo",
+        "level":"Nivel de los temas",
+        "levels":{
+            "basic":"Básico",
+            "medium":"Medio",
+            "advance":"Avanzado"
+        },
+        "language":"Idiomas"
+    },
     "unkidsinfo":{
         "title":"UNiversidad%20de$20los%20Niños",
         "id":"rPjpA4sn7yI"

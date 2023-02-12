@@ -3,7 +3,13 @@
     "developed":"Developed by professor Jonatan Gomez Perdomo (jgomezpe@unal.edu.co)",
     "toc":[
         ["home", "fa fa-home", "Home"],	
-        ["learn", "fa fa-paw", "Learn"],	
+        ["learn", "fa fa-paw", "Learn", {}, 
+            [
+                ["welldefined", "fa fa-edit", "Well-defined"],
+                ["problem", "fa fa-question-circle-o", "Problem"]
+            ], 
+            true, true
+        ],	
         ["math", "fa fa-superscript",  "Mathematics"],
         ["computer", "fa fa-desktop", "Computing", {}, 
             [

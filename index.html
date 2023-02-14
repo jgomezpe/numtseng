@@ -44,7 +44,7 @@
 							var vlo = x.current.vlo 
 							if(typeof vlo==="string"){ vlo = {"url":vlo}}
 							var url = vlo.url
-							if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + "/" + x.level + '/' + url
+							if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
 							if(vlo.params !== undefined){
 								var c = '?'
 								for( var p in vlo.params ){

@@ -4,6 +4,7 @@
     "toc":[
         ["home", "fa fa-home", "Inicio"],	
         ["learn", "fa fa-paw", "Aprender"],	
+        ["problem", "fa fa-question-circle-o", "Problema"],
         ["math", "fa fa-superscript",  "Matemáticas"],
         ["computer", "fa fa-desktop", "Computación", {}, 
             [

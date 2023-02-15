@@ -39,14 +39,8 @@
 					x.pdown = x.navigation[page].down
 					var url = x.navigation[page].vlo 
 					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-					var tout
-					function check(){
-						if(Konekti.client['vlo'] !== undefined ){
-							clearTimeout(tout)
-							Konekti.client['vlo'].setText(url)
-						}else tout = setTimeout(check, Konekti.TIMER)
-					}
-					check()
+					Konekti.daemon( function(){ return (Konekti.client['vlo'] !== undefined) },
+						function(){ Konekti.client['vlo'].setText(url) } )
 				}
 			}
 

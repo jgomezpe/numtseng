@@ -40,7 +40,7 @@
 						Konekti.dom.setURLSearchParam('level',x.level)
 						Konekti.dom.setURLSearchParam('lang',x.lang)
 
-						Konekti.deamon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
+						Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
 							var vlo = x.current.vlo 
 							if(typeof vlo==="string"){ vlo = {"url":vlo}}
 							var url = vlo.url

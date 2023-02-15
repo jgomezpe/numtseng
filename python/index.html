@@ -44,10 +44,7 @@
 				}
 			}
 
-			language(lang){
-				console.log(lang)
-				if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")
-			}
+			language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
 
 			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
 

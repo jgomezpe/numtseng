@@ -1,13 +1,13 @@
 {
-    "home":{ "up":"/", "down":"unkids" },
-        "unkids":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"}, "up":"video", "left":"video", "right":"programmerspath"},
-        "programmerspath":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"}, "up":"video", "left":"unkids", "right":"ai"},
-        "programmersawake":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progawakeinfo"}, "up":"video", "left":"programmerspath", "right":"ai"},
-        "ai":{ "vlo":"https://television.unal.edu.co/detalle/inteligencia-artificial", "up":"video", "left":"programmersawake", "right":"aiindustry"},
-        "aiindustry":{ "vlo":"video/youtube.html?title=Industria4%2E0&id=RH1gdl1f8_E", "up":"video", "left":"ai", "right":"cyberspy"},
-        "cyberspy":{ "vlo":"https://television.unal.edu.co/detalle/ciberespionaje", "up":"computer", "left":"aiindustry", "right":"cybercrime"},
-        "cybercrime":{ "vlo":"https://television.unal.edu.co/detalle/seguridad-en-redes-sociales", "up":"computer", "left":"cyberspy", "right":"cybersecurity"},
-        "cybersecurity":{ "vlo":"https://periodico.unal.edu.co/articulos/ataques-ciberneticos-y-la-tarea-de-mitigar-riesgos", "up":"computer", "left":"cybercrime", "right":"cybersuicide"},
-        "cybersuicide":{ "vlo":"https://television.unal.edu.co/detalle/internet-y-suicidio", "up":"computer", "left":"cybersecurity", "right":"smartcity"},
-        "smartcity":{ "vlo":"https://television.unal.edu.co/detalle/ciudades-inteligentes", "up":"computer", "left":"cybersuicide"}
+    "home":{ "vlo":"general/playlist.html", "up":"/", "left":"unkids" },
+    "unkids":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"}, "up":"home", "left":"home", "right":"programmerspath"},
+    "programmerspath":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"}, "up":"home", "left":"unkids", "right":"ai"},
+    "programmersawake":{ "vlo":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progawakeinfo"}, "up":"home", "left":"programmerspath", "right":"ai"},
+    "ai":{ "vlo":"https://television.unal.edu.co/detalle/inteligencia-artificial", "up":"home", "left":"programmersawake", "right":"aiindustry"},
+    "aiindustry":{ "vlo":"video/youtube.html?title=Industria4%2E0&id=RH1gdl1f8_E", "up":"home", "left":"ai", "right":"cyberspy"},
+    "cyberspy":{ "vlo":"https://television.unal.edu.co/detalle/ciberespionaje", "up":"computer", "left":"aiindustry", "right":"cybercrime"},
+    "cybercrime":{ "vlo":"https://television.unal.edu.co/detalle/seguridad-en-redes-sociales", "up":"computer", "left":"cyberspy", "right":"cybersecurity"},
+    "cybersecurity":{ "vlo":"https://periodico.unal.edu.co/articulos/ataques-ciberneticos-y-la-tarea-de-mitigar-riesgos", "up":"computer", "left":"cybercrime", "right":"cybersuicide"},
+    "cybersuicide":{ "vlo":"https://television.unal.edu.co/detalle/internet-y-suicidio", "up":"computer", "left":"cybersecurity", "right":"smartcity"},
+    "smartcity":{ "vlo":"https://television.unal.edu.co/detalle/ciudades-inteligentes", "up":"home", "left":"cyberspy"}
 }

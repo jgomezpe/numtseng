@@ -1,5 +1,5 @@
 {
-    "title":"Numtseng: La Escuela del Profesor Jonatan Gomez",
+    "title":"Lista de Videos del Profesor Jonatan Gomez",
     "developed":"Desarrollado por el profesor Jonatan Gomez (jgomezpe@unal.edu.co)",
     "toc":[
         ["home", "fa fa-home", "Lista de videos"], 
@@ -27,12 +27,6 @@
         "right":"Tema siguiente",
         "up": "Tema padre",
         "down": "Tema hijo",
-        "level":"Nivel de los temas",
-        "levels":{
-            "basic":"Básico",
-            "medium":"Medio",
-            "advanced":"Avanzado"
-        },
         "language":"Idiomas"
     },
     "unkidsinfo":{

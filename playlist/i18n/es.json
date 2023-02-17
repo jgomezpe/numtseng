@@ -30,7 +30,7 @@
         "language":"Idiomas"
     },
     "unkidsinfo":{
-        "title":"UNiversidad%20de$20los%20Niños",
+        "title":"UNiversidad%20de%20los%20Niños",
         "id":"rPjpA4sn7yI"
     },
     "progpathinfo":{
@@ -40,5 +40,9 @@
     "progawakeinfo":{
         "title":"El%20Despertar%20del%20Programador",
         "id":"77yvkpAgpkU"
+    },
+    "aiindustryinfo":{
+        "title":"Inteligencia%20Artificial%e%20Industria%204.0",
+        "id":"RH1gdl1f8_E"
     }
 }

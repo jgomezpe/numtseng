@@ -30,7 +30,7 @@
         "language":"Languages"
     },
     "unkidsinfo":{
-        "title":"UNiversity%20of$20Kids",
+        "title":"UNiversity%20of%20Kids",
         "id":"rPjpA4sn7yI"
     },
     "progpathinfo":{
@@ -40,5 +40,9 @@
     "progawakeinfo":{
         "title":"Programmer's%20Awake",
         "id":"77yvkpAgpkU"
+    },
+    "aiindustryinfo":{
+        "title":"Artificial%20Intelligence%20and%20Industry%204.0",
+        "id":"RH1gdl1f8_E"
     }
 }

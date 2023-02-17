@@ -1,0 +1,53 @@
+{
+    "title":"Numtseng: La Escuela del Profesor Jonatan Gomez",
+    "developed":"Desarrollado por el profesor Jonatan Gomez (jgomezpe@unal.edu.co)",
+    "toc":[
+        ["home", "fa fa-home", "Inicio", {}, 
+            [
+                ["unkids",  "fa-child", "Universidad Niños"],
+                ["programmer", "fa fa-laptop", "Programador", {}, 
+                    [
+                        ["programmerspath", "fa fa-map-signs",  "Camino"],
+                        ["programmersawake", "fa fa-fire", "Despertar"]
+                    ], false, false
+                ],    
+                ["ai",  "fa-magic", "I.A."],
+                ["aiindustry",  "fa-industry", "Industria 4.0"],
+                ["cyber", "fa fa-cloud", "Ciber espacio", {}, 
+                    [
+                        ["cyberspy", "fa fa-user-secret",  "Espionaje"],
+                        ["cybercrime", "fa fa-bomb", "Crimen"],
+                        ["cybersecurity", "fa fa-lock", "Seguridad"],
+                        ["cybersuicide", "fa  fa-frown-o", "Suicidio"]
+                    ], false, false
+                ],    
+                ["smartcity", "fa fa-map-signs",  "Ciudad inteligente"]
+            ], false, false
+        ]
+    ],    
+    "navbar":{
+        "left":"Tema previo",
+        "right":"Tema siguiente",
+        "up": "Tema padre",
+        "down": "Tema hijo",
+        "level":"Nivel de los temas",
+        "levels":{
+            "basic":"Básico",
+            "medium":"Medio",
+            "advanced":"Avanzado"
+        },
+        "language":"Idiomas"
+    },
+    "unkidsinfo":{
+        "title":"UNiversidad%20de$20los%20Niños",
+        "id":"rPjpA4sn7yI"
+    },
+    "progpathinfo":{
+        "title":"El%20Camino%20del%20Programador",
+        "id":"3_fUq6oldNs"
+    },
+    "progawakeinfo":{
+        "title":"El%20Despertar%20del%20Programador",
+        "id":"77yvkpAgpkU"
+    }
+}

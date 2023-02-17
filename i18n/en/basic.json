@@ -19,28 +19,7 @@
                 ["konekti", "fa fa-cubes",  "Konekti"]
             ], false, false
         ],
-        ["video", "fa fa-video-camera", "Videos", {}, 
-            [
-                ["unkids",  "fa-child", "Kids University"],
-                ["ai",  "fa-magic", "A.I."],
-                ["aiindustry",  "fa-industry", "Industry 4.0"],
-                ["programmer", "fa fa-laptop", "Programmer", {}, 
-                    [
-                        ["programmerspath", "fa fa-map-signs",  "Path"],
-                        ["programmersawake", "fa fa-fire", "Awake"]
-                    ], false, false
-                ],    
-                ["cyber", "fa fa-cloud", "Cyber space", {}, 
-                    [
-                        ["cyberspy", "fa fa-user-secret",  "Espionage"],
-                        ["cybercrime", "fa fa-bomb", "Crime"],
-                        ["cybersecurity", "fa fa-lock", "Security"],
-                        ["cybersuicide", "fa  fa-frown-o", "Suicide"]
-                    ], false, false
-                ],    
-                ["smartcity", "fa fa-map-signs",  "Smart city"]
-            ], false, false
-        ],
+        ["playlist", "fa fa-video-camera", "Play list"],
         ["about", "fa fa-info-circle",  "About"]
     ],
     "navbar":{
@@ -55,17 +34,5 @@
             "advanced":"Advanced"
         },
         "language":"Languages"
-    },
-    "unkidsinfo":{
-        "title":"UNiversity%20of$20Kids",
-        "id":"rPjpA4sn7yI"
-    },
-    "progpathinfo":{
-        "title":"Programmer's%20Path",
-        "id":"3_fUq6oldNs"
-    },
-    "progawakeinfo":{
-        "title":"Programmer's%20Awake",
-        "id":"77yvkpAgpkU"
     }
   }  

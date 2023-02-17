@@ -24,28 +24,7 @@
                 ["konekti", "fa fa-cubes",  "Konekti"]
             ], false, false
         ],
-        ["video", "fa fa-video-camera", "Videos", {}, 
-            [
-                ["unkids",  "fa-child", "Universidad Niños"],
-                ["programmer", "fa fa-laptop", "Programador", {}, 
-                    [
-                        ["programmerspath", "fa fa-map-signs",  "Camino"],
-                        ["programmersawake", "fa fa-fire", "Despertar"]
-                    ], false, false
-                ],    
-                ["ai",  "fa-magic", "I.A."],
-                ["aiindustry",  "fa-industry", "Industria 4.0"],
-                ["cyber", "fa fa-cloud", "Ciber espacio", {}, 
-                    [
-                        ["cyberspy", "fa fa-user-secret",  "Espionaje"],
-                        ["cybercrime", "fa fa-bomb", "Crimen"],
-                        ["cybersecurity", "fa fa-lock", "Seguridad"],
-                        ["cybersuicide", "fa  fa-frown-o", "Suicidio"]
-                    ], false, false
-                ],    
-                ["smartcity", "fa fa-map-signs",  "Ciudad inteligente"]
-            ], false, false
-        ],
+        ["playlist", "fa fa-video-camera", "Videos"],
         ["about", "fa fa-info-circle",  "Acerca de"]
     ],
     "navbar":{
@@ -60,17 +39,5 @@
             "advanced":"Avanzado"
         },
         "language":"Idiomas"
-    },
-    "unkidsinfo":{
-        "title":"UNiversidad%20de$20los%20Niños",
-        "id":"rPjpA4sn7yI"
-    },
-    "progpathinfo":{
-        "title":"El%20Camino%20del%20Programador",
-        "id":"3_fUq6oldNs"
-    },
-    "progawakeinfo":{
-        "title":"El%20Despertar%20del%20Programador",
-        "id":"77yvkpAgpkU"
     }
   }

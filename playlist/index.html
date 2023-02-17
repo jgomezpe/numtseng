@@ -26,33 +26,35 @@
 				this.page = ''
 				this.lang = lang
 				this.i18n = i18n
+                console.log(this.i18n)
 				this.current = null
 			}
 
 			select(page){
 				var x = this
-				if( x.page != page ){
+                if( page == '/') window.open(SERVER_URL+"index.html?page=home&lang="+this.lang, '_self') 
+				else if( x.page != page ){
 					x.page = page
 					x.current = x.navigation[page]
-					if(x.current.change==undefined || !x.current.change){	
-						Konekti.dom.setURLSearchParam('page',page)
-						Konekti.dom.setURLSearchParam('lang',x.lang)
+                    Konekti.dom.setURLSearchParam('page',page)
+                    Konekti.dom.setURLSearchParam('lang',x.lang)
 
-						Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
-							var vlo = x.current.vlo 
-							if(typeof vlo==="string"){ vlo = {"url":vlo}}
-							var url = vlo.url
-							if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-							if(vlo.params !== undefined){
-								var c = '?'
-								for( var p in vlo.params ){
-									url += c + p + '=' + x.i18n[vlo.params[p]]
-									c = '&'
-								}
-							}
-							Konekti.client['vlo'].setText(url)
-						})						
-					}else{ window.open(page+"/index.html?page=home&lang="+this.lang, '_self') }
+                    Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
+                        var vlo = x.current.vlo 
+                        console.log(vlo)
+                        if(typeof vlo==="string"){ vlo = {"url":vlo}}
+                        var url = vlo.url
+                        if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
+                        if(vlo.params !== undefined){
+                            var params = x.i18n[vlo.params]
+                            var c = '?'
+                            for( var p in params ){
+                                url += c + p + '=' + params[p]
+                                c = '&'
+                            }
+                        }
+                        Konekti.client['vlo'].setText(url)
+                    })						
 				}
 			}
 

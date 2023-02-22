@@ -2,9 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
-	<meta name="mobile-web-app-capable" content='yes'>
-	<title>Numtseng: Introducción</title>
+	<title>Escuela de Python</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
     <style>
         .hidden {
@@ -17,12 +15,15 @@
 </head>
     
 <body>        
+    <div id='infotext' class="hidden">
     <div id='infotext'>
-        En Numtseng, la escuela del profesor Jonatan Gómez Perdomo, aprenderemos sobre computación, matemáticas y otras cositas. 
+        ¡¡Bienvenido a Numtseng la escuela del profesor Jonatan Gómez Perdomo!!. 
         <br><br>
-        Numtseng está organizada en libros como una enciclopedia, los libros en capítulos, los 
-        capítulos se desarrollan en secciones, las seciones en unidades y las unidades en sesiones.
-        Podemos navegar Numtseng mediante la tabla de contenidos ubicada a la izquierda 
+        Aquí aprenderemos sobre computación, matemáticas y otras cositas. 
+        <br><br>
+        Los contenidos están organizados en libros como una enciclopedia, los libros en capítulos, los 
+        capítulos se desarrollan en secciones, las secciones en unidades y las unidades en sesiones.
+        Podemos navegar el contenido mediante la tabla de contenidos ubicada a la izquierda 
         (inicialmente oculta en pantallas de tamaño pequeño) o mediante los botones en la barra de navegacion:
         <br><br>
         <i class='fa fa-arrow-circle-o-left'></i> para ir al tema que precede al actual y que esta al mismo nivel.
@@ -35,6 +36,31 @@
         <br><br>
         Podemos seguir el contenido como una presentación dinámica si un botón de tocar <i class='fa fa-play'></i> 
         aparece en la parte superior izquierda de la página.
-    </div>
+        <br><br>
+        <br><br>
+    </div>       
+    </div>    
+	<script>
+
+        Konekti.uses('hypermedia', 'header')
+
+		function KonektiMain(){
+
+            var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/general/intro.mp3"]}
+            var text = {'plugin':'latex', 'setup':["info", Konekti.vc('infotext').innerHTML, {'style':'width:100%;height:100%;'}]}
+            var control = {'plugin':'raw', 'setup':['explain', [audio,text], {'style':'width:100%;height:100%;'}]}
+
+            var scripts = [{"target":"info", "mark":[
+                    {"time":0.1, "replace":[{"start":131, "text":"<br><br>"}]}, 
+                    {"time":3.5, "replace":[{"start":223, "text":"<br><br>"}]}, 
+                    {"time":7.5, "replace":[{"start":649, "text":"<br><br>"}]}, 
+                    {"time":27.5, "replace":[{"start":1130, "text":"<br><br>"}]}, 
+                    {"time":45, "replace":[]} 
+                ]		
+            }]
+            
+            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
+        }
+	</script>
 </body>
 </html>

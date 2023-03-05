@@ -15,7 +15,7 @@
 <body>
 	<script>
 		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
-		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
+		let SERVER_URL = "https://numtseng.com/" // Change this to your server name
 		
         Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
@@ -39,8 +39,10 @@
 					x.pdown = x.navigation[page].down
 					var url = x.navigation[page].vlo 
 					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-					Konekti.daemon( function(){ return (Konekti.client['vlo'] !== undefined) },
-						function(){ Konekti.client['vlo'].setText(url) } )
+					Konekti.daemon( 
+						function(){ return (Konekti.client['vlo'] !== undefined) },
+						function(){ Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(txt) }) } 
+					)
 				}
 			}
 

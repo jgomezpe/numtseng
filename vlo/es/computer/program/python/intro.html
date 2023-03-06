@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Escuela de Python</title>
+	<title>Numtseng: Escuela de Python</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
     <style>
         .hidden {
@@ -19,33 +19,23 @@
     <div id='infotext'>
         ¡¡Bienvenido a la escuela de Python de Numtseng!!. 
         <br><br>
-        En este curso aprenderemos los fundamentos del lenguaje de programación Python, el cual fue diseñado por Guido van Rossum
-        con el fin de facilitar la lectura de código fuente. Python es considerado un lenguaje multi-paradigma
+        En este curso aprenderemos los fundamentos del lenguaje de programación Python, el cual fue diseñado por Guido van Rossum con el fin de
+        facilitar la lectura de código fuente. Python es considerado un lenguaje multi-paradigma
         pues soporta parcialmente la programación orientada a objetos, la programación imperativa y la programación funcional.
-        A diferencia de lenguajes como <i>C</i> o <i>Pascal</i>, Python es un lenguaje interpretado, esto es, se va ejecutando linea por 
-        linea el código.
+        A diferencia de lenguajes como <i>C</i> o <i>Pascal</i>, Python es un lenguaje interpretado, esto es, se va ejecutando linea por linea el código.
         <br><br>
         El contenido del curso se presenta en un componente enriquecido con matemáticas y se usa el 
-<<<<<<< HEAD
         ambiente simple de programación de Python de Numtseng, disponible en la dirección <a href="https://numtseng.com/python/ide">https://numtseng.com/python/ide</a>,
-=======
-        ambiente simple de programación python de Numtseng, disponible en la dirección <a href="https://numtseng.com/python/ide">https://numtseng.com/python/ide</a>,
->>>>>>> 48a4f211c8d09cf488b702cff2c2ebdfd28e70af
         para escribir y probar código ejemplo.
         <br><br>
         Por ejemplo, en el programa:
         <ul>
-            <li>Se imprime en consola el texto Hola Mundo! (línea 1),</li>
-            <li>Se solicita al usuario que ingrese su nombre (línea 2),</li>
+            <li>Se imprime en consola el texto Hola Mundo (línea 1),</li>
+            <li>Se solicita al usuario que ingrese un nombre (línea 2),</li>
             <li>y finalmente se muestra el nombre leido acompañado de un saludo (línea 3).</li>
         </ul>
-<<<<<<< HEAD
         Para ejecutar el programa debemos seleccionar el botón <i>Run</i> en el ambiente <i>replit</i>
         y usar la consola para interactuar con el programa.
-=======
-        Para ejecutar el programa debemos seleccionar el botón <i class='fa fa-play'></i> en el ambiente y usar la consola
-        para interactuar con el programa.
->>>>>>> 48a4f211c8d09cf488b702cff2c2ebdfd28e70af
         <br><br>
         El curso está organizado en capítulos como un libro, los 
         capítulos se desarrollan en secciones, las secciones en unidades y las unidades en sesiones.
@@ -65,33 +55,45 @@
         <br><br>
         <br><br>
     </div>       
+       
     </div>    
 	<script>
 
         Konekti.uses('hypermedia', 'header')
 
 		function KonektiMain(){
+            var header = {'plugin':'header', 'setup':['title','', 'Numtseng: Escuela de Python', 3, {'class':'w3-green w3-center'}]}
+
             var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3"]}
             var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:100%;'}]}
             var left = {'plugin':'raw', 'setup':['explain', [audio,text], {'style':'width:100%;height:100%;'}]}
             var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
-                [{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}], {'header':{'title':"Ambiente de Python"}, 'main':{'style':'width:100%;height:100%;'}}]}
+                [{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}], {'header':{'title':"Ambiente de desarrollo"}, 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
     
-            var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}
+            var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:90%;'}]}
 
-            var scripts = [{"target":"info", "mark":[
+            var scripts = [
+                {"target":"info", "mark":[
                     {"time":0.1, "replace":[{"start":109, "text":"<br><br>"}]}, 
                     {"time":2, "replace":[{"start":648, "text":"<br><br>"}]}, 
-                    {"time":24.5, "replace":[{"start":1086, "text":"<br><br>"}]}, 
-                    {"time":47, "replace":[{"start":1397, "text":"<br><br>"}]}, 
-                    {"time":62, "replace":[{"start":1568, "text":"<br><br>"}]}, 
-                    {"time":75, "replace":[{"start":1952, "text":"<br><br>"}]}, 
-                    {"time":92.5, "replace":[{"start":2433, "text":"<br><br>"}]}, 
-                    {"time":110.3, "replace":[]} 
-                ]		
-            }]
-            
-            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
+                    {"time":26.5, "replace":[{"start":982, "text":"<br><br>"}]}, 
+                    {"time":41.5, "replace":[{"start":1019, "text":"<br><br>"}]}, 
+                    {"time":43.2, "replace":[{"start":1110, "text":"</ul><br><br>"}]}, 
+                    {"time":46.8, "replace":[{"start":1187, "text":"</ul><br><br>"}]}, 
+                    {"time":50, "replace":[{"start":1293, "text":"<br><br>"}]}, 
+                    {"time":54.2, "replace":[{"start":1473, "text":"<br><br>"}]}, 
+                    {"time":67, "replace":[{"start":1857, "text":"<br><br>"}]}, 
+                    {"time":83.2, "replace":[{"start":2338, "text":"<br><br>"}]}, 
+                    {"time":101.2, "replace":[]}
+                ]},
+                {"target":"viewermain.py", "mark":[
+                    {"time":43.2, "replace":[{"start":20, "text":""}]},
+                    {"time":46.8, "replace":[{"start":44, "text":""}]},
+                    {"time":50, "replace":[]}
+                ]}
+            ]
+
+            Konekti.hypermedia('body', 'book', [header,control], 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
         }
 	</script>
 </body>

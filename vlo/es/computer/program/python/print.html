@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Numtseng: Escuela de Python</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+    <style>
+        .hidden {
+            visibility: hidden;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+        }
+        </style>
+</head>
+    
+<body>        
+    <div id='hiddeninfo' class="hidden">
+    <div id='infotext'>
+        La función <i>print</i> recibe tanto elementos como se quieran imprimir, todos separados por una coma (,). Por defecto, 
+        la función <i>print</i> imprime estos valores separados por un espacio. 
+        <br><br>
+        Nosotros podemos cambiar este espacio por cualquier cadena de caracteres (secuencia de caracteres), si agregamos la opción <i>sep</i>. 
+        Por ejemplo, en la línea 2 del programa se imprimen los valores <i>"Un gusto"</i> y el nombre leido separados por dos asteriscos <i>"**"</i>, 
+        ya que se dió la opción <i>sep="**"</i>. Probemos cambiando esta opción por las cadenas <i>""</i> (cadena vacia) y <i>"===="</i>. 
+        En el primer caso no los separa con alguna cadena mientras que en el segundo caso los separa con cuatro iguales.
+        <br><br>
+        Adicionalmente, la función <i>print</i> imprime al final un cambio de línea ('\n') lo que nos permite mostrar nuevas impresiones en una 
+        nueva línea. Si no queremos que cambie de línea podemos agregar la opción <i>end</i>. Por ejemplo, en la línea 4 del programa 
+        se imprime <i>"El nombre del gato es"</i>, se da la opción <i>end=':'</i> lo que hace que se imprima sin cambio de línea por lo que el
+        <i>print</i> de la línea 5 se realiza en la misma línea y queda seguido el texto <i>misifu</i>. Probemos cambiando esta opción por las 
+        cadenas <i>""</i> (cadena vacia) y <i>"===="</i>.
+        <br><br>
+    </div>       
+       
+    </div>    
+	<script>
+
+        //Konekti.uses('hypermedia')
+        Konekti.uses('split')
+
+		function KonektiMain(){
+            //var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3"]}
+            var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:fit;'}]}
+            var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;'}]}
+            var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
+                [{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}], {'header':{'title':"Ambiente de desarrollo"}, 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
+    
+            Konekti.split('coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'})
+
+            /*
+            var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}
+            var scripts = [
+                {"target":"info", "mark":[
+                    {"time":0.1, "replace":[{"start":109, "text":"<br><br>"}]}, 
+                    {"time":2, "replace":[{"start":292, "text":"<br><br>"}]}, 
+                    {"time":10.5, "replace":[{"start":477, "text":"<br><br>"}]}, 
+                    {"time":19, "replace":[{"start":648, "text":"<br><br>"}]}, 
+                    {"time":26.5, "replace":[{"start":982, "text":"<br><br>"}]}, 
+                    {"time":41.5, "replace":[{"start":1019, "text":"<br><br>"}]}, 
+                    {"time":43.2, "replace":[{"start":1110, "text":"</ul><br><br>"}]}, 
+                    {"time":46.8, "replace":[{"start":1187, "text":"</ul><br><br>"}]}, 
+                    {"time":50, "replace":[{"start":1293, "text":"<br><br>"}]}, 
+                    {"time":54.2, "replace":[{"start":1473, "text":"<br><br>"}]}, 
+                    {"time":67, "replace":[{"start":1857, "text":"<br><br>"}]}, 
+                    {"time":83.2, "replace":[{"start":2338, "text":"<br><br>"}]}, 
+                    {"time":101.2, "replace":[]}
+                ]},
+                {"target":"viewermain.py", "mark":[
+                    {"time":43.2, "replace":[{"start":20, "text":""}]},
+                    {"time":46.8, "replace":[{"start":44, "text":""}]},
+                    {"time":50, "replace":[]}
+                ]}
+            ]
+
+            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
+            */
+        }
+	</script>
+</body>
+</html>

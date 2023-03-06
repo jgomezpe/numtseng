@@ -1,6 +1,8 @@
 {
     "home":{"vlo":"computer/program/python/intro.html", "up":"/", "right":"io", "left":"/" },
-    "io":{"up":"home", "left":"home", "right":"typexpr" },
+    "io":{"vlo":"computer/program/python/io.html", "up":"home", "left":"home", "down":"print", "right":"typexpr" },
+        "print":{"vlo":"computer/program/python/print.html", "up":"io", "left":"io", "right":"read" },
+        "read":{"up":"io", "left":"print", "right":"typeexpr" },
     "typexpr":{ "up":"home", "left":"io", "right":"function", "down":"integer" },
         "type":{"up":"typexpr", "down":"expr", "left":"typexpr", "right":"expr"},
             "integer":{ "up":"typexpr", "right":"real", "left":"type" },

@@ -45,7 +45,7 @@
             var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
                 [{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}], {'header':{'title':"Ambiente de desarrollo"}, 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
     
-            Konekti.split('coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'})
+            Konekti.split('body', 'coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'})
 
             /*
             var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}

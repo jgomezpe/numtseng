@@ -8,7 +8,7 @@
 	<meta http-equiv="Last-Modified" content="0">
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
- 	<title>Numtseng: The School of Professor Jonatan Gomez.</title>
+ 	<title>Numtseng: School of Professor Jonatan Gomez.</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 </head>
 
@@ -16,7 +16,7 @@
 
 	<script>
 		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
-		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
+		let SERVER_URL = "https://numtseng.com/" // Change this to your server name
 		
         Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
@@ -27,48 +27,79 @@
 				this.lang = lang
 				this.level = level
 				this.i18n = i18n
-				this.current = null
+				this.current = 0
+			}
+
+			index(page){
+				var x = this
+				var i=0
+				while(i<x.navigation[x.level].length && x.navigation[x.level][i]!=page) i++
+				if( i==x.navigation[x.level].length ) i=-1
+				return i
 			}
 
 			select(page){
 				var x = this
-				if( x.page != page ){
+				var i = x.index(page)
+				if( x.page != page && i>=0 ){
 					x.page = page
-					x.current = x.navigation[page]
-					if(x.current.change==undefined || !x.current.change){	
+					x.current = i
+
+					if(x.navigation.topic[x.navigation[x.level][x.current]] != "*"){	
 						Konekti.dom.setURLSearchParam('page',page)
 						Konekti.dom.setURLSearchParam('level',x.level)
 						Konekti.dom.setURLSearchParam('lang',x.lang)
 
 						Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
-							var vlo = x.current.vlo 
+							var vlo = x.navigation.topic[x.navigation[x.level][x.current]]
 							if(typeof vlo==="string"){ vlo = {"url":vlo}}
 							var url = vlo.url
 							if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
 							if(vlo.params !== undefined){
 								var c = '?'
-								for( var p in vlo.params ){
-									url += c + p + '=' + x.i18n[vlo.params[p]]
+								for( var p in x.i18n[vlo.params] ){
+									url += c + p + '=' + x.i18n[vlo.params][p]
 									c = '&'
 								}
 							}
+							var btn = Konekti.vc("prev")
+							if(x.current>0) btn.className = btn.className.replace(" w3-disabled", "")
+							else btn.className += " w3-disabled"
+							btn = Konekti.vc("next")
+							if(x.current<x.navigation[x.level].length) btn.className = btn.className.replace(" w3-disabled", "")
+							else btn.className += " w3-disabled"
 							Konekti.client['vlo'].setText(url)
 						})						
-					}else{ window.open(page+"/index.html?page=home&level="+this.level+"&lang="+this.lang, '_self') }
+					}else{ window.open(page+"/index.html?page=home&level="+x.level+"&lang="+x.lang, '_self') }
 				}
 			}
 
 			language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&level="+this.level+"&page="+this.page,"_self")	}
 
-			setlevel(level){ if( level != this.level ) window.open("index.html?lang="+this.lang+"&level="+level+"&page="+(this.current[level]||this.page),"_self") }
+			setlevel(level){
+				Konekti.client['dd4'].click()
+				var x = this
+				if( level != x.level ){
+					var clevel = x.level
+					x.level = level
+					level = clevel
+					var i = x.index(x.page)
+					console.log(i)
+					if(i<0){
+						i=1
+						for(var j=0; j<x.current; j++){
+							if(i<x.navigation[x.level].length && x.navigation[x.level][i]==x.navigation[level][j]) i++
+						}
+						i--
+					}
+					x.current = i
+					x.select(x.navigation[x.level][x.current])
+				}
+			}
 
-			left(){ if( this.current.left !== undefined ) this.select(this.current.left) }
+			prev(){ this.select(this.navigation[this.level][this.current-1]) }
 
-			right(){ if( this.current.right !== undefined) this.select(this.current.right) }
-
-			up(){ if( this.current.up !== undefined ) this.select(this.current.up) }
-
-			down(){ if( this.current.down !== undefined) this.select(this.current.down) }
+			next(){ this.select(this.navigation[this.level][this.current+1]) }
 		}
 
 		function KonektiMain(){
@@ -98,10 +129,8 @@
 					var ld = {'plugin':'toc', 'setup': ['sel_level', levels,
 						{"client":'client', "method":"setlevel"}, {'title':'Selecting level'}]}	
 					var btn=[
-						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'},{'title':json.navbar.left}]},
-						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'},{'title':json.navbar.up}]},
-						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'},{'title':json.navbar.down}]},
-						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'},{'title':json.navbar.right}]},
+						{'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':json.navbar.left}]},
+						{'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':json.navbar.right}]},
 						{'plugin':'dropdown', 'setup':["dd4", "fa-sort-amount-asc", "", ld,{'title':json.navbar.level}]},
 						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':json.navbar.language}]}
 					]
@@ -111,7 +140,7 @@
 					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
-					Konekti.resource.JSON(RES_URL+'nav/'+level+'.json', function(navigation){
+					Konekti.resource.JSON(RES_URL+'nav.json', function(navigation){
 						client.navigation = navigation
 						client.select(page)
 					})

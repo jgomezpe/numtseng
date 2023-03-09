@@ -16,61 +16,75 @@
 
 	<script>
 		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
-		let SERVER_URL = "https://jgomezpe.github.io/numtseng/" // Change this to your server name
+		let SERVER_URL = "https://numtseng.com/" // Change this to your server name
 		
         Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
 		class KMain extends MainClient{
-			constructor(lang, i18n){
+			constructor(lang, level, i18n){
 				super()
 				this.page = ''
 				this.lang = lang
+				this.level = "basic"
 				this.i18n = i18n
-                console.log(this.i18n)
-				this.current = null
+				console.log(i18n)
+				this.current = 0
+			}
+
+			index(page){
+				var x = this
+				var i=0
+				while(i<x.navigation[x.level].length && x.navigation[x.level][i]!=page) i++
+				if( i==x.navigation[x.level].length ) i=-1
+				return i
 			}
 
 			select(page){
 				var x = this
-                if( page == '/') window.open(SERVER_URL+"index.html?page=home&lang="+this.lang, '_self') 
-				else if( x.page != page ){
+				var i = x.index(page)
+				if( x.page != page && i>=0 ){
 					x.page = page
-					x.current = x.navigation[page]
-                    Konekti.dom.setURLSearchParam('page',page)
-                    Konekti.dom.setURLSearchParam('lang',x.lang)
+					x.current = i
 
-                    Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
-                        var vlo = x.current.vlo 
-                        console.log(vlo)
-                        if(typeof vlo==="string"){ vlo = {"url":vlo}}
-                        var url = vlo.url
-                        if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-                        if(vlo.params !== undefined){
-                            var params = x.i18n[vlo.params]
-                            var c = '?'
-                            for( var p in params ){
-                                url += c + p + '=' + params[p]
-                                c = '&'
-                            }
-                        }
-                        Konekti.client['vlo'].setText(url)
-                    })						
+					if(x.navigation.topic[x.navigation[x.level][x.current]] != "*"){	
+						Konekti.dom.setURLSearchParam('page',page)
+						Konekti.dom.setURLSearchParam('lang',x.lang)
+
+						Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined }, function(){
+							var vlo = x.navigation.topic[x.navigation[x.level][x.current]]
+							if(typeof vlo==="string"){ vlo = {"url":vlo}}
+							var url = vlo.url
+							if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
+							if(vlo.params !== undefined){
+								var c = '?'
+								for( var p in x.i18n[vlo.params] ){
+									url += c + p + '=' + x.i18n[vlo.params][p]
+									c = '&'
+								}
+							}
+							console.log(url)
+							Konekti.client['vlo'].setText(url)
+							var btn = Konekti.vc("next")
+							if(x.current<x.navigation[x.level].length) btn.className = btn.className.replace(" w3-disabled", "")
+							else btn.className += " w3-disabled"
+						})						
+					}else{ window.open(page+"/index.html?page=home&lang="+x.lang, '_self') }
 				}
 			}
 
 			language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
 
-			left(){ if( this.current.left !== undefined ) this.select(this.current.left) }
+			prev(){ 
+				if(this.current>0) this.select(this.navigation[this.level][this.current-1]) 
+				else window.open(SERVER_URL+"index.html?lang="+this.lang+"&page=home","_self")
+			}
 
-			right(){ if( this.current.right !== undefined) this.select(this.current.right) }
-
-			up(){ if( this.current.up !== undefined ) this.select(this.current.up) }
-
-			down(){ if( this.current.down !== undefined) this.select(this.current.down) }
+			next(){ this.select(this.navigation[this.level][this.current+1]) }
 		}
 
 		function KonektiMain(){
 			var lang = Konekti.dom.getUserLanguage()
+			var level = Konekti.dom.getURLSearchParam('level', 'advanced')
 			var page = Konekti.dom.getURLSearchParam('page', 'home')
 			var callback = function(json){ 
 				if(json===undefined || json===null){
@@ -81,16 +95,14 @@
 						alert('Page not found')
 					}	
 				}else{
-					var client = new KMain(lang, json)
+					var client = new KMain(lang, level, json)
 					document.title = json.title
 					var toc = {'plugin':'toc', 'setup':['tockonekti', json.toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
 					var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
 						{"client":'client', "method":"language"}, {'title':'Selecting language'}]}
 					var btn=[
-						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'},{'title':json.navbar.left}]},
-						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'},{'title':json.navbar.up}]},
-						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'},{'title':json.navbar.down}]},
-						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'},{'title':json.navbar.right}]},
+						{'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':json.navbar.left}]},
+						{'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':json.navbar.right}]},
 						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':json.navbar.language}]}
 					]
 					var title = {'plugin':'header', 'setup':['title','', json.title, 3, {'class':'w3-green w3-center'}]}

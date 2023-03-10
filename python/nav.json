@@ -1,7 +1,6 @@
 {
     "topic":{
         "home":"computer/program/python/intro.html",
-        "io":"computer/program/python/io.html",
         "print":"computer/program/python/print.html",
         "read":"",
         "typexpr":"",
@@ -38,7 +37,6 @@
     },
     "basic":[
         "home",
-        "io",
         "print"
     ]
 }

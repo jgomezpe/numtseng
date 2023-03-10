@@ -17,21 +17,26 @@
 <body>        
     <div id='hiddeninfo' class="hidden">
     <div id='infotext'>
-        La función <i>print</i> recibe tanto elementos como se quieran imprimir, todos separados por una coma (,). 
-        Por defecto, la función <i>print</i> imprime estos valores separados por un espacio. 
+        La función <i>print</i> nos permite presentar mensajes y resultados en la consola. En general, la función <i>print</i> recibe
+        la cantidad de elementos que queremos mostrar, todos separados por una coma (<i>,</i>). 
         <br><br>
-        Nosotros podemos cambiar este espacio por cualquier cadena de caracteres (secuencia de caracteres), si agregamos la opción <i>sep</i>. 
-        Por ejemplo, en la línea 3 del programa se imprimen los valores <i>"Un gusto"</i> y el nombre leido separados por dos asteriscos 
-        <i>"**"</i>, ya que se dió la opción <i>sep="**"</i>. Probemos usando en la opción <i>sep</i> la cadena <i>""</i> (cadena vacia) 
-        y la cadena <i>"===="</i>. En el primer caso no los separa mientras que en el segundo caso los separa con cuatro iguales.
+        Por defecto, la función <i>print</i>  presenta estos valores separados por un espacio <i>' '</i> (una cadena con un solo 
+        espacio). Nosotros podemos cambiar esta cadena por cualquier otra cadena de caracteres, si agregamos al final la 
+        opción <i>sep</i>. Por ejemplo, en la línea 3 del programa, se imprimen los valores <i>"Un gusto"</i> y 
+        el nombre leido separados por dos asteriscos <i>"**"</i>, pues dimos la opción <i>sep="**"</i> al final. 
         <br><br>
-        Adicionalmente, la función <i>print</i> imprime al final un cambio de línea ('\n') lo que nos permite mostrar nuevas impresiones en una 
-        nueva línea. Podemos agregar la opción <i>end</i> si no queremos que cambie de línea. Por ejemplo, en la línea 4 del programa 
-        se da la opción <i>end=":"</i> lo que hace que se imprima <i>"El nombre del gato es"</i> finalizando con un ":" reemplazando el 
-        cambio de línea por lo que el <i>print</i> de la línea 5 se realiza en la misma línea quedando el texto <i>Misifu</i> al lado. 
-        Probemos usando en la opción <i>end</i> la cadena <i>""</i> (cadena vacia) y la cadena <i>"===="</i>.
+        Probemos usando al final la opción <i>sep=""</i> (con la cadena vacia). Notemos que los valores son mostrados sin separarlos. 
+        Ahora, probemos con la opción <i>sep="++++"</i>. En esta ocasión muestra los valores separados por la cadena <i>"++++"</i>.
         <br><br>
-        Las opciones siempre las daremos al final dentro de la función <i>print</i>, si las requerimos (solo una o las dos). 
+        Otro de los comportamientos por defecto de la función <i>print</i> es agregar al final un cambio de línea (<i>'\n'</i>) 
+        para que el siguiente <i>print</i> muestre valores en una nueva línea de la consola. Podemos cambiar este comportamiento 
+        al agregar la opción <i>end</i>. Por ejemplo, en la línea 4 del programa se da la opción <i>end=":"</i> lo que hace que 
+        se imprima <i>"El nombre del gato es"</i> con un <i>":</i> en lugar del cambio de línea. De esta manera, el <i>print</i> 
+        de la línea 5 se realiza en la misma línea quedando el texto <i>"Misifu"</i> al lado.
+        Probemos usando la opción <i>end=""</i> (con la cadena vacia) y la opción <i>end="++++"</i>.
+        <br><br>
+        Siempre que querramos cambiar el comportamiento por defecto de la función <i>print</i>, lo podremos hacer si agregamos al
+        final la opción que querramos (o las dos de ser necesario).
     </div>       
        
     </div>    
@@ -41,41 +46,37 @@
         Konekti.uses('split')
 
 		function KonektiMain(){
-            //var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3"]}
+            var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/print.mp3"]}
             var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:fit;'}]}
             var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;'}]}
             var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
                 [{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x, sep="**")\nprint("El nombre del gato es",end=":")\nprint("Misifu")'}], {'header':{'title':"Ambiente de desarrollo"}, 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
     
-            Konekti.split('body', 'coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'})
-
-            /*
+            
             var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}
             var scripts = [
                 {"target":"info", "mark":[
-                    {"time":0.1, "replace":[{"start":109, "text":"<br><br>"}]}, 
-                    {"time":2, "replace":[{"start":292, "text":"<br><br>"}]}, 
-                    {"time":10.5, "replace":[{"start":477, "text":"<br><br>"}]}, 
-                    {"time":19, "replace":[{"start":648, "text":"<br><br>"}]}, 
-                    {"time":26.5, "replace":[{"start":982, "text":"<br><br>"}]}, 
-                    {"time":41.5, "replace":[{"start":1019, "text":"<br><br>"}]}, 
-                    {"time":43.2, "replace":[{"start":1110, "text":"</ul><br><br>"}]}, 
-                    {"time":46.8, "replace":[{"start":1187, "text":"</ul><br><br>"}]}, 
-                    {"time":50, "replace":[{"start":1293, "text":"<br><br>"}]}, 
-                    {"time":54.2, "replace":[{"start":1473, "text":"<br><br>"}]}, 
-                    {"time":67, "replace":[{"start":1857, "text":"<br><br>"}]}, 
-                    {"time":83.2, "replace":[{"start":2338, "text":"<br><br>"}]}, 
-                    {"time":101.2, "replace":[]}
+                    {"time":0.1, "replace":[{"start":280, "text":"<br><br>"}]}, 
+                    {"time":9.5, "replace":[{"start":776, "text":"<br><br>"}]}, 
+                    {"time":36.5, "replace":[{"start":848, "text":"<br><br>"}]}, 
+                    {"time":42.8, "replace":[{"start":911, "text":"<br><br>"}]}, 
+                    {"time":45.5, "replace":[{"start":960, "text":"<br><br>"}]}, 
+                    {"time":51.5, "replace":[{"start":1060, "text":"<br><br>"}]}, 
+                    {"time":57.3, "replace":[{"start":1352, "text":"</ul><br><br>"}]}, 
+                    {"time":70, "replace":[{"start":1672, "text":"</ul><br><br>"}]}, 
+                    {"time":89.2, "replace":[{"start":1790, "text":"<br><br>"}]}, 
+                    {"time":101, "replace":[]}
                 ]},
                 {"target":"viewermain.py", "mark":[
-                    {"time":43.2, "replace":[{"start":20, "text":""}]},
-                    {"time":46.8, "replace":[{"start":44, "text":""}]},
-                    {"time":50, "replace":[]}
+                    {"time":36.5, "replace":[{"start":72, "end":74, "text":""}]},
+                    {"time":45.5, "replace":[{"start":72, "end":74, "text":"++++"}]},
+                    {"time":89.2, "replace":[{"start":102, "end":103, "text":""}]},
+                    {"time":93, "replace":[{"start":102, "end":103, "text":"++++"}]},
+                    {"time":101, "replace":[]}
                 ]}
             ]
 
-            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
-            */
+            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})            
         }
 	</script>
 </body>

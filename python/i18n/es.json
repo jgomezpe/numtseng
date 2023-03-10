@@ -38,7 +38,14 @@
         ["json", "", "JSON"],
         ["recursion", "", "Recursión"],
         ["module", "", "Módulos"]
-    ],
+    ],    
+    "navbar":{
+        "left":"Tema previo",
+        "right":"Tema siguiente",
+        "up": "Tema padre",
+        "down": "Tema hijo",
+        "language":"Idiomas"
+    },
     "language":"Idioma",
     "title":"Escuela de Python",
     "run":"Ejecutar",

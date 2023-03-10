@@ -16,69 +16,96 @@
 	<script>
 		let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
 		let SERVER_URL = "https://numtseng.com/" // Change this to your server name
-		
+		let MAIN = "python/"
+
         Konekti.uses('accordion', 'sidebar','navbar', 'dropdown', 'iframe')
 
 		class KMain extends MainClient{
-			constructor(lang){
+			constructor(lang, level, i18n){
 				super()
 				this.page = ''
 				this.lang = lang
+				this.level = "basic"
+				this.i18n = i18n
+				console.log(i18n)
+				this.current = 0
+			}
+
+			index(page){
+				var x = this
+				var i=0
+				while(i<x.navigation[x.level].length && x.navigation[x.level][i]!=page) i++
+				if( i==x.navigation[x.level].length ) i=-1
+				return i
 			}
 
 			select(page){
 				var x = this
-				if( x.page != page ){			
+				var i = x.index(page)
+				if( x.page != page && i>=0 ){
 					x.page = page
-					Konekti.dom.setURLSearchParam('page',page)
-					Konekti.dom.setURLSearchParam('lang',x.lang)
+					x.current = i
 
-					x.pleft = x.navigation[page].left
-					x.pright = x.navigation[page].right
-					x.pup = x.navigation[page].up
-					x.pdown = x.navigation[page].down
-					var url = x.navigation[page].vlo 
-					if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-					Konekti.daemon( 
-						function(){ return (Konekti.client['vlo'] !== undefined) },
-						function(){ Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(txt) }) } 
-					)
+					if(x.navigation.topic[x.navigation[x.level][x.current]] != "*"){	
+						Konekti.dom.setURLSearchParam('page',page)
+						Konekti.dom.setURLSearchParam('lang',x.lang)
+
+						Konekti.daemon( 
+							function(){ return (Konekti.client['vlo'] !== undefined) },
+							function(){
+								var vlo = x.navigation.topic[x.navigation[x.level][x.current]]
+								if(typeof vlo==="string"){ vlo = {"url":vlo}}
+								var url = vlo.url
+								if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
+								if(vlo.params !== undefined){
+									var c = '?'
+									for( var p in x.i18n[vlo.params] ){
+										url += c + p + '=' + x.i18n[vlo.params][p]
+										c = '&'
+									}
+								}
+								Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(txt) }) 
+								var btn = Konekti.vc("next")
+								if(x.current<x.navigation[x.level].length) btn.className = btn.className.replace(" w3-disabled", "")
+								else btn.className += " w3-disabled"
+							} 
+						)
+					}else{ window.open(page+"/index.html?page=home&lang="+x.lang, '_self') }
 				}
 			}
 
 			language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
 
-			left(){ if( this.pleft !== undefined ) this.select(this.pleft) }
-
-			right(){ if( this.pright !== undefined) this.select(this.pright) }
-
-			up(){
-				if(this.pup=='/') window.open(SERVER_URL+"index.html?lang="+this.lang,"_self")
-				else if( this.pup !== undefined ) this.select(this.pup)
+			prev(){ 
+				if(this.current>0) this.select(this.navigation[this.level][this.current-1]) 
+				else window.open("https://numtseng.com/index.html?lang="+this.lang+"&page=home","_self")
 			}
 
-			down(){ if( this.pdown !== undefined) this.select(this.pdown) }
+			next(){ this.select(this.navigation[this.level][this.current+1]) }
 		}
 
 		function KonektiMain(){
 			var lang = Konekti.dom.getUserLanguage()
-
+			var level = Konekti.dom.getURLSearchParam('level', 'advanced')
+			var page = Konekti.dom.getURLSearchParam('page', 'home')
 			var callback = function(json){ 
 				if(json===undefined || json===null){
-					lang = 'es'
-					Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
+					if(lang!='es'){
+						lang = 'es'
+						Konekti.resource.JSON(RES_URL+MAIN+'i18n/'+lang+'.json', callback)
+					}else{
+						alert('Page not found')
+					}	
 				}else{
-					var client = new KMain(lang)
+					var client = new KMain(lang, level, json)
 					document.title = json.title
 					var toc = {'plugin':'toc', 'setup':['tockonekti', json.toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
 					var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
-						{"client":'client', "method":"language"}, {'title':'Selecting language'}]}	
+						{"client":'client', "method":"language"}, {'title':'Selecting language'}]}
 					var btn=[
-						{'plugin':'btn', 'setup':["left","fa-arrow-circle-o-left", '', {'client':'client'}]},
-						{'plugin':'btn', 'setup':["up","fa-arrow-circle-o-up", '', {'client':'client'}]},
-						{'plugin':'btn', 'setup':["down","fa-arrow-circle-o-down", '', {'client':'client'}]},
-						{'plugin':'btn', 'setup':["right","fa-arrow-circle-o-right", '', {'client':'client'}]},
-						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}
+						{'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':json.navbar.left}]},
+						{'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':json.navbar.right}]},
+						{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':json.navbar.language}]}
 					]
 					var title = {'plugin':'header', 'setup':['title','', json.title, 3, {'class':'w3-green w3-center'}]}
 					var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
@@ -86,15 +113,13 @@
 					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
 					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
 
-					Konekti.resource.JSON(RES_URL+'python/navigation.json', function(navigation){
+					Konekti.resource.JSON(SERVER_URL+MAIN+'nav.json', function(navigation){
 						client.navigation = navigation
-						client.select(Konekti.dom.getURLSearchParam('page', 'home'))
+						client.select(page)
 					})
 				}
 			}
-
-			Konekti.resource.JSON(RES_URL+'python/i18n/'+lang+'.json', callback)
-			
+			Konekti.resource.JSON(RES_URL+MAIN+'i18n/'+lang+'.json', callback)
         }
 	</script>
 </body>

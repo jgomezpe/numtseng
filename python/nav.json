@@ -2,8 +2,7 @@
     "topic":{
         "home":"computer/program/python/intro.html",
         "print":"computer/program/python/print.html",
-        "read":"",
-        "typexpr":"",
+        "read":"computer/program/python/input.html",
         "type":"",
             "integer":"",
             "real":"",

@@ -1,7 +1,10 @@
 {
     "toc":[
         ["home","","Introducción"],
-        ["io","","Entrada/Salida"],
+        ["io","","E/S por Consola", {}, [
+            ["print", "", "Salida"],
+            ["input", "", "Entrada"]
+            ], false, false],
         ["id", "", "Identificadores"], 
         ["var", "", "Variables"],
         ["type","", "Tipos", {}, [
@@ -28,6 +31,7 @@
             ["while", "", "Mientras"],
             ["dowhile", "", "Hacer mientras"]
         ], false, true],  
+        ["recursion", "", "Recursión"],
         ["string", "", "Cadenas"],
         ["tuple", "", "Tuplas"],
         ["list", "", "Listas"],
@@ -36,7 +40,6 @@
         ["dict", "", "Diccionarios"],
         ["file", "", "Archivos"],
         ["json", "", "JSON"],
-        ["recursion", "", "Recursión"],
         ["module", "", "Módulos"]
     ],    
     "navbar":{

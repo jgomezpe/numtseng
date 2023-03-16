@@ -39,7 +39,7 @@
     "basic":[
         "home",
         "print",
-        "read",
+        "input",
         "var",
         "id",
         "type",

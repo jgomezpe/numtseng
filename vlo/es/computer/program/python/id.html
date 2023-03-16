@@ -1,0 +1,65 @@
+<body>        
+    <div id='hiddeninfo' class="hidden">
+    <div id='infotext'>
+        Un <b>identificador</b> es una secuencia de símbolos que utilizamos como nombre para las variables,
+        funciones, arreglos, clases y otras estructuras propias de los lenguajes de programación. Los
+        identificadores en Python se escriben como secuencias de caracteres alfanuméricos (letras del 
+        abecedario inglés o los dígitos) o el guión bajo (_), secuencias en las que el primer símbolo no 
+        puede ser un dígito y que deben tener al menos una letra. Los identificadores en Python deben tener
+        una longitud mayor o igual a uno.
+        <br><br>
+        Adicionalmente, un identificador no debe ser una <b>palabra reservada</b> del lenguaje. En Python 
+        las palabras reservadas son las siguientes:
+        <ul>
+            <li><i>and, as, assert, break, class,</i></li>
+            <li><i>continue, def, del, elif, else,</i></li>
+            <li><i>except, finally, False, for, from</i></li>
+            <li><i>global, if, import, in, is,</i></li>
+            <li><i>lambda, nonlocal, None, not, or,</i></li>
+            <li><i>pass, raise, return, True, try,</i></li>
+            <li><i>with, while, yield</i></li>
+        </ul>
+    </div>    
+       
+    </div>    
+	<script>
+
+        Konekti.uses('hypermedia')
+
+		function KonektiMain(){
+            var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/print.mp3"]}
+            var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:fit;'}]}
+            var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;'}]}
+            var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
+                [{'name':'main.py','content':'nombre = "Jonatan Gómez Perdomo"\nprint("Un gusto", nombre)\nedad=15\nprint("Tu edad es ",n,"!! no me lo creo.")\ndinero=100.2\nprint("Ganas solo", dinero, "!!")\nmentira=False\nprint("Para mi lo que dices es", mentira, " ja ja ja")'}], {'header':{'title':"Ambiente de desarrollo"}, 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
+    
+            
+            var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}
+            var scripts = [
+                {"target":"info", "mark":[
+                    {"time":0.1, "replace":[{"start":182, "text":"<br><br>"}]}, 
+                    {"time":9.5, "replace":[{"start":673, "text":"<br><br>"}]}, 
+                    {"time":36.5, "replace":[{"start":922, "text":"<br><br>"}]}, 
+                    {"time":42.8, "replace":[{"start":1432, "text":"<br><br>"}]}, 
+                    {"time":45.5, "replace":[{"start":1492, "text":"<br><br>"}]}, 
+                    {"time":51.5, "replace":[{"start":1612, "text":"</ul><br><br>"}]}, 
+                    {"time":57.3, "replace":[{"start":1725, "text":"</ul><br><br>"}]}, 
+                    {"time":70, "replace":[{"start":1839, "text":"</ul><br><br>"}]}, 
+                    {"time":101, "replace":[]}
+                ]},
+                {"target":"viewermain.py", "mark":[
+                    {"time":36.5, "replace":[{"start":32, "text":""}]},
+                    {"time":45.5, "replace":[{"start":58, "text":""}]},
+                    {"time":45.5, "replace":[{"start":66, "text":""}]},
+                    {"time":45.5, "replace":[{"start":109, "text":""}]},
+                    {"time":45.5, "replace":[{"start":122, "text":""}]},
+                    {"time":101, "replace":[]}
+                ]}
+            ]
+
+//            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})            
+            Konekti.raw('body', 'book', control, {'style':'width:100%;height:100%;'})            
+        }
+	</script>
+</body>
+</html>

@@ -5,8 +5,8 @@
             ["print", "", "Salida"],
             ["input", "", "Entrada"]
             ], false, false],
-        ["id", "", "Identificadores"], 
         ["var", "", "Variables"],
+        ["id", "", "Identificadores"], 
         ["type","", "Tipos", {}, [
             ["integer", "", "Enteros"],
             ["real", "", "Reales"],

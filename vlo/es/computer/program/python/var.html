@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Numtseng: Escuela de Python</title>
-	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
-    <style>
-        .hidden {
-            visibility: hidden;
-            overflow: hidden;
-            width: 0px;
-            height: 0px;
-        }
-        </style>
-</head>
-    
 <body>        
     <div id='hiddeninfo' class="hidden">
     <div id='infotext'>
-        Un <b>tipo de dato</b> es un conjunto de valores (pueden ser objetos) que pueden tomar las variables
-        y constantes en Python.
+        Una <b>variable</b> es un espacio de memoria donde almacenamos un dato o valor. Es un espacio donde 
+        guardamos la información necesaria para realizar las acciones que ejecutan nuestros programas.
+
+        <div class="w3-half">
+            <div class="w3-card">
+              <img src="https://jgomezpe.github.io/numtseng/vlo/es/computer/program/var.png" style="width:100%">
+              <div class="w3-container">
+                <h4>Variable \(x\) en la memoria \(\mathcal{T}\)</h4>
+              </div>
+            </div>
+        </div>
+
+        En Python, como en todo lenguaje de programación, una variable debe ser de algún tipo de dato, es 
+        decir, de uno de los conjuntos de valores básicos con los que cuenta. Python no requiere que 
+        <b>declaremos</b> (definamos) el tipo de dato de una variable de manera explícita, pues maneja 
+        los tipos de datos de manera implícita, esto es, infiere el tipo de dato de una variable de 
+        acuerdo a lo que tiene almacenado.
         <br><br>
-        Un <b>conjunto</b> \(A\) es una colección 'bien-definida' de objetos. Una colección se dice 
-        bien-definida si es posible determinar de manera precisa tanto los objetos que están en la colección
-        como los que no están. Los objetos que pertenecen a un conjunto \(A\) son llamados <b>elementos</b>
-        de \(A\). En general, usamos \(x \in A\) para decir que el objeto \(x\) es un elemento de \(A\) y 
-        \(x \notin A\) para decir que el objeto \(x\) no es un elemento de \(A\). Si quieres saber más de 
-        conjuntos sigue este <a href="https://nutmseng.com/math/index.html/page=set&lang=es&level=medium">enlace</a>
-        que trata el tema de conjuntos en Numtseng: La Escuela de Matemáticas.
+        Si queremos declarar una variable \(x\) requerimos un identificador para ella, su tipo de dato (que 
+        es opcional en Python), y un valor inicial para ella, declaración que escribimos \(x : T valor\). A un 
+        valor concreto de un tipo de dato que podamos escribir en Python lo llamamos <b>literal</b> de ese 
+        tipo de dato.
         <br><br>
-        Como en la mayoría de lenguajes de programación, en Python una variable o constante puede ser de un
-        tipo de dato <b>primitivo</b>, es decir, de uno de los conjuntos de valores básicos con los que 
-        cuenta Python, o de tipo <b>no-primitivo</b>, es decir, que toma un valor que se construye o compone
-        a partir de tipos de datos primitivos y/o no-primitivos. En esta sección solamente estudiaremos los 
-        primitivos, los no-primitivos los estudiaremos más adelante.
+        Por ejemplo en el programa, la línea 1 declara la variable <i>nombre</i> implícitamente de tipo 
+        cadena de caracteres (textos) y le <b>asigna</b> (almacena en ella) el valor <i>"Jonatan Gómez Perdomo"</i>; 
+        la línea 2 declara la variable <i>edad</i> explícitamente de tipo entero y le asigna el valor de <i>15</i>; y
+        la línea 3 declara la variable <i>dinero</i> implícitamente de tipo real y le asigna el valor <i>100.2</i>.
         <br><br>
-        Los cuatro tipos de datos primitivos en Python son:
-        <ul>
-            <li><i>string</i>: Las cadenas de caracteres o textos, ver líneas 1 y 2 del programa.</li>
-            <li><i>int</i>: Una aproximación a los enteros (\(\mathbb{Z}\)), ver líneas 3 y 4 del programa.</li>
-            <li><i>float</i>: Una aproximación a los reales (\(\mathbb{R}\)), ver líneas 5 y 6 del programa.</li>
-            <li><i>bool</i>: Los valores de verdad (aquí los notaremos \(\mathbb{B}\)), que consta de los valores de verdad: 
-            verdadero (<i>True</i>) y falso (<i>False</i>), ver líneas 7 y 8 del programa.</li>
-        </ul>
-        <br>
-        Python no requiere que definamos el tipo de dato de una variable de manera explícita, Python maneja 
-        los tipos de datos de manera implícita, esto es, Python infiere el tipo de dato de una variable de 
-        acuerdo a lo que tiene almacenado o al valor que se quiere almacenar en ella.
-        <br><br>
-        Un valor concreto que podamos escribir en Python lo llamamos <b>literal</b>.
-    </div>       
+    </div>    
        
     </div>    
 	<script>

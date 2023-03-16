@@ -3,8 +3,10 @@
         "home":"computer/program/python/intro.html",
         "print":"computer/program/python/print.html",
         "read":"computer/program/python/input.html",
-        "type":"",
-            "integer":"",
+        "var":"computer/program/python/var.html",
+        "id":"computer/program/python/id.html",
+        "type":"computer/program/python/type.html",
+            "integer":"computer/program/python/integer.html",
             "real":"",
             "char":"",
             "stringb":"",
@@ -36,6 +38,11 @@
     },
     "basic":[
         "home",
-        "print"
+        "print",
+        "read",
+        "var",
+        "id",
+        "type",
+        "integer"
     ]
 }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>Botón de login de Konekti</title>
+	<script type='text/javascript' src='src/konekti.js'></script> 
+</head>
+
+<body>
+<script>
+
+Konekti.uses('accordion', 'header', 'loginbtn')
+
+class TheClient extends MainClient{
+	constructor(){ 
+		super() 
+		this.users = {}
+	}
+
+	/**
+	 * Login response (simulates a sever)
+	 * @param user User information (email)
+	 * @param password Password information
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
+	 */
+	login(user, password, onsuccess, onerror){
+		if(this.users[user] !== undefined && this.users[user].password == password){
+			this.current = {'user':user, 'password':password}
+			onsuccess()
+		}else{
+			onerror()
+		}
+	}
+
+	/**
+	 * Register response (simulates a sever)
+	 * @param user User information (email)
+	 * @param password Password information
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
+	 */
+	register(user, password, onsuccess, onerror){
+		if(this.users[user] === undefined){
+			this.signing = {'user':user, 'password':password}
+			onsuccess()
+		}else{ onerror() }
+	}
+
+	/**
+	 * Registers code response (simulates a sever)
+	 * @param code Code information
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
+	 */
+	 registercode(code, onsuccess, onerror){
+		if(code=='12345'){
+			this.users[this.signing.user] = {'password':this.signing.password}
+			this.current = {'user':this.signing.user, 'password':this.signing.password}
+			this.signing = {}
+			onsuccess()
+		}else{
+			onerror()
+		}
+	}
+
+	/**
+	 * Remember response (simulates a sever)
+	 * @param user User information (email)
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
+	 */
+	 remember(user, onsuccess, onerror){
+		if(this.users.user !== undefined) onsuccess()
+		else onerror()
+	}
+
+	/**
+	 * Logout response (simulates a sever)
+	 */
+	logout(){
+		this.current = {}
+	}
+
+	/**
+	 * Change password response (simulates a sever)
+	 * @param newpassword New user's password information
+	 * @param oldpassword Current user's password information
+	 * @param onsuccess Method called when the server replies ok
+	 * @param onerror Method called when the server replies error
+	 */
+	updatepwd(newpassword, oldpassword, onsuccess, onerror){
+		if(this.current.password==oldpassword){
+			this.current.password = newpassword
+			this.users[this.current.user].password = newpassword
+			onsuccess()
+		}else{
+			onerror()
+		}
+	}
+}
+
+function KonektiMain(){
+	var client = new TheClient()
+	Konekti.header('aHeader', '', 'Probando un botón de login', 3, {'class':'w3-green'})
+	var extra = {'plugin':'accordion', 'setup':['anAccordion', {'icon':'fa-link', 'caption':'Mostrando wikipedia', 'config':{'class':'w3-blue-grey'}},
+		{'plugin':'iframe', 'setup':['aIframe', 'https://wikipedia.com', {'style':'width:100%;height:40%;'}]}, false, ""]}
+	Konekti.loginbtn("userbtn", extra, client, {'email':'&#xf0e0; Correo', 'password': '&#xf084; Clave', 
+		'remember':'Recordar clave', 'login':'Ingresar', 
+		'register':'Registrarse', 'code':'Código registro', 'send':'enviar',
+		'invaliduser':'Usuario y/o clave inválidos', 'invalidpassword':'Clave inválida',
+		'invalidcode':'Código inválido', 'send':'Clave enviada al correo '}, 
+		{'input':{'class':"w3-round-xxlarge"}, 'btn':{}, 'user':{'class':'w3-small' }})
+}
+
+</script>
+
+</body>
+</html>

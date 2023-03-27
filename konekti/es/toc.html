@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>TOC de Konekti</title>
+	<script type='text/javascript' src='src/konekti.js'></script> 
+</head>
+
+<body>
+    <div id="log" style='width:100%'>Entrada seleccionada de la tabla de contenidos aparecerá aquí...</div>
+<script>
+
+Konekti.uses('toc','header')
+
+function select(id){ Konekti.vc('log').innerHTML = 'Entrada de la TOC seleccionada..'+id }
+
+function KonektiMain(){	
+	Konekti.header('aHeader2', 'fa-home', 'Probando una Tabla de Contenido (TOC)', 3, {'class':'w3-yellow'})	
+	Konekti.toc('aTOC', [
+    	['child1', 'fa-arrow-left', 'Tema A'], 
+        ['child2', 'fa-smile-o', 'Tema B', {}, [
+            ['child21', 'fa-edit', 'Tema D'], 
+            ['child22', 'fa-copy', 'Tema E']], true, true
+        ],
+        ['child3', 'fa-edit', 'Tema C']], select, {'style':'width:200px;'} 
+    )
+}
+
+</script>
+
+</body>
+</html>

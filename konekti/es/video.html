@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>Konekti Video</title>
+	<script type='text/javascript' src='src/konekti.js'></script> 
+
+</head>
+
+<body>
+
+<script>
+
+Konekti.uses('header','media')
+
+class TheClient extends MainClient{
+	constructor(){ super() }
+	// Listen to video's play button 
+	play( id ){ Konekti.vc('log').innerHTML = 'Botón de tocar presionado: ' + id }
+	// Listen to video's pause button 
+	pause( id ){ Konekti.vc('log').innerHTML = 'Botón de pausa presionado: ' + id }
+	// Listen to video's current position  
+	seek( id, time ){ Konekti.vc('log').innerHTML = 'Tocando video: ' + id + ' tiempo: ' + time }
+}
+
+function KonektiMain(){
+	var client = new TheClient()
+	Konekti.header('title','', 'Video de Konekti', 3, {'class':'w3-green'} )
+	Konekti.raw('log','Progreso/Eventos del Video aparecerán aquí...')
+	// Connects the video with the HTML component
+	var vd = Konekti.mp4( 'video', 'https://www.w3schools.com/html/mov_bbb.mp4', {'style':'width:80%;height:60%'}, function(){
+		// Adds a listener to the video player
+		Konekti.client['myvideo'].addListener(client.id)
+	} )
+}
+
+</script>
+
+</body>
+</html>

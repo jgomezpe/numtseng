@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>Konekti IFRAME</title>
+	<script type='text/javascript' src='src/konekti.js'></script> 
+
+</head>
+
+<body>
+
+<script>
+
+Konekti.uses('header','iframe','btn','ace')
+
+function run(){
+   Konekti.client['iframe'].setText( Konekti.client['coder'].getText() )
+}
+
+var initial = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='UTF-8'>\n</head>\n<body>\n<style>\n html, body {\n height:100%;\n margin:0px;\n}\n</style>\n<div id='title'><h2>Dentro de un IFrame</h2></div>\n</body>\n</html>"
+
+function KonektiMain(){
+	Konekti.header('title','', 'IFrame de Konekti', 3, {'class':'w3-green'} )
+	Konekti.header('hiframe1', 'fa-wikipedia-w', 'Wikipedia', 4, {'class':'w3-black'} )
+	Konekti.iframe('iframe1', 'https://wikipedia.com', {'style':'width:60%;height:40%'} )
+	Konekti.header('hiframe','fa-file-code-o', 'IFrame desde código HTML', 4, {'class':'w3-black'} )
+	Konekti.iframe('iframe', initial, {'style':'width:100%;height:40%'}  )
+	Konekti.btn('btn',"fa-play", "Compilar","run()",{'class':'w3-blue-grey w3-bar-item w3-large','title':"Compilar HTML"})
+	Konekti.ace('coder', initial, 'html', '', '', {'style':'width:100%;height:40%'}  )
+}
+
+
+</script>
+
+</body>
+</html>

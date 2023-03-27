@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>Retícula de Konekti</title>
+	<script type='text/javascript' src='src/konekti.js'></script> 
+</head>
+
+<body>
+
+<script>
+
+Konekti.uses('header', 'grid','card', 'navbar')
+
+var shown_cells = []
+function check(){
+    if(Konekti.client['mygrid'] !== undefined){
+		var c = Konekti.client['body'].children
+        Konekti.client['mygrid'].set(shown_cells)
+    }else setTimeout(check, 100)
+}
+
+/* Client is defined */
+class TheClient extends MainClient{
+	constructor(){ super() }
+	/* When the Play button is selected (id=show) */
+	select(id){
+		var cells = [
+		    {'plugin':'card', 'setup':['card1','<img src="https://www.w3schools.com/w3css/img_nature_wide.jpg" style="width:70%"><h4><b>Nature</b></h4>', {'width':'100%', 'height':'100%'}]},
+    		{'plugin':'card', 'setup':['card2','<img src="https://www.w3schools.com/w3css/img_snow_wide.jpg" style="width:70%"><h4><b>Snow</b></h4>', {'width':'100%', 'height':'100%'}]},
+    		{'plugin':'card', 'setup':['card3','<img src="https://www.w3schools.com/w3css/img_mountains_wide.jpg" style="width:70%"><h4><b>Mountains</b></h4>', {'width':'100%', 'height':'100%'}]}
+		]	    
+        switch(id){
+            case 'one': shown_cells = [cells[0]]; break;
+            case 'two': shown_cells = [cells[0], cells[1]]; break;
+            default: shown_cells = cells
+        }         
+        check()
+    }
+}
+
+/* Konekti's main function*/
+function KonektiMain(){
+	/* Client that will answer to buttons */
+	var client = new TheClient()
+	/* Connecting components */
+	Konekti.header('title','fa-gavel','Retícula de Konekti', 2, {'class':'w3-green'} )
+	var btns=[
+		{'plugin':'btn', 'setup':["one", "", '1', null, {'title':'Uno'}]},
+		{'plugin':'btn', 'setup':["two","", '2', null, {'title':'Dos'}]},
+		{'plugin':'btn', 'setup':["three","", '3', null, {'title':'Tres'}]}
+	]		
+	Konekti.navbar('navbar2', btns, {'client':'client', 'method':'select'}, {'class':'w3-orange w3-large'}) 
+
+    Konekti.grid('mygrid', [], 3, {'style':{'min-width':'200px', 'max-width':'1000000px'}, 'height':'30%'}, {'width':'100%', 'height':'fit'})
+	client.select('three') 
+}
+</script>
+
+</body>
+</html>

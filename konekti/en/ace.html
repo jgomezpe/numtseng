@@ -4,15 +4,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
  	<title>Konekti ACE</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 
 </head>
 
 <body>
-
-<div id="log" style='width:100%'>Editor events will appear here...</div>
-
 <script>
 
 Konekti.uses('btn','header','ace')
@@ -28,15 +29,16 @@ function copy(){ Konekti.client['ace4'].setText(Konekti.client['ace3'].getText()
 function KonektiMain(){
 	var client = new TheClient()
 
-	Konekti.header('body', 'title','', 'Konekti ACE Editor', 2, {'class':'w3-green'} )
-	Konekti.header('body','hace1','', 'Editor with JavaScript mode and default theme', 4, {'class':'w3-black'} )
-	Konekti.ace( 'body', 'ace1', "for(var i=0; i<10; i++){ console.log('i:'+i); }", 'javascript', '', '', {'style':'width:100%;height:40%;'}, 
+	Konekti.header('title','', 'Konekti ACE Editor', 2, {'class':'w3-green'} )
+	Konekti.raw('log','Editor events will appear here...')
+	Konekti.header('hace1','', 'Editor with JavaScript mode and default theme', 4, {'class':'w3-black'} )
+	Konekti.ace('ace1', "for(var i=0; i<10; i++){ console.log('i:'+i); }", 'javascript', '', '', {'style':'width:100%;height:40%;'}, 
 		function(){ Konekti.client['ace1'].addListener(client.id) } )
 
-	Konekti.header('body', 'hace2','', 'Editor with HTML mode and xcode theme', 4, {'class':'w3-black'} )
-	Konekti.ace('body', 'ace2', "<div>Inside an ACE editor</div>", 'html', 'xcode', '', {'style':'width:100%;height:40%;'} )
+	Konekti.header('hace2','', 'Editor with HTML mode and xcode theme', 4, {'class':'w3-black'} )
+	Konekti.ace('ace2', "<div>Inside an ACE editor</div>", 'html', 'xcode', '', {'style':'width:100%;height:40%;'} )
 
-	Konekti.header('body', 'hace3','', 'Editor with FunPL/Quilt mode (uses code parameter) and xcode theme', 4, {'class':'w3-black'} )
+	Konekti.header('hace3','', 'Editor with FunPL/Quilt mode (uses code parameter) and xcode theme', 4, {'class':'w3-black'} )
 	// The lexer of the FunPL/Quilt programming language developed by Professor Jonatan Gómez
 	// see https://quilt.numtseng.com and https://github.com/jgomezpe/quilt 
 	lexer = { 
@@ -60,13 +62,13 @@ function KonektiMain(){
 		"parser":null, 
 		"meaner":null 
 		}	
-	Konekti.ace( 'body', 'ace3', "0=-\n1=@-\ninc(X|0)=X|1\ninc(X|1)=inc(X)|0\ninc(0)=1\ninc(1)=1|0", 'quilt', "xcode", lexer,
+	Konekti.ace('ace3', "0=-\n1=@-\ninc(X|0)=X|1\ninc(X|1)=inc(X)|0\ninc(0)=1\ninc(1)=1|0", 'quilt', "xcode", lexer,
 		{'style':'width:50%;height:50%;'})
 
-	Konekti.header('body', 'hace4','', 'Copies from ace3 (editor with no theme and mode)', 4, {'class':'w3-black'} )
-	Konekti.ace( 'body', 'ace4', '', '',  '', '', {'style':'width:50%;height:50%;'} )
+	Konekti.header('hace4','', 'Copies from ace3 (editor with no theme and mode)', 4, {'class':'w3-black'} )
+	Konekti.ace('ace4', '', '',  '', '', {'style':'width:50%;height:50%;'} )
 
-	Konekti.btn('body', 'btn',"fa fa-copy", "Copy","copy()",{'class':'w3-bar-item w3-large', 'title':'Copy'})
+	Konekti.btn('btn',"fa fa-copy", "Copy","copy()",{'class':'w3-bar-item w3-large', 'title':'Copy'})
 }
 
 </script>

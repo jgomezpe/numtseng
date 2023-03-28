@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
@@ -15,7 +14,6 @@
 </head>
 
 <body>
-
 <script>
 
 Konekti.uses('btn','header')
@@ -41,8 +39,8 @@ function KonektiMain(){
 	/* Client that will answer to buttons */
 	var client = new TheClient()
 	/* Connecting components */
-	Konekti.raw('log','El botón seleccionado aparecerá aquí...',{'width':'100%'})
 	Konekti.header('title','fa-gavel','Botones de Konekti', 2, {"class":"w3-green"} )
+	Konekti.raw('log','El botón seleccionado aparecerá aquí...',{'width':'100%'})
 	Konekti.header('header1', 'fa-smile-o', 'Solo con ícono', 4, {"class":"w3-black"} )
 	Konekti.btn('btn1','fa-play', '', {'client':'client'}, {"class":'w3-blue-gray w3-large', 'title':'Play button'} )
 	Konekti.header('header2', 'fa-font', 'Solo texto', 4, {"class":'w3-black'} )
@@ -53,8 +51,8 @@ function KonektiMain(){
 	Konekti.btn('btn4',"fa-bullseye", "Ejecutar", run, {"class":'w3-yellow w3-large'})
 	Konekti.header('header5','fa-plug', 'Ejecutando un método específico del cliente (select)', 4, {"class":'w3-black'} )
 	Konekti.raw('navbar', 
-		[{'plugin':'btn', 'setup':['btn5',"fa-car", 'Car', {"client":"client","method":"select"}, {"class":'w3-blue-gray w3-large'}]},
-		{'plugin':'btn', 'setup':['btn6',"fa-plane", 'Plane', {"client":"client","method":"select"}, {"class":'w3-blue-gray w3-large'}]}], 
+		[{'plugin':'btn', 'setup':['btn5',"fa-car", 'Carro', {"client":"client","method":"select"}, {"class":'w3-blue-gray w3-large'}]},
+		{'plugin':'btn', 'setup':['btn6',"fa-plane", 'Avión', {"client":"client","method":"select"}, {"class":'w3-blue-gray w3-large'}]}], 
 		{'width':'100%'})
 }
 

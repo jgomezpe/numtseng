@@ -4,14 +4,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
  	<title>Konekti Audio</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 
 </head>
 
 <body>
-
-<div id="log" style='width:100%;'>Audio progress/events will appear here...</div>
 <script>
 
 Konekti.uses('header','media')
@@ -28,9 +30,10 @@ class TheClient extends MainClient{
 
 function KonektiMain(){
 	var client = new TheClient()
-	Konekti.header('body', 'title','', 'Konekti Audio', 3, {'class':'w3-green'} )
+	Konekti.header('title','', 'Konekti Audio', 3, {'class':'w3-green'} )
+	Konekti.raw('log','Audio progress/events will appear here...')
 	// Connects the audio with the HTML component
-	Konekti.mp3( 'body', 'myaudio', 'https://www.w3schools.com/html/horse.mp3', {}, function(){
+	Konekti.mp3('myaudio', 'https://www.w3schools.com/html/horse.mp3', {}, function(){
 		// Adds a listener to the audio player
 		Konekti.client['myaudio'].addListener(client.id)
 	} )

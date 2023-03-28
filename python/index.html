@@ -111,7 +111,7 @@
 					var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
 					var control = {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]}
 					var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
-					Konekti.sidebar('body', 'root', toc, main, {'style':'width:100%;height:100%;'})	
+					Konekti.sidebar('root', toc, main, {'style':'width:100%;height:100%;'})	
 
 					Konekti.resource.JSON(RES_URL+MAIN+'nav.json', function(navigation){
 						client.navigation = navigation

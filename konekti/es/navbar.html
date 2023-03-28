@@ -16,7 +16,7 @@
 <div id="log" style='width:100%'>La opción seleccionada aparecerá aquí...</div>
 <script>
 
-Konekti.uses('navbar','header') //, 'dropdown')
+Konekti.uses('navbar','header')
 
 function add(){
     Konekti.client["navbar3"].show('soccer')
@@ -41,6 +41,7 @@ function KonektiMain(){
 	var client = new TheClient()
 
 	Konekti.header('title','', 'Barra de Navegación de Konekti', 3, {'class':'w3-green'} )
+	Konekti.raw('log','La opción seleccionada aparecerá aquí...')
 	Konekti.header('header1','', 'Barra con estilo blue-grey y botón de dropdown', 4, {'class':'w3-black'} )
 	var dd = {'plugin':'toc', 'setup': ['sel_lang', ["English", "Español"], {"client":'client', "method":"language"}, 
 		{'title':'Seleccionando idioma'}]}	

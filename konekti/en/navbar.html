@@ -16,7 +16,7 @@
 <div id="log" style='width:100%'>Selected option will appear here...</div>
 <script>
 
-Konekti.uses('navbar','header', 'dropdown')
+Konekti.uses('navbar','header')
 
 function add(){
     Konekti.client["navbar3"].show('soccer')
@@ -40,8 +40,9 @@ class TheClient extends MainClient{
 function KonektiMain(){
 	var client = new TheClient()
 
-	Konekti.header('body', 'title','', 'Konekti Navigation Bars', 3, {'class':'w3-green'} )
-	Konekti.header('body', 'header1','', 'Navbar with blue-grey style and dropdown button', 4, {'class':'w3-black'} )
+	Konekti.header('title','', 'Konekti Navigation Bars', 3, {'class':'w3-green'} )
+	Konekti.raw('log','Selected option will appear here...')
+	Konekti.header('header1','', 'Navbar with blue-grey style and dropdown button', 4, {'class':'w3-black'} )
 	var dd = {'plugin':'toc', 'setup': ['sel_lang', ["English", "Español"], {"client":'client', "method":"language"},
 		{'title':'Selecting language'}]}	
 	var btn=[
@@ -51,27 +52,27 @@ function KonektiMain(){
 		{'plugin':'btn', 'setup':["file", "fa-file-text-o", '', null, {'title':"File"}]},
 		{'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd]}
 	]		
-	var navbar = Konekti.navbar('body', 'navbar1', btn, {'client':'client', 'method':'select'}, {'class':'w3-blue-grey'} ) 
+	var navbar = Konekti.navbar('navbar1', btn, {'client':'client', 'method':'select'}, {'class':'w3-blue-grey'} ) 
 
-	Konekti.header('body','header2','', 'Navbar with orange style, medium icons and input component', 4, {'class':'w3-black'} )
+	Konekti.header('header2','', 'Navbar with orange style, medium icons and input component', 4, {'class':'w3-black'} )
 	var btn2=[
 		{'plugin':'btn', 'setup':["hand", "fa-hand-paper-o", '', null, {'title':'Hand'}]},
 		{'plugin':'btn', 'setup':["arrow","fa-arrow-left", '', null, {'title':'Arrow'}]},
 		{'plugin':'raw', 'setup':["editor", '', {'tag':'input', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge",
-			'placeholder':"&#xF002; I want...", 'style':"margin-top:2px;margin-bottom:2px;font-family:Arial, FontAwesome"}]},
+			'placeholder':"&#xf002; I want...", 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]},
 		{'plugin':'btn', 'setup':["face","fa-smile-o", '', null, {'title':'Face', 'class':'w3-right'}]}
 	]		
-	var navbar2 = Konekti.navbar('body', 'navbar2', btn2, {'client':'client', 'method':'select'}, {'class':'w3-orange w3-medium'}) 
+	var navbar2 = Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'select'}, {'class':'w3-orange w3-medium'}) 
 	
-	Konekti.header('body', 'header3','', 'Adds and removes a button', 4, {'class':'w3-black'} )	
+	Konekti.header('header3','', 'Adds and removes a button', 4, {'class':'w3-black'} )	
 	var btn3=[
 		{'plugin':'btn', 'setup':["add", "fa-plus", "", "add()", {'title':"Add button"}]},
 		{'plugin':'btn', 'setup':["remove", "fa-minus", "", "del()", {'title':"Remove button"}]},
 		{'plugin':'btn', 'setup':['soccer','fa-soccer-ball-o','', {'client':'client', 'method':'select'},{'class':'w3-hide'}]}
 	]		
-	var navbar3 = Konekti.navbar('body', 'navbar3', btn3, {'client':'client', 'method':'select'}, {'class':'w3-teal w3-xlarge'} )
+	var navbar3 = Konekti.navbar('navbar3', btn3, {'client':'client', 'method':'select'}, {'class':'w3-teal w3-xlarge'} )
 
-	Konekti.header('body','header4','', 'Dynamic Navbar', 4, {'class':'w3-black'} )	
+	Konekti.header('header4','', 'Dynamic Navbar', 4, {'class':'w3-black'} )	
 	var btn4=[
 		{'plugin':'btn', 'setup':["addleaf","fa-key", "", {"client":'client'}, {'title':"Add leaf button"}]},
 		{'plugin':'btn', 'setup':["addmobile","fa-pencil", "", {"client":'client'}, {'title':"Add mobile button"}]},
@@ -81,7 +82,7 @@ function KonektiMain(){
 		{'plugin':'btn', 'setup':['leaf', 'fa-leaf', '', null, {'title':'Leaf', 'class':'w3-hide'}]},
 		{'plugin':'btn', 'setup':['mobile','fa-mobile','', null, {'title':'Mobile', 'class':'w3-hide'}]}
 	]		
-	var navbar4 = Konekti.navbar('body', 'navbar4', btn4, {'client':'client','method':'select'}, {'class':'w3-blue w3-xlarge'} )
+	var navbar4 = Konekti.navbar('navbar4', btn4, {'client':'client','method':'select'}, {'class':'w3-blue w3-xlarge'} )
 }
 
 </script>

@@ -20,8 +20,8 @@ Konekti.uses('sidebar','header','accordion','youtube')
 function select(optId){ Konekti.vc("log").innerHTML =  'Seleccionado: '+ optId; }
 
 function KonektiMain(){
-	Konekti.raw('log','La opción seleccionada aprecerá aquí...')
 	Konekti.header('title','', 'Barra lateral de Konekti', 4, {'class':'w3-green'} )
+	Konekti.raw('log','La opción seleccionada aprecerá aquí...')
 
 	var toc = {'plugin':'toc', 'setup':['aTOC', [
 	['child1', 'fa-arrow-left', 'Tema A'], 

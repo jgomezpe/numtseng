@@ -108,16 +108,15 @@ class TheClient extends MainClient{
 
 function KonektiMain(){
 	var client = new TheClient()
-	Konekti.header('body','aHeader', '', 'Testing a login button', 3, {'class':'w3-green'})
-	var extra = {'plugin':'accordion', 'setup':['anAccordion', 'fa-link', 'Showing wikipedia',
-		{'plugin':'iframe', 'setup':['aIframe', 'https://wikipedia.com', {'style':'width:100%;height:40%;'}]}, false, "",
-		{'class':'w3-blue-grey'}]}
-	Konekti.loginbtn('body', "userbtn", extra, client, {'email':'&#xf0e0; email', 'password': '&#xf084; Password', 
+	Konekti.header('aHeader', '', 'Testing a login button', 3, {'class':'w3-green'})
+	var extra = {'plugin':'accordion', 'setup':['anAccordion', {'icon':'fa-link', 'caption':'Showing wikipedia', 'config':{'class':'w3-blue-grey'}},
+		{'plugin':'iframe', 'setup':['aIframe', 'https://wikipedia.com', {'style':'width:100%;height:40%;'}]}, false, ""]}
+	Konekti.loginbtn("userbtn", extra, client, {'email':'&#xf0e0; email', 'password': '&#xf084; Password', 
 		'remember':'Remember password', 'login':'Login', 
 		'register':'Sign in', 'code':'Registration code', 'send':'Send',
 		'invaliduser':'Invalid user or password', 'invalidpassword':'Invalid password',
 		'invalidcode':'Invalid code', 'send':'Sending password to email '}, 
-		{'input':{'class':"w3-round-xxlarge", 'style':"margin:2px;"}, 'btn':{}, 'user':{'class':'w3-small' }})
+		{'input':{'class':"w3-round-xxlarge"}, 'btn':{}, 'user':{'class':'w3-small' }})
 }
 
 </script>

@@ -56,7 +56,7 @@
         Konekti.uses('hypermedia', 'header')
 
 		function KonektiMain(){
-            Konekti.header('body', 'title','', 'Konekti Hypermedia', 3, {'class':'w3-green w3-center'} )
+            Konekti.header('title','', 'Konekti Hypermedia', 3, {'class':'w3-green w3-center'} )
 
             var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3"]}
             var text = {'plugin':'latex', 'setup':["info", Konekti.vc('infotext').innerHTML, {'style':'width:100%;height:100%;'}]}
@@ -82,7 +82,7 @@
                 ]		
             }]
             
-            Konekti.hypermedia('body', 'book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
+            Konekti.hypermedia('book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})
         }
 	</script>
 </body>

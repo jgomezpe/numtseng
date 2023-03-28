@@ -18,19 +18,12 @@
 
 Konekti.uses('header', 'grid','card', 'navbar')
 
-var shown_cells = []
-function check(){
-    if(Konekti.client['mygrid'] !== undefined){
-		var c = Konekti.client['body'].children
-        Konekti.client['mygrid'].set(shown_cells)
-    }else setTimeout(check, 100)
-}
-
 /* Client is defined */
 class TheClient extends MainClient{
 	constructor(){ super() }
 	/* When the Play button is selected (id=show) */
 	select(id){
+		var shown_cells = []
 		var cells = [
 		    {'plugin':'card', 'setup':['card1','<img src="https://www.w3schools.com/w3css/img_nature_wide.jpg" style="width:70%"><h4><b>Nature</b></h4>', {'width':'100%', 'height':'100%'}]},
     		{'plugin':'card', 'setup':['card2','<img src="https://www.w3schools.com/w3css/img_snow_wide.jpg" style="width:70%"><h4><b>Snow</b></h4>', {'width':'100%', 'height':'100%'}]},
@@ -41,7 +34,8 @@ class TheClient extends MainClient{
             case 'two': shown_cells = [cells[0], cells[1]]; break;
             default: shown_cells = cells
         }         
-        check()
+        Konekti.daemon(function(){ return Konekti.client['mygrid'] !== undefined }, 
+			function(){ Konekti.client['mygrid'].set(shown_cells) })
     }
 }
 

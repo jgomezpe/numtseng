@@ -14,9 +14,6 @@
 </head>
 
 <body>
-
-<div id="log" style='width:100%'>La opción seleccionada aparecerá aquí...</div>
-
 <script>
 
 Konekti.uses('header','dropdown')
@@ -27,10 +24,12 @@ class TheClient extends MainClient{
 		Konekti.client.dd3.click() // Close the dropdown
 		Konekti.vc("log").innerHTML =  'Idioma: '+ optId; 
 	}
+	
 	edit(optId){ 
 		Konekti.client.dd1.click() // Close the dropdown
 		Konekti.vc("log").innerHTML =  'Edición: '+ optId; 
 	}
+	
 	media(optId){ 
 		Konekti.client.dd2.click() // Close the dropdown
 		Konekti.vc("log").innerHTML =  'Medio: '+ optId; 
@@ -41,6 +40,7 @@ function KonektiMain(){
 	var client = new TheClient()
 
 	Konekti.header('title','', 'Dropdown de Konekti', 3, {'class':'w3-green'})
+	Konekti.raw('log','La opción seleccionada aparecerá aquí...')
 	var dd1 = {'plugin':'toc', 'setup': ['sel_edit',
 		[["copy", "fa-copy", 'Copy', {'title':"Copiar"}], 
 		 ["cut", "fa-cut", 'Cut',  , {'title':"Cortar"}], 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
@@ -9,10 +10,13 @@
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 	<title>Konekti Youtube</title>
-	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='src/konekti.js'></script> 
 </head>
 
 <body>
+
+<div id="log" style='width:100%'>Progreso/eventos aparecerán aquí...</div>
+
 <script>
 
 Konekti.uses('header','youtube')
@@ -30,9 +34,8 @@ class TheClient extends MainClient{
 function KonektiMain(){
 	var client = new TheClient()
 	Konekti.header('title','fa-youtube', 'Youtube en Konekti', 3, {'class':'w3-green'} )
-	Konekti.raw('log','Progreso/eventos aparecerán aquí...')
 	// Connects the youtube video with the HTML component
-	Konekti.youtube('fv2Ms3C7Xrw', {'style':'width:80%;height:60%;'}, function(){
+	var yt = Konekti.youtube('fv2Ms3C7Xrw', {'style':'width:80%;height:60%;'}, function(){
 		// Adds a listener to the Youtube player
 		Konekti.client['fv2Ms3C7Xrw'].addListener(client.id)
 	})

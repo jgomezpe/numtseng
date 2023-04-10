@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
@@ -9,10 +10,13 @@
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 	<title>Dialogo de Konekti</title>
-	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='src/konekti.js'></script> 
 </head>
 
 <body>
+
+<div id="log" style='width:100%'>El botón seleccionado aparecerá aquí...</div>
+
 <script>
 
 Konekti.uses('btn','dialog','header')
@@ -37,7 +41,6 @@ function KonektiMain(){
 	var client = new TheClient()
 	/* Connecting components */
 	Konekti.header('title','fa-gavel','Diálogo de Konekti', 2, {'class':'w3-green'} )
-    Konekti.raw('log', 'El botón seleccionado aparecerá aquí...')
 	Konekti.btn('show','fa-eye', 'Muestra diálogo', {'client':'client'}, {'class':'w3-blue-gray w3-large', 'title':'Muestra diálogo'} )
     var btns=[
 		{'plugin':'btn', 'setup':["car", "fa-car", "Carro", {"client":'client'}, {'class':"w3-black w3-large", 'title':"Botón de carro"}]},

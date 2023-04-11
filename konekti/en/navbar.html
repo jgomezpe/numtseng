@@ -13,7 +13,6 @@
 </head>
 
 <body>
-<div id="log" style='width:100%'>Selected option will appear here...</div>
 <script>
 
 Konekti.uses('navbar','header')
@@ -44,7 +43,7 @@ function KonektiMain(){
 	Konekti.raw('log','Selected option will appear here...')
 	Konekti.header('header1','', 'Navbar with blue-grey style and dropdown button', 4, {'class':'w3-black'} )
 	var dd = {'plugin':'toc', 'setup': ['sel_lang', ["English", "Español"], {"client":'client', "method":"language"},
-		{'title':'Selecting language'}]}	
+		{'width':'200px', 'title':'Selecting language'}]}	
 	var btn=[
 		{'plugin':'btn', 'setup':["config", "fa-cogs", '', null, {'title':"Configure"}]},
 		{'plugin':'btn', 'setup':["coffee", "fa-coffee", '', null, {'title':"Coffe"}]},
@@ -86,6 +85,5 @@ function KonektiMain(){
 }
 
 </script>
-
 </body>
 </html>

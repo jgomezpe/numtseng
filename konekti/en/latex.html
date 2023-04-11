@@ -10,11 +10,9 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<title>Konekti Latex</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
-
 </head>
 
 <body>
-
 <script>
 
 Konekti.uses('header','latex','btn','ace')
@@ -22,7 +20,6 @@ Konekti.uses('header','latex','btn','ace')
 function run(){ Konekti.client['latex'].setText( Konekti.client['coder'].getText() ) }
 
 function KonektiMain(){
-	
 	var initial = 'When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$'
 
 	Konekti.header('title','', 'Konekti Latex Component using MatJax', 3, {'class':'w3-green'})
@@ -33,6 +30,5 @@ function KonektiMain(){
 }
 
 </script>
-
 </body>
 </html>

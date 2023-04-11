@@ -13,9 +13,6 @@
 </head>
 
 <body>
-
-<div id="log" style='width:100%'>Video progress/events will appear here...</div>
-
 <script>
 
 Konekti.uses('header','youtube')
@@ -33,14 +30,14 @@ class TheClient extends MainClient{
 function KonektiMain(){
 	var client = new TheClient()
 	Konekti.header('title','fa-youtube', 'Konekti Youtube', 3, {'class':'w3-green'} )
+	Konekti.raw('log','Video progress/events will appear here...')
 	// Connects the youtube video with the HTML component
-	var yt = Konekti.youtube('fv2Ms3C7Xrw', {'style':'width:80%;height:60%'}, function(){
+	Konekti.youtube('fv2Ms3C7Xrw', {'style':'width:80%;height:60%;'}, function(){
 		// Adds a listener to the Youtube player
 		Konekti.client['fv2Ms3C7Xrw'].addListener(client.id)
 	})	
 }
 
 </script>
-
 </body>
 </html>

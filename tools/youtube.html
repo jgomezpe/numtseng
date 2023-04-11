@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
 	<meta name="mobile-web-app-capable" content='yes'>
 	<meta charset="UTF-8">
-	<title>UNiversidad de los Niños</title>
+	<title>Youtube player</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 </head>
 
@@ -19,7 +19,7 @@ function KonektiMain(){
     id = Konekti.dom.getURLSearchParam('id')
 	Konekti.header('title','fa-child', title, 4, {'class':'w3-black'} )
 	// Connects the youtube video with the HTML component
-	Konekti.youtube('myyoutube', id, {'style':'width:100%;height:fit;'})	
+	Konekti.youtube(id, {'width':'100%','height':'fit'})	
 }
 
 </script>

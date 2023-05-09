@@ -1,0 +1,5 @@
+{ 
+	"info":"<p>Toy+ is a simple but powerful programming language (of the FunPL family) developed by professor Jonatan Gómez, Universidad Nacional de Colombia - South America, for teaching to think algorithmic solutions instead of teaching to code. In Toy+ you have just natural numbers and the basic operation addition that can be used to define (in the programming area) new commands. With those new compiled commands, it is hoped that arithmetic operations that the programmer's imagination defines can be built (running those in the command area).</p>",
+	"coder":"% A Toy+ program\n%Product\nprod(X,Y+1)=X+prod(X,Y)\nprod(X,0)=0",
+	"command":"% Runs command producto\nprod(5,6)"
+}

@@ -40,9 +40,9 @@
         "home",
         "print",
         "input",
-        "var",
-        "id",
         "type",
-        "integer"
+        "integer",
+        "var",
+        "id"
     ]
 }

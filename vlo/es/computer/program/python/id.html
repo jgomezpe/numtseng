@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Numtseng: Escuela de Python</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+    <style>
+        .hidden {
+            visibility: hidden;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+</head>
 <body>        
     <div id='hiddeninfo' class="hidden">
     <div id='infotext'>
@@ -10,15 +40,64 @@
         <br><br>
         Adicionalmente, un identificador no debe ser una <b>palabra reservada</b> del lenguaje. En Python 
         las palabras reservadas son las siguientes:
-        <ul>
-            <li><i>and, as, assert, break, class,</i></li>
-            <li><i>continue, def, del, elif, else,</i></li>
-            <li><i>except, finally, False, for, from</i></li>
-            <li><i>global, if, import, in, is,</i></li>
-            <li><i>lambda, nonlocal, None, not, or,</i></li>
-            <li><i>pass, raise, return, True, try,</i></li>
-            <li><i>with, while, yield</i></li>
-        </ul>
+        <div style="width:100%;">
+            <div class="w3-half">
+                <div class="w3-card">
+                    <table>
+                        <tr>
+                            <td>and</td>
+                            <td>as</td>
+                            <td>assert</td>
+                            <td>break</td>
+                            <td>class</td>
+                        </tr>
+                        <tr>
+                            <td>continue</td>
+                            <td>def</td>
+                            <td>del</td>
+                            <td>elif</td>
+                            <td>else</td>
+                          </tr>
+                        <tr>
+                            <td>except</td>
+                            <td>finally</td>
+                            <td>False</td>
+                            <td>for</td>
+                            <td>from</td>
+                        </tr>
+                        <tr>
+                            <td>global</td>
+                            <td>if</td>
+                            <td>import</td>
+                            <td>in</td>
+                            <td>is</td>
+                        </tr>
+                        <tr>
+                            <td>lambda</td>
+                            <td>nonlocal</td>
+                            <td>None</td>
+                            <td>not</td>
+                            <td>or</td>
+                        </tr>
+                        <tr>
+                            <td>pass</td>
+                            <td>raise</td>
+                            <td>return</td>
+                            <td>True</td>
+                            <td>try</td>
+                        </tr>
+                        <tr>
+                          <td>with</td>
+                          <td>while</td>
+                          <td>yield</td>
+                        </tr>
+                    </table>        
+                    <div class="w3-container">
+                        <h4>Table. Palabras reservadas en Python.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>    
        
     </div>    

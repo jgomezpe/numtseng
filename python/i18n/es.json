@@ -21,7 +21,7 @@
             ["eval", "", "Evaluación"]
             ], false, true],
         ["function", "", "Funciones"],
-        ["condition", "", "Condicionales", [
+        ["condition", "", "Condicionales", {}, [
             ["if", "", "Solo si"],
             ["ifelse", "", "Si, sino"],
             ["elif", "", "Si, sinosi, sino"]

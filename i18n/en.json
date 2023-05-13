@@ -1,0 +1,32 @@
+{
+    "numtseng":{
+        "title":"Numtseng: The School of Professor Jonatan Gómez-Perdomo",
+        "developed":"Developed by professor Jonatan Gómez-Perdomo (jgomezpe@unal.edu.co)"    
+    },
+    "navbar":{
+        "left":"Go to previous topic",
+        "right":"Go to next topic",
+        "level":"Content level",
+        "levels":{
+            "basic":"Basic",
+            "medium":"Medium",
+            "advanced":"Advanced"
+        },
+        "language":"Languages"
+    },
+    "toc":{
+        "home":"Home",
+        "learn":"Learn",
+        "welldefined":"Well-defined",
+        "problem":"Problem",
+        "math":"Mathematica",
+        "computer":"Computation",
+        "konekti":"Konekti",
+        "languages":"Languages",
+        "python":"Python",
+        "quilt":"Quilt",
+        "toyplus":"Toy+",
+        "playlist":"Play lista",
+        "about":"About"
+    }
+}

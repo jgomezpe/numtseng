@@ -1,0 +1,32 @@
+{
+    "numtseng":{
+        "title":"Numtseng: La Escuela del Profesor Jonatan Gómez Perdomo",
+        "developed":"Desarrollado por el profesor Jonatan Gómez Perdomo (jgomezpe@unal.edu.co)"    
+    },
+    "navbar":{
+        "left":"Al tema previo",
+        "right":"Al siguiente tema",
+        "level":"Nivel del contenido",
+        "levels":{
+            "basic":"Básico",
+            "medium":"Medio",
+            "advanced":"Avanzado"
+        },
+        "language":"Idiomas"
+    },
+    "toc":{
+        "home":"Inicio",
+        "learn":"Aprender",
+        "welldefined":"Bien definido",
+        "problem":"Problema",
+        "math":"Matemáticas",
+        "computer":"Computación",
+        "konekti":"Konekti",
+        "languages":"Lenguajes",
+        "python":"Python",
+        "quilt":"Colchas",
+        "toyplus":"Suma juego",
+        "playlist":"Lista videos",
+        "about":"Acerca de"
+    }
+}

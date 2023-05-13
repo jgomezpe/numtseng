@@ -32,25 +32,28 @@
 <body>        
     <div id='hiddeninfo' class="hidden">
     <div id='infotext'>
-        En Python, la aproximación al conjunto de los enteros usa el literal <i>int</i>. Decimos 
-        que es una aproximación pues el conjunto de los enteros es infinito y en un computador contamos 
-        con una cantidad finita de espacio (memoria) para representarlos. Si quieres saber más del 
-        conjunto de los números enteros sigue este <a href="https://nutmseng.com/math/index.html/page=integers&lang=es&level=medium">enlace</a>
-        que trata el tema del conjunto de los enteros \(\mathbb{Z}\) en Numtseng: La Escuela de Matemáticas.
+        Un <b>caracter</b> es el elemento mínimo de información usado para representar, controlar, transmitir y visualizar datos. Al conjunto 
+        de caracteres usados con este fin se le llama <b>Esquema de codificación</b>. Los esquemas de codificación en general usan un número 
+        de bits o bytes fijos. En este curso, al conjunto de caracteres lo notamos \(\mathb{S}\).
         <br><br>
-        Si queremos que una variable, por ejemplo \(x\), sea de tipo entero, esto es (\(x \in \mathbb{Z}\)), 
-        en Python la declaramos como <i>x:int</i>. Cuando declaramos una variable debemos iniciarla con 
-        algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>i</i> 
-        pero la iniciamos con el valor entero <i>0</i>, por lo que implícitamente la estamos declarando de 
-        tipo entero. En la línea 2 estamos declarando a la variable <i>j</i> de tipo entero y le estamos
-        dando un valor inicial de 1. En la línea 3, estamos declarando la variable <i>n</i> de tipo entero 
-        y le estamos dando un valor inicial de -10.
+        En Python, Una cadena de caracteres (o simplemente cadena) es una secuencia de cero o más caracteres \(\mathb{S}^{*}\)), 
+        esto es, es la cerradura de Kleene del conjunto de caracteres. Si quieres saber 
+        más de la cerradura de Kleene sigue este <a href="https://nutmseng.com/math/index.html/page=integers&lang=es&level=medium">enlace</a>
+        que trata el tema de la cerradura de Kleene \(\mathbb{T}^{*}\) en Numtseng: La Escuela de Matemáticas.
+        <br><br>   
+        Una cadena (como los otros tipos de datos primitivos) es <b>inmutable</b>, esto es, no la podemos
+        cambiar pero la podemos usar para crear nuevas cadenas a partir de ella. Si queremos que una variable, por ejemplo \(x\), 
+        sea de tipo cadena, esto es (\(x \in \mathbb{S}^{*}\)), en Python la declaramos como <i>x:str</i>. Cuando declaramos una variable
+        debemos iniciarla con algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>nombre</i> 
+        pero la iniciamos con la cadena <i>Jonatan</i>, por lo que implícitamente la estamos declarando de 
+        tipo cadena. En la línea 2 estamos declarando a la variable <i>apellidos</i> de tipo cadena y le estamos dando el valor inicial de 
+        <i>Gómez Perdomo</i>. En la línea 3, estamos declarando la variable <i>profesion</i> de tipo cadena y le estamos dando el valor 
+        inicial de <i>Ingeniero de Sistemas</i>.
         <br><br>
-        En Python, un literal para números enteros puede empezar con el signo del número (\(+,-\)) o sin el signo 
-        (caso en el que se considera un entero positivo), y sigue con cualquier secuencia de dígitos (0 al 9). 
-        Por ejemplo, los siguientes son literales válidos en Python para representar números enteros:
+        En Python, Los literales para representar cadenas se delimitan por (tienen al inicio y al final) el caracter <b>'</b>  o se 
+        delimitan por el caracter <b>"</b>. Por ejemplo, los siguientes son literales válidos en Python para representar cadenas:
         <div class="w3-container w3-center" style="width:100%;">
-            <div style="width:60%;">
+            <div style="width:100%;">
                 <div class="w3-card">
                     <table>
                         <tr>
@@ -58,20 +61,28 @@
                             <th>Representan</th>
                         </tr>
                         <tr>
-                            <td><table><tr><td>0</td><td>+0</td><td>-0</td></tr></table></td>
-                            <td>0</td>
+                            <td><table><tr><td>'Hola Mundo'</td><td>"Hola Mundo"</td></tr></table></td>
+                            <td>Hola Mundo</td>
                         </tr>
                         <tr>
-                            <td><table><tr><td>127</td><td>+127</td></tr></table></td>
-                            <td>127</td>
-                          </tr>
+                            <td><table><tr><td>' '</td><td>" "</td></tr></table></td>
+                            <td>Un espacio vacio</td>
+                        </tr>
                         <tr>
-                            <td>-32768</td>
-                            <td>-32768</td>
+                            <td><table><tr><td>''</td><td>""</td></tr></table></td>
+                            <td>Cadena vacia (sin caracteres)</td>
+                        </tr>
+                        <tr>
+                            <td>"Tabulado\t y nueva \n línea"</td>
+                            <td>Tabulado&nbsp;&nbsp;&nbsp;&nbsp; y nueva<br>línea</td>
+                        </tr>
+                        <tr>
+                            <td>"Unicode \u9730"</td>
+                            <td>Unicode &#9730;</td>
                         </tr>
                     </table>        
                     <div class="w3-container">
-                        <h4>Tabla. Literales para algunos números enteros en Python.</h4>
+                        <h4>Tabla. Literales para algunas cadenas en Python.</h4>
                     </div>
                 </div>
             </div>
@@ -89,7 +100,7 @@
             var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:fit;'}]}
             var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;'}]}
             var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
-                [{'name':'main.py','content':'i = 0\nj : int = 1\nn : int = -10'}], {'header':{'title':"Ambiente de desarrollo"}, 'layout':'row', 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
+                [{'name':'main.py','content':'nombre = "Jonatan"\napellidos : str = "Gómez Perdomo"\nprofesion : str = "Ingeniero de Sistemas"'}], {'header':{'title':"Ambiente de desarrollo"}, 'layout':'row', 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
     
             
             var control = {'plugin':'split', 'setup':['coderviewer', 'col', 50, left, viewer, {'style':'width:100%;height:100%;'}]}

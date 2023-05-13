@@ -6,10 +6,10 @@
             ["input", "", "Entrada"]
             ], false, true],
         ["type","", "Tipos", {}, [
+            ["str", "", "Cadenas"],
             ["integer", "", "Enteros"],
             ["real", "", "Reales"],
-            ["char", "", "Caracter"],
-            ["stringb", "", "Cadenas"],
+            ["complex", "", "Complejos"],
             ["bool", "", "Booleanos"]
             ], false, true], 
         ["var", "", "Variables"],

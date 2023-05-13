@@ -2,8 +2,9 @@
     "topic":{
         "home":"computer/program/python/intro.html",
         "print":"computer/program/python/print.html",
-        "input":"computer/program/python/input.html",
-        "type":"computer/program/python/type.html",
+        "io":"computer/program/python/io.html",
+            "input":"computer/program/python/input.html",
+            "type":"computer/program/python/type.html",
             "integer":"computer/program/python/integer.html",
             "real":"computer/program/python/real.html",
             "char":"",
@@ -38,6 +39,7 @@
     },
     "basic":[
         "home",
+        "io",
         "print",
         "input",
         "type",

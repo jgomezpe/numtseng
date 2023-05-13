@@ -4,7 +4,7 @@
         ["io","","E/S por Consola", {}, [
             ["print", "", "Salida"],
             ["input", "", "Entrada"]
-            ], false, false],
+            ], false, true],
         ["type","", "Tipos", {}, [
             ["integer", "", "Enteros"],
             ["real", "", "Reales"],

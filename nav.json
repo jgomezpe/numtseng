@@ -10,8 +10,16 @@
             "next":{"basic":"math", "medium":"welldefined"}, 
             "prev":"home" 
         },
-        "welldefined":"welldefined",
-        "problem":"problem",
+        "welldefined":{ 
+            "url":"general/learn/welldefined.html", 
+            "next":{"basic":"math", "medium":"problem"}, 
+            "prev":"learn" 
+        },
+        "problem":{ 
+            "url":"general/problem/intro.html", 
+            "next":"math", 
+            "prev":{"basic":"learn", "medium":"welldefined"} 
+        },
         "math":"*",
         "python":"*",
         "quilt":"*",

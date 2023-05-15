@@ -98,20 +98,20 @@
                 ["print", "fa fa-desktop"],
                 ["input", "fa fa-keyboard-o"]
                 ], false, true],
-            ["type","U+1d54B", {}, [
-                ["str", "U+1d54A"],
-                ["integer", "U+2124"],
-                ["real", "U+211D"],
-                ["complex", "U+2102"],
-                ["bool", "U+1D539"]
+            ["type","&#x1d54b;", {}, [
+                ["str", "&#1d54a;"],
+                ["integer", "&#x2124;"],
+                ["real", "&#x211D;"],
+                ["complex", "&#x2102;"],
+                ["bool", "&#x1d539;"] 
                 ], false, true], 
             ["var", ""],
             ["id", ""],
             ["expr", "fa fa-subscript", {}, [
                 ["numeric", "fa fa-plus"],
-                ["relational", "U+02264"],
-                ["logic", "U+02227"],
-                ["eval", "U+00192"]
+                ["relational", "&#x2264;"],
+                ["logic", "&#x2227;"],
+                ["eval", "&#x0192;"]
                 ], false, true],
             ["control", "fa fa-sliders", {}, [
                 ["condition", "fa fa-code-fork fa-rotate-90", {}, [
@@ -125,10 +125,10 @@
                     ["dowhile", ""]
                     ], false, true]
                 ], true, true],
-            ["function", "U+00192"],
+            ["function", "&#x0192;"],
             ["recursion", ""],
             ["structure", "fa fa-object-group", {}, [
-                ["string", "U+1d54A"],
+                ["string", "&#x1d54a;"],
                 ["tuple", "fa fa-close"],
                 ["list", "fa fa-list-ol"],
                 ["array", "fa fa-ellipsis-h"],

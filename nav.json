@@ -81,31 +81,6 @@
             ["about", "fa fa-info-circle"]
         ],
 
-        "advanced":[
-            ["home", "fa fa-home"],	
-            ["learn", "fa fa-paw", {}, 
-                [
-                    ["welldefined", "fa fa-edit"],
-                    ["problem", "fa fa-question-circle-o"]
-                ], 
-                true, true
-            ],	
-            ["math", "fa fa-superscript"],
-            ["computer", "fa fa-desktop", {}, 
-                [
-                    ["languages",  "", {}, 
-                        [
-                            ["python", "fa fa-edit"],
-                            ["quilt", "fa fa-th"],
-                            ["toyplus", "fa fa-plus"]
-                        ], 
-                        false, false
-                    ],
-                    ["konekti", "fa fa-cubes"]
-                ], false, false
-            ],
-            ["playlist", "fa fa-video-camera"],
-            ["about", "fa fa-info-circle"]
-        ]
+        "advanced":"medium"
     }    
 }

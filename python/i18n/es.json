@@ -1,56 +1,58 @@
 {
-    "toc":[
-        ["home","","Introducción"],
-        ["io","","E/S por Consola", {}, [
-            ["print", "", "Salida"],
-            ["input", "", "Entrada"]
-            ], false, true],
-        ["type","", "Tipos", {}, [
-            ["str", "", "Cadenas"],
-            ["integer", "", "Enteros"],
-            ["real", "", "Reales"],
-            ["complex", "", "Complejos"],
-            ["bool", "", "Booleanos"]
-            ], false, true], 
-        ["var", "", "Variables"],
-        ["id", "", "Identificadores"], 
-        ["expr", "", "Expresiones", {}, [
-            ["numeric", "", "Numéricas"],
-            ["relational", "", "Relacionales"],
-            ["logic", "", "Lógicas"],
-            ["eval", "", "Evaluación"]
-            ], false, true],
-        ["function", "", "Funciones"],
-        ["condition", "", "Condicionales", {}, [
-            ["if", "", "Solo si"],
-            ["ifelse", "", "Si, sino"],
-            ["elif", "", "Si, sinosi, sino"]
-            ], false, true],
-        ["loop", "", "Ciclos", {}, [
-            ["for", "", "Para"], 
-            ["while", "", "Mientras"],
-            ["dowhile", "", "Hacer mientras"]
-        ], false, true],  
-        ["recursion", "", "Recursión"],
-        ["string", "", "Cadenas"],
-        ["tuple", "", "Tuplas"],
-        ["list", "", "Listas"],
-        ["array", "", "Arreglos"],
-        ["matrix", "", "Matrices"],
-        ["dict", "", "Diccionarios"],
-        ["file", "", "Archivos"],
-        ["json", "", "JSON"],
-        ["module", "", "Módulos"]
-    ],    
+    "title":"Python en Numtseng: La Escuela de Python del Profesor Jonatan Gómez Perdomo",
+    "developed":"Desarrollado por el profesor Jonatan Gómez Perdomo (jgomezpe@unal.edu.co)",
     "navbar":{
-        "left":"Tema previo",
-        "right":"Tema siguiente",
-        "up": "Tema padre",
-        "down": "Tema hijo",
+        "left":"Al tema previo",
+        "right":"Al siguiente tema",
+        "level":"Nivel del contenido",
+        "levels":{
+            "basic":"Básico",
+            "medium":"Medio",
+            "advanced":"Avanzado"
+        },
         "language":"Idiomas"
     },
-    "language":"Idioma",
-    "title":"Escuela de Python",
+    "toc":{
+        "home":"Introducción",
+        "io":"Console I/O",
+        "print":"Salida",
+        "input":"Entrada",
+        "type":"Tipos de datos",
+        "str":"Cadenas",
+        "integer":"Enteros",
+        "real":"Reales",
+        "complex":"Complejos",
+        "boolean":"Booleanos",
+        "var":"Variables",
+        "id":"Identificadores",
+        "expr":"Expresiones",
+        "numeric":"Numéricas",
+        "relational":"Relacionales",
+        "logic":"Lógicas",
+        "eval":"Evaluación",
+        "control":"Control",
+        "condition":"Condicionales",
+        "if":"Solo si",
+        "ifelse":"Si, sino",
+        "elif":"Si, sino si, sino",
+        "loop":"Ciclos",
+        "for":"Para",
+        "while":"Mientras",
+        "dowhile":"Hacer mientras",
+        "function":"Funciones",
+        "recursion":"Recursión",
+        "structure":"Estructuras",
+        "string":"Cadenas",
+        "tuple":"Tuplas",
+        "list":"Listas",
+        "array":"Arreglos",
+        "matrix":"Matrices",
+        "dictionary":"Diccionarios",
+        "file":"Archivos",
+        "JSON":"JSON",
+        "module":"Módulos",
+        "about":"Acerca de"
+    },  
     "run":"Ejecutar",
     "stop":"Parar"
 }

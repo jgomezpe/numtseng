@@ -1,17 +1,66 @@
 {
     "topic":{
-        "home":"computer/program/python/intro.html",
-        "print":"computer/program/python/print.html",
-        "io":"computer/program/python/io.html",
-            "input":"computer/program/python/input.html",
-            "type":"computer/program/python/type.html",
-            "str":"computer/program/python/str.html",
-            "integer":"computer/program/python/integer.html",
-            "real":"computer/program/python/real.html",
-            "complex":"",
-            "bool":"",
-        "var":"computer/program/python/var.html",
-        "id":"computer/program/python/id.html",
+        "numtseng":"/",
+        "home":{
+            "url":"computer/program/python/intro.html",
+            "prev":"numtseng",
+            "next":"io"
+        },
+        "io":{
+            "url":"computer/program/python/io.html",
+            "prev":"home",
+            "next":"print"
+        },
+        "print":{
+            "url":"computer/program/python/print.html",
+            "prev":"io",
+            "next":"input"
+        },
+        "input":{
+            "ulr":"computer/program/python/input.html",
+            "prev":"print",
+            "next":"type"
+        },
+        "type":{
+            "url":"computer/program/python/type.html",
+            "prev":"input",
+            "next":"str"
+        },
+        "str":{
+            "url":"computer/program/python/str.html",
+            "prev":"type",
+            "next":"integer"
+        },
+        "integer":{
+            "url":"computer/program/python/integer.html",
+            "prev":"str",
+            "next":"real"
+        },
+        "real":{
+            "url":"computer/program/python/real.html",
+            "prev":"integer",
+            "next":"complex"
+        },
+        "complex":{
+            "url":"computer/program/python/complex.html",
+            "prev":"real",
+            "next":"boolean"
+        },
+        "boolean":{
+            "url":"",
+            "prev":"complex",
+            "next":"var"
+        },
+        "var":{
+            "url":"computer/program/python/var.html",
+            "prev":"boolean",
+            "next":"id"
+        },
+        "id":{
+            "url":"computer/program/python/id.html",
+            "prev":"var",
+            "next":"expr"
+        },
         "expr":"",
             "numeric":"",
             "relational":"",
@@ -37,16 +86,57 @@
     "recursion":"",
     "module":""
     },
-    "basic":[
-        "home",
-        "io",
-        "print",
-        "input",
-        "type",
-        "str",
-        "integer",
-        "real",
-        "var",
-        "id"
-    ]
+
+    "levels":{
+        "basic":[
+            ["home",""],
+            ["io","", {}, [
+                ["print", ""],
+                ["input", ""]
+                ], false, true],
+            ["type","", {}, [
+                ["str", ""],
+                ["integer", ""],
+                ["real", ""],
+                ["complex", ""],
+                ["bool", ""]
+                ], false, true], 
+            ["var", ""],
+            ["id", ""],
+            ["expr", "", {}, [
+                ["numeric", ""],
+                ["relational", ""],
+                ["logic", ""],
+                ["eval", ""]
+                ], false, true],
+            ["control", "", {}, [
+                ["condition", "", {}, [
+                    ["if", ""],
+                    ["ifelse", ""],
+                    ["elif", ""]
+                    ], false, true],
+                ["loop", "", {}, [
+                    ["for", ""], 
+                    ["while", ""],
+                    ["dowhile", ""]
+                    ], false, true]
+                ], true, true],
+            ["function", ""],
+            ["recursion", ""],
+            ["structure", "", {}, [
+                ["string", ""],
+                ["tuple", ""],
+                ["list", ""],
+                ["array", ""],
+                ["matrix", ""],
+                ["dictionary", ""]
+                ], true, true],
+            ["file", ""],
+            ["json", ""],
+            ["module", ""],
+            ["about", "fa fa-info-circle"]
+        ],
+        "medium":"basic",
+        "advanced":"basic"
+    }    
 }

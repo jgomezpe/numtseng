@@ -99,7 +99,7 @@
                 ["input", "fa fa-keyboard-o"]
                 ], false, true],
             ["type","&#x1d54b;", {}, [
-                ["str", "&#1d54a;"],
+                ["str", "&#x1d54a;"],
                 ["integer", "&#x2124;"],
                 ["real", "&#x211D;"],
                 ["complex", "&#x2102;"],

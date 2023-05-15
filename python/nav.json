@@ -39,7 +39,7 @@
         "real":{
             "url":"computer/program/python/real.html",
             "prev":"integer",
-            "next":"complex"
+            "next":"var"
         },
         "complex":{
             "url":"notfound.html"
@@ -54,8 +54,7 @@
         },
         "id":{
             "url":"computer/program/python/id.html",
-            "prev":"var",
-            "next":"expr"
+            "prev":"var"
         },
         "expr":{
             "url":"notfound.html"

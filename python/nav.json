@@ -93,51 +93,51 @@
 
     "levels":{
         "basic":[
-            ["home",""],
-            ["io","", {}, [
-                ["print", ""],
-                ["input", ""]
+            ["home","fa fa-home"],
+            ["io","fa fa-comments-o", {}, [
+                ["print", "fa fa-desktop"],
+                ["input", "fa fa-keyboard-o"]
                 ], false, true],
-            ["type","", {}, [
-                ["str", ""],
-                ["integer", ""],
-                ["real", ""],
-                ["complex", ""],
-                ["bool", ""]
+            ["type","U+1d54B", {}, [
+                ["str", "U+1d54A"],
+                ["integer", "U+2124"],
+                ["real", "U+211D"],
+                ["complex", "U+2102"],
+                ["bool", "U+1D539"]
                 ], false, true], 
             ["var", ""],
             ["id", ""],
-            ["expr", "", {}, [
-                ["numeric", ""],
-                ["relational", ""],
-                ["logic", ""],
-                ["eval", ""]
+            ["expr", "fa fa-subscript", {}, [
+                ["numeric", "fa fa-plus"],
+                ["relational", "U+02264"],
+                ["logic", "U+02227"],
+                ["eval", "U+00192"]
                 ], false, true],
-            ["control", "", {}, [
-                ["condition", "", {}, [
+            ["control", "fa fa-sliders", {}, [
+                ["condition", "fa fa-code-fork fa-rotate-90", {}, [
                     ["if", ""],
                     ["ifelse", ""],
                     ["elif", ""]
                     ], false, true],
-                ["loop", "", {}, [
+                ["loop", "fa fa-spinner", {}, [
                     ["for", ""], 
                     ["while", ""],
                     ["dowhile", ""]
                     ], false, true]
                 ], true, true],
-            ["function", ""],
+            ["function", "U+00192"],
             ["recursion", ""],
-            ["structure", "", {}, [
-                ["string", ""],
-                ["tuple", ""],
-                ["list", ""],
-                ["array", ""],
-                ["matrix", ""],
-                ["dictionary", ""]
+            ["structure", "fa fa-object-group", {}, [
+                ["string", "U+1d54A"],
+                ["tuple", "fa fa-close"],
+                ["list", "fa fa-list-ol"],
+                ["array", "fa fa-ellipsis-h"],
+                ["matrix", "fa fa-th"],
+                ["dictionary", "fa fa-list"]
                 ], true, true],
-            ["file", ""],
+            ["file", "fa fa-file-o"],
             ["json", ""],
-            ["module", ""],
+            ["module", "fa fa-cubes"],
             ["about", "fa fa-info-circle"]
         ],
         "medium":"basic",

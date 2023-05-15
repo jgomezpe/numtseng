@@ -17,7 +17,7 @@
             "next":"input"
         },
         "input":{
-            "ulr":"computer/program/python/input.html",
+            "url":"computer/program/python/input.html",
             "prev":"print",
             "next":"type"
         },

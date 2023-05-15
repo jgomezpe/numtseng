@@ -81,7 +81,6 @@ class KMain extends MainClient{
 
 function gui(level, dict, navigation){
     function TOC(toc){
-        console.log(toc)
         for(var i=0; i<toc.length; i++){
             toc[i].splice(2,0,dict.toc[toc[i][0]])
             if(Array.isArray(toc[i][4])) toc[i][4] = TOC(toc[i][4])

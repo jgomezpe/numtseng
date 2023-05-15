@@ -103,7 +103,7 @@
                 ["integer", "&#x2124;"],
                 ["real", "&#x211D;"],
                 ["complex", "&#x2102;"],
-                ["bool", "&#x1d539;"] 
+                ["boolean", "&#x1d539;"] 
                 ], false, true], 
             ["var", "<i>x</i>"],
             ["id", "fa fa-info"],

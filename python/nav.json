@@ -42,14 +42,10 @@
             "next":"complex"
         },
         "complex":{
-            "url":"computer/program/python/complex.html",
-            "prev":"real",
-            "next":"boolean"
+            "url":"notfound.html"
         },
         "boolean":{
-            "url":"",
-            "prev":"complex",
-            "next":"var"
+            "url":"notfound.html"
         },
         "var":{
             "url":"computer/program/python/var.html",
@@ -61,30 +57,84 @@
             "prev":"var",
             "next":"expr"
         },
-        "expr":"",
-            "numeric":"",
-            "relational":"",
-            "logic":"",
-        "eval":"",
-        "function":"",
-        "condition":"",
-            "if":"",
-            "ifelse":"",
-            "elif":"",
-        "loop":"",
-            "for":"",
-            "while":"",
-            "dowhile":"",
-        "string":"",
-        "tuple":"",
-        "list":"",
-        "array":"",
-        "matrix":"",
-        "dict":"",
-        "file":"",
-        "json":"",
-        "recursion":"",
-        "module":"",
+        "expr":{
+            "url":"notfound.html"
+        },
+            "numeric":{
+                "url":"notfound.html"
+            },
+            "relational":{
+                "url":"notfound.html"
+            },
+            "logic":{
+                "url":"notfound.html"
+            },
+            "eval":{
+                "url":"notfound.html"
+            },
+        "control":{
+                "url":"notfound.html"
+        },
+            "condition":{
+                "url":"notfound.html"
+            },
+                "if":{
+                    "url":"notfound.html"
+                },
+                "ifelse":{
+                    "url":"notfound.html"
+                },
+                "elif":{
+                    "url":"notfound.html"
+                },
+            "loop":{
+                "url":"notfound.html"
+            },
+                "for":{
+                    "url":"notfound.html"
+                },
+                "while":{
+                    "url":"notfound.html"
+                },
+                "dowhile":{
+                    "url":"notfound.html"
+                },
+        "function":{
+            "url":"notfound.html"
+        },
+        "recursion":{
+            "url":"notfound.html"
+        },
+        "structure":{
+            "url":"notfound.html"
+        },
+            "string":{
+                "url":"notfound.html"
+            },
+            "tuple":{
+                "url":"notfound.html"
+            },
+            "list":{
+                "url":"notfound.html"
+            },
+            "array":{
+                "url":"notfound.html"
+            },
+            "matrix":{
+                "url":"notfound.html"
+            },
+            "dict":{
+                "url":"notfound.html"
+            },
+        "file":{
+            "url":"notfound.html"
+        },
+        "json":{
+            "url":"notfound.html"
+        },
+        "module":{
+            "url":"notfound.html"
+        },
         "about":{
             "url":"general/about.html",
             "prev":"module"

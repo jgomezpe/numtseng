@@ -105,8 +105,8 @@
                 ["complex", "&#x2102;"],
                 ["bool", "&#x1d539;"] 
                 ], false, true], 
-            ["var", ""],
-            ["id", ""],
+            ["var", "<i>x</i>"],
+            ["id", "fa fa-info"],
             ["expr", "fa fa-subscript", {}, [
                 ["numeric", "fa fa-plus"],
                 ["relational", "&#x2264;"],

@@ -2,21 +2,21 @@
 {
     "topic":{
         "home":{ 
-            "url":"general/intro.html", 
+            "url":"intro.html", 
             "next":"learn" 
         }, 
         "learn":{ 
-            "url":"general/learn/intro.html", 
+            "url":"learn/intro.html", 
             "next":{"basic":"math", "medium":"welldefined"}, 
             "prev":"home" 
         },
         "welldefined":{ 
-            "url":"general/learn/welldefined.html", 
+            "url":"learn/welldefined.html", 
             "next":{"basic":"math", "medium":"problem"}, 
             "prev":"learn" 
         },
         "problem":{ 
-            "url":"general/problem/intro.html", 
+            "url":"problem/intro.html", 
             "next":"math", 
             "prev":{"basic":"learn", "medium":"welldefined"} 
         },
@@ -27,7 +27,7 @@
         "konekti":"*",
         "playlist":"*",
         "about":{
-            "url":"general/about.html",
+            "url":"about.html",
             "prev":"playlist"
         }
     },

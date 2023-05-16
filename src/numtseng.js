@@ -1,13 +1,15 @@
-let RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
+let ABSOLUTE_RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
+let RELATIVE_RES_URL = ""
 let SERVER_URL = "https://numtseng.com/" // Change this to your server name
 let PARENT = ''
 let MAIN = ''
 let ICON = ''
 
-function numtseng(parent='', main='', icon=''){
+function numtseng(parent='', main='', rel_url='/general/', icon=''){
     PARENT = parent 
     MAIN = main
     ICON = icon
+    RELATIVE_RES_URL=rel_url
     Konekti.uses('sidebar') 
 }
 
@@ -19,6 +21,12 @@ class KMain extends MainClient{
         this.level = level
         this.i18n = i18n
         this.navigation = navigation
+    }
+
+    getLevel(obj, level){
+        if(obj[level] !== undefined) return obj[level]
+        if(level=='advanced') return this.getLevel(obj,'medium')
+        return this.getLevel(obj, 'basic')
     }
 
     select(page){
@@ -36,25 +44,34 @@ class KMain extends MainClient{
             Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
                 console.log(page)
                 console.log(x.navigation.topic)
-                var vlo = x.navigation.topic[page].url
-                if(typeof vlo==="string"){ vlo = {"url":vlo}}
-                var url = vlo.url
-                if(!url.startsWith("https://")) url = RES_URL + 'vlo/' + x.lang + '/' + url
-                var c = '?'
-                if(vlo.params !== undefined){
-                    for( var p in x.i18n[vlo.params] ){
-                        url += c + p + '=' + x.i18n[vlo.params][p]
-                        c = '&'
-                    }
-                }
-                url += c + 'level=' + x.level
                 var btn = Konekti.vc("prev")
                 if(x.navigation.topic[page].prev !== undefined) btn.className = btn.className.replace(" w3-disabled", "")
                 else btn.className += " w3-disabled"
                 btn = Konekti.vc("next")
                 if(x.navigation.topic[page].next !== undefined) btn.className = btn.className.replace(" w3-disabled", "")
                 else btn.className += " w3-disabled"
-                Konekti.client['vlo'].setText(url)
+
+                var vlo = x.navigation.topic[page].url
+                if(typeof vlo==="string"){ vlo = {"basic":vlo}}
+                vlo = x.getLevel(vlo, x.level)
+                if(typeof vlo==="string"){ vlo = {"url":vlo}}
+
+                url = vlo.url
+                if(!url.startsWith("https://")){
+                    var RES_URL = ''
+                     if(!url.startsWith('/')){
+                        RES_URL = RELATIVE_RES_URL
+                    }
+                    url = ABSOLUTE_RES_URL + 'vlo/' + x.lang + RES_URL + url
+                }
+                var c = '?'
+                if(vlo.params !== undefined){
+                    for( var p in x.i18n[vlo.params] ){
+                        url += c + p + '=' + x.i18n[vlo.params][p]
+                        c = '&'
+                    }
+                    Konekti.client['vlo'].setText(url)
+                }else Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(url) })
             })						
         }
     }
@@ -69,13 +86,13 @@ class KMain extends MainClient{
     prev(){
         var t = this.navigation.topic[this.page].prev
         if(typeof t == 'string') this.select(t)
-        else this.select(t[this.level]) 
+        else this.select(t[this.getLevel(t,this.level)]) 
     }
 
     next(){ 
         var t = this.navigation.topic[this.page].next
         if(typeof t == 'string') this.select(t)
-        else this.select(t[this.level]) 
+        else this.select(t[this.getLevel(t,this.level)]) 
     }
 }
 

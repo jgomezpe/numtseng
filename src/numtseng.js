@@ -56,7 +56,7 @@ class KMain extends MainClient{
                 vlo = x.getLevel(vlo, x.level)
                 if(typeof vlo==="string"){ vlo = {"url":vlo}}
 
-                url = vlo.url
+                var url = vlo.url
                 if(!url.startsWith("https://")){
                     var RES_URL = ''
                     if(!url.startsWith('/')){

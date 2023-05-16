@@ -91,6 +91,7 @@ class KMain extends MainClient{
 
     next(){ 
         var t = this.navigation.topic[this.page].next
+        console.log(t)
         if(typeof t == 'string') this.select(t)
         else this.select(t[this.getLevel(t,this.level)]) 
     }

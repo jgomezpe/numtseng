@@ -42,8 +42,6 @@ class KMain extends MainClient{
             Konekti.dom.setURLSearchParam('lang',x.lang)
 
             Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
-                console.log(page)
-                console.log(x.navigation.topic)
                 var btn = Konekti.vc("prev")
                 if(x.navigation.topic[page].prev !== undefined) btn.className = btn.className.replace(" w3-disabled", "")
                 else btn.className += " w3-disabled"
@@ -86,14 +84,13 @@ class KMain extends MainClient{
     prev(){
         var t = this.navigation.topic[this.page].prev
         if(typeof t == 'string') this.select(t)
-        else this.select(t[this.getLevel(t,this.level)]) 
+        else this.select(this.getLevel(t,this.level)) 
     }
 
     next(){ 
         var t = this.navigation.topic[this.page].next
-        console.log(t)
         if(typeof t == 'string') this.select(t)
-        else this.select(t[this.getLevel(t,this.level)]) 
+        else this.select(this.getLevel(t,this.level)) 
     }
 }
 

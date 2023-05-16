@@ -11,7 +11,7 @@
             "prev":"home" 
         },
         "welldefined":{ 
-            "url":"learn/welldefined.html", 
+            "url":{"basic":"learn/welldefined.html", "medium":"learn/medium/welldefined.html"}, 
             "next":{"basic":"math", "medium":"problem"}, 
             "prev":"learn" 
         },

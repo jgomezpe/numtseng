@@ -59,7 +59,7 @@ class KMain extends MainClient{
                 url = vlo.url
                 if(!url.startsWith("https://")){
                     var RES_URL = ''
-                     if(!url.startsWith('/')){
+                    if(!url.startsWith('/')){
                         RES_URL = RELATIVE_RES_URL
                     }
                     url = ABSOLUTE_RES_URL + 'vlo/' + x.lang + RES_URL + url
@@ -142,13 +142,13 @@ function KonektiMain(){
         if(dict===undefined || dict===null){
             if(lang!='es'){
                 lang = 'es'
-                Konekti.resource.JSON(RES_URL+PARENT+MAIN+'i18n/es.json', callback)
+                Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'i18n/es.json', callback)
             }else alert('Page not found')	
         }else{
             // With a valid dictionary we must set the web title
             document.title = dict.title
             // and bring the navigation
-            Konekti.resource.JSON(RES_URL+PARENT+MAIN+'nav.json', function(navigation){
+            Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'nav.json', function(navigation){
                 // With the navigation information create the gui and init the main client
                 if(navigation.levels[level]===undefined) level='advanced'
                 var client = new KMain(lang, level, dict, navigation)
@@ -158,5 +158,5 @@ function KonektiMain(){
         }
     }
 
-    Konekti.resource.JSON(RES_URL+PARENT+MAIN+'i18n/'+lang+'.json', callback)
+    Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'i18n/'+lang+'.json', callback)
 }

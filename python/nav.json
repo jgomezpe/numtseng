@@ -2,141 +2,86 @@
     "topic":{
         "numtseng":"/",
         "home":{
-            "url":"computer/program/python/intro.html",
+            "url":"intro.html",
             "prev":"numtseng",
             "next":"io"
         },
         "io":{
-            "url":"computer/program/python/io.html",
+            "url":"io.html",
             "prev":"home",
             "next":"print"
         },
         "print":{
-            "url":"computer/program/python/print.html",
+            "url":"print.html",
             "prev":"io",
             "next":"input"
         },
         "input":{
-            "url":"computer/program/python/input.html",
+            "url":"input.html",
             "prev":"print",
             "next":"type"
         },
         "type":{
-            "url":"computer/program/python/type.html",
+            "url":"type.html",
             "prev":"input",
             "next":"str"
         },
         "str":{
-            "url":"computer/program/python/str.html",
+            "url":"str.html",
             "prev":"type",
             "next":"integer"
         },
         "integer":{
-            "url":"computer/program/python/integer.html",
+            "url":"integer.html",
             "prev":"str",
             "next":"real"
         },
         "real":{
-            "url":"computer/program/python/real.html",
+            "url":"real.html",
             "prev":"integer",
             "next":"var"
         },
-        "complex":{
-            "url":"notfound.html"
-        },
-        "boolean":{
-            "url":"notfound.html"
-        },
+        "complex":{},
+        "boolean":{},
         "var":{
-            "url":"computer/program/python/var.html",
+            "url":"var.html",
             "prev":"boolean",
             "next":"id"
         },
         "id":{
-            "url":"computer/program/python/id.html",
-            "prev":"var"
+            "url":"id.html",
+            "prev":"var",
+            "next":"about"
         },
-        "expr":{
-            "url":"notfound.html"
-        },
-            "numeric":{
-                "url":"notfound.html"
-            },
-            "relational":{
-                "url":"notfound.html"
-            },
-            "logic":{
-                "url":"notfound.html"
-            },
-            "eval":{
-                "url":"notfound.html"
-            },
-        "control":{
-                "url":"notfound.html"
-        },
-            "condition":{
-                "url":"notfound.html"
-            },
-                "if":{
-                    "url":"notfound.html"
-                },
-                "ifelse":{
-                    "url":"notfound.html"
-                },
-                "elif":{
-                    "url":"notfound.html"
-                },
-            "loop":{
-                "url":"notfound.html"
-            },
-                "for":{
-                    "url":"notfound.html"
-                },
-                "while":{
-                    "url":"notfound.html"
-                },
-                "dowhile":{
-                    "url":"notfound.html"
-                },
-        "function":{
-            "url":"notfound.html"
-        },
-        "recursion":{
-            "url":"notfound.html"
-        },
-        "structure":{
-            "url":"notfound.html"
-        },
-            "string":{
-                "url":"notfound.html"
-            },
-            "tuple":{
-                "url":"notfound.html"
-            },
-            "list":{
-                "url":"notfound.html"
-            },
-            "array":{
-                "url":"notfound.html"
-            },
-            "matrix":{
-                "url":"notfound.html"
-            },
-            "dict":{
-                "url":"notfound.html"
-            },
-        "file":{
-            "url":"notfound.html"
-        },
-        "json":{
-            "url":"notfound.html"
-        },
-        "module":{
-            "url":"notfound.html"
-        },
+        "expr":{},
+            "numeric":{},
+            "relational":{},
+            "logic":{},
+            "eval":{},
+        "control":{},
+            "condition":{},
+                "if":{},
+                "ifelse":{},
+                "elif":{},
+            "loop":{},
+                "for":{},
+                "while":{},
+                "dowhile":{},
+        "function":{},
+        "recursion":{},
+        "structure":{},
+            "string":{},
+            "tuple":{},
+            "list":{},
+            "array":{},
+            "matrix":{},
+            "dict":{},
+        "file":{},
+        "json":{},
+        "module":{},
         "about":{
             "url":"general/about.html",
-            "prev":"module"
+            "prev":"id"
         }
     },
 

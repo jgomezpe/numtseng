@@ -50,6 +50,7 @@ class KMain extends MainClient{
                 else btn.className += " w3-disabled"
 
                 var vlo = x.navigation.topic[page].url
+                if(vlo===undefined) vlo = "/notfound.html"
                 if(typeof vlo==="string"){ vlo = {"basic":vlo}}
                 vlo = x.getLevel(vlo, x.level)
                 if(typeof vlo==="string"){ vlo = {"url":vlo}}

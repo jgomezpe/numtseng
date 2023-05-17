@@ -118,7 +118,7 @@
 		function KonektiMain(){
             var audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", "https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/print.mp3"]}
             var text = {'plugin':'latex', 'setup':["info", Konekti.vc('hiddeninfo').innerHTML, {'style':'width:100%;height:fit;'}]}
-            var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;'}]}
+            var left = {'plugin':'raw', 'setup':['explain', [/*audio,*/text], {'style':'width:100%;height:100%;', 'overflow':'auto'}]}
             var viewer = {'plugin':'python', 'setup':["viewer", "https://numtseng.com/server/", 
                 [{'name':'main.py','content':'nombre = "Jonatan Gómez Perdomo"\nprint("Un gusto", nombre)\nedad=15\nprint("Tu edad es ",n,"!! no me lo creo.")\ndinero=100.2\nprint("Ganas solo", dinero, "!!")\nmentira=False\nprint("Para mi lo que dices es", mentira, " ja ja ja")'}], {'header':{'title':"Ambiente de desarrollo"}, 'layout':'row', 'terminal':{'class':' w3-black '}, 'main':{'style':'width:100%;height:100%;'}}]}
     

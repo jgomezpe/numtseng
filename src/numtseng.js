@@ -69,7 +69,7 @@ class KMain extends MainClient{
                         c = '&'
                     }
                     Konekti.client['vlo'].setText(url)
-                }else Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(url) })
+                }else Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(txt) })
             })						
         }
     }

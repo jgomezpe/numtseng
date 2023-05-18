@@ -50,7 +50,6 @@ class KMain extends MainClient{
                 else btn.className += " w3-disabled"
 
                 var vlo = x.navigation.topic[page].url
-                if(vlo===undefined) vlo = "/notfound.html"
                 if(typeof vlo==="string"){ vlo = {"basic":vlo}}
                 vlo = x.getLevel(vlo, x.level)
                 if(typeof vlo==="string"){ vlo = {"url":vlo}}
@@ -65,6 +64,7 @@ class KMain extends MainClient{
                 }
                 var c = '?'
                 if(vlo.params !== undefined){
+                    console.log('params..')
                     for( var p in x.i18n[vlo.params] ){
                         url += c + p + '=' + x.i18n[vlo.params][p]
                         c = '&'

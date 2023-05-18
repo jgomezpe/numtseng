@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title>Numtseng: Well defined</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/page.js'></script> 
     <style>
         .hidden {
             visibility: hidden;
@@ -28,26 +29,10 @@
         definitions take in consideration our intuitive understanding about things.
     </div>
     </div>
+
     <script>
-        Konekti.uses('hypermedia')
-
-        class TheClient extends MainClient{
-            constructor(){ super() }
-            basic(){ return {"info":[[593,861,""],[1247,1389,""]]} }
-            medium(){ return {} }
-            advanced(){ return {} }
-        }
-
-        function KonektiMain(){
-            var text = Konekti.vc('hiddeninfo').innerHTML
-            text = {'plugin':'latex', 'setup':["info", text, {'style':'width:100%;height:fit;'}]}
-            var audio = null //{'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", audio]}
-            var control = (audio!=null)?[audio,text]:[text]
-            var control = {'plugin':'raw', 'setup':['explain', control, {'style':'width:100%;height:100%;'}]}
-            var scripts = null
-
-            Konekti.hypermedia('book', control, 'mediacontrol', scripts, {'style':'width:100%;height:100%;'})            
-        }        
+        //basic(){ return {"info":[[593,861,""],[1247,1389,""]]} }
+        page()
     </script>
 </body>
 </html>

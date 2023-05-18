@@ -6,7 +6,7 @@ function python(vlo){
 }
 
 function KonektiMain(){
-    var text = {'plugin':'latex', 'setup':["info", VLO.info, {'width':'100%', 'height':'fit', 'overflow':'auto'}]}
+    var text = {'plugin':'latex', 'setup':["info", VLO.info, {'width':'100%', 'height':'fit'}]}
     var audio = VLO.audio
     if(audio!==undefined) audio = {'plugin':'media', 'setup':["mediacontrol", "audio", "mp3", VLO.audio]}
     var left = (audio!=undefined)?[audio,text]:[text]

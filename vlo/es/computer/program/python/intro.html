@@ -50,12 +50,11 @@
         Podemos seguir el contenido como una presentación dinámica si un botón de tocar <i class='fa fa-play'></i> 
         aparece en la parte superior izquierda de la página.
         <br><br>
-    </div>       
-       
-    </div>    
+    </div>
+    </div>
+        
 	<script>
         python({
-            "info":Konekti.vc('hiddeninfo').innerHTML,
             "audio":"https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3",
             "scripts":[
                 {"target":"info", "mark":[
@@ -79,11 +78,7 @@
                     {"time":50, "replace":[]}
                 ]}
             ],
-            "modules":[{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}],
-            "ide":{
-                "server":"https://numtseng.com/server/",
-                "title":"Ambiente de desarrollo"
-            }
+            "modules":[{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}]
         })
 	</script>
 </body>

@@ -1,6 +1,12 @@
 let VLO = ''
 
 function python(vlo){
+    vlo.ide={
+        "server":"https://numtseng.com/server/",
+        "title":"Ambiente de desarrollo"
+    }
+    vlo.info=Konekti.vc('hiddeninfo').innerHTML
+
     VLO = vlo
     Konekti.uses('hypermedia')
 }

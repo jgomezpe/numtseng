@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Numtseng: Escuela de Python</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/numtseng/src/python.js'></script> 
+    <style>
+        .hidden {
+            visibility: hidden;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+</head>
+    
+<body>        
+    <div id='hiddeninfo' class="hidden">
+    <div id='infotext'>
+        En Python, la aproximación al conjunto de los complejos usa el literal <i>complex</i>. Decimos 
+        que es una aproximación pues el conjunto de los complejos es infinito e idéntico al plano cartesiano, 
+        mientras que en un computador contamos con una cantidad finita (por lo tanto discreta) de espacio (memoria) 
+        para representarlos. Si quieres saber más del conjunto de los números complejos sigue este 
+        <a href="https://nutmseng.com/math/index.html/page=complex&lang=es&level=medium" target="_blank">enlace</a>
+        que trata el tema del conjunto de los complejos \(\mathbb{C}\) en Numtseng: La Escuela de Matemáticas.
+        <br><br>
+        Si queremos que una variable, por ejemplo \(z\), sea de tipo complejo, esto es (\(z \in \mathbb{C}\)), 
+        en Python la declaramos como <i>z:float</i>. Cuando declaramos una variable debemos iniciarla con 
+        algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>x</i> 
+        pero la iniciamos con el valor complejo <i>3.0+4.0i</i>, por lo que implícitamente la estamos declarando de 
+        tipo complejo. En la línea 2 estamos declarando a la variable <i>y</i> de tipo complejo y le estamos
+        dando un valor inicial de -1.5-4i. En la línea 3, estamos declarando la variable <i>z</i> de tipo complejo 
+        y le estamos dando un valor inicial de 50000.0+2i (\(5e4 = 5*10^{4} = 5*10000 = 50000.0\)). Las línes 4-6 
+        imprimen en consola los números complejos.
+        <br><br>
+        En Python, un literal para números reales usa notación científica. Por ejemplo, los siguientes son 
+        literales válidos en Python para representar números reales:
+        <div class="w3-container w3-center" style="width:100%;">
+            <div class="w3-card">
+                <table>
+                    <tr>
+                        <th>Literales</th>
+                        <th>Representan</th>
+                    </tr>
+                    <tr>
+                        <td><table><tr><td>3j</td><td>+3.0j</td><td>0.0+3j</td></tr></table></td>
+                        <td>0.0+3i</td>
+                    </tr>
+                    <tr>
+                        <td><table><tr><td>127.4-2j</td><td>+127.4-2j</td></tr></table></td>
+                        <td>127.4+2i</td>
+                        </tr>
+                    <tr>
+                        <td><table><tr><td>5.0e4-8j</td><td>5e4-8j</td><td>+5.0E4-8.0j</td></tr></table></td>
+                        <td>50000.0-8.0i</td>
+                    </tr>
+                    <tr>
+                        <td><table><tr><td>5.0e-4+2e3j</td><td>5e-4+2000j</td><td>+5.0E-4+2E3j</td></tr></table></td>
+                        <td>0.0005+2000i</td>
+                    </tr>
+                </table>        
+                <div class="w3-container">
+                    <h5>Tabla. Literales para algunos números reales en Python.</h5>
+                </div>
+            </div>
+        </div> 
+    </div>
+    </div>
+
+	<script>
+        python({
+            "modules":[{'name':'main.py','content':'x = 3+4j\ny : complex = -1.5-4j\nz : complex = 5e4+2i\nprint(x)\nprint(y)\nprint(z)'}]
+        })
+	</script>
+</body>
+</html>

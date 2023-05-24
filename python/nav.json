@@ -39,9 +39,13 @@
         "real":{
             "url":"real.html",
             "prev":"integer",
+            "next":"complex"
+        },
+        "complex":{
+            "url":"complex.html",
+            "prev":"real",
             "next":"var"
         },
-        "complex":{},
         "boolean":{},
         "var":{
             "url":"var.html",

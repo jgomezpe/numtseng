@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>undefined</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/numtseng/src/python.js'></script> 
+    <style>
+        .hidden {
+            visibility: hidden;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+        }
+        </style>
+</head>
+    
+<body>        
+    <div id='hiddeninfo' class="hidden">
+    <div id='infotext'>
+        Una <b>expresión numérica</b> se define para realizar cálculos sobre tipos de datos numéricos 
+        (enteros, reales y complejos) que puedan ser descritos mediante los siguientes operadores: 
+        <ul>
+            <li><b>Suma (+):</b></li>
+            <li><b>Resta (-):</b></li>
+            <li><b>Multiplicación (*):</b></li>
+            <li><b>División (/):</b></li>
+            <li><b>Potencia (**):</b></li>
+            <li><b>Piso de la división (//):</b></li>
+            <li><b>Residuo de la división entera - módulo (%):</b></li>
+        </ul>
+        <br><br>
+        Los paréntesis, el signo .
+    </div>       
+    </div>
+
+	<script>
+        python({
+            "modules":[{'name':'main.py',
+            'content':'a = 5.0\nb = -3.0\nc = a+b\nprint(c)\n#d = a + "Hola Mundo"'}]
+        })
+	</script>
+</body>
+</html>

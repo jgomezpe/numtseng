@@ -33,7 +33,7 @@
 <body>        
     <div id='hiddeninfo' class="hidden">
     <div id='infotext'>
-        En Python, la aproximación al conjunto de los complejos usa el literal <i>complex</i>. Decimos 
+        En Python, la aproximación al conjunto de los complejos usamos la función <i>complex</i>. Decimos 
         que es una aproximación pues el conjunto de los complejos es infinito e idéntico al plano cartesiano, 
         mientras que en un computador contamos con una cantidad finita (por lo tanto discreta) de espacio (memoria) 
         para representarlos. Si quieres saber más del conjunto de los números complejos sigue este 
@@ -41,7 +41,8 @@
         que trata el tema del conjunto de los complejos \(\mathbb{C}\) en Numtseng: La Escuela de Matemáticas.
         <br><br>
         Si queremos que una variable, por ejemplo \(z\), sea de tipo complejo, esto es (\(z \in \mathbb{C}\)), 
-        en Python la declaramos como <i>z:float</i>. Cuando declaramos una variable debemos iniciarla con 
+        en Python la declaramos como <i>z = complex(x,y)</i>, con <i>x</i> la parte real y <i>y</i> la parte
+        imaginaria. Cuando declaramos una variable debemos iniciarla con 
         algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>x</i> 
         pero la iniciamos con el valor complejo <i>3.0+4.0i</i>, por lo que implícitamente la estamos declarando de 
         tipo complejo. En la línea 2 estamos declarando a la variable <i>y</i> de tipo complejo y le estamos
@@ -50,8 +51,7 @@
         imprimen en consola los números complejos.
         <br><br>
         En Python, un literal para números complejos usa notación científica tanto para la parte real como para la
-        parte imaginaria del número. Por ejemplo, los siguientes son literales válidos en Python para representar 
-        números complejos:
+        parte imaginaria del número. Por ejemplo, los siguientes son literales válidos en Python para representar números complejos:
         <div class="w3-container w3-center" style="width:100%;">
             <div class="w3-card">
                 <table>
@@ -77,16 +77,19 @@
                     </tr>
                 </table>        
                 <div class="w3-container">
-                    <h5>Tabla. Literales para algunos números reales en Python.</h5>
+                    <h5>Tabla. Literales para algunos números complejos en Python.</h5>
                 </div>
             </div>
         </div> 
+        <br>
+        En una charla informal, Guido van Rossum explico que decidió usar la letra <i>j</i> en lugar de la usual 
+        <i>i</i> para la parte imaginaria:".. la letra ‘i’ y la mayúscula ‘I’ se parecen mucho a un dígito. ..".
     </div>
     </div>
 
 	<script>
         python({
-            "modules":[{'name':'main.py','content':'x = 3+4j\ny : complex = -1.5-4j\nz : complex = 5e4+2i\nprint(x)\nprint(y)\nprint(z)'}]
+            "modules":[{'name':'main.py','content':'x = 3+4j\ny = complex(-1.5,-4)\nz = complex(5e4,2)\nprint(x)\nprint(y)\nprint(z)'}]
         })
 	</script>
 </body>

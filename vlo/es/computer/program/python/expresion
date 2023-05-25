@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>undefined</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/numtseng/src/python.js'></script> 
+    <style>
+        .hidden {
+            visibility: hidden;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+        }
+        </style>
+</head>
+    
+<body>        
+    <div id='hiddeninfo' class="hidden">
+    <div id='infotext'>
+        Una <b>expresión</b> es una secuencia de literales, variables, operadores y llamados a funciones
+        que permite calcular un valor al aplicar las operaciones de acuerdo a su importancia relativa 
+        (importancia definida en términos de una prioridad) en <i>i)</i> los valores representados por 
+        los literales; <i>ii)</i> en los valores almacenados por las variables; y <i>iii)</i> en los 
+        valores obtenidos al evaluar los llamados de funciones que se encuentren en la expresión. 
+        <br><br>
+        Por ejemplo, en las líneas 1 y 2 del programa se definen (mediante una asignación), las variables
+        <i>a</i> y <i>b</i> con los valores <i>5.0</i> y <i>-3.0</i>, respectivamente, mientras que en la línea 3 
+        se están sumando los valores de dichas variables <i>a</i> y <i>b</i> y el resultado de dicha suma 
+        (expresión numérica) es almacenado en la variable <i>c</i> que es mostrado en consola en la línea 4.
+        <br><br>
+        Una de las condiciones que requiere una expresión para ser válida es que los tipos de los valores sobre los 
+        que se aplica un operador sean compatibles. Por ejemplo, un número entero puede ser sumado con un número real 
+        pues son tipos compatibles mediante la suma, pero un número y una cadena de caracteres no son compatibles
+        para la suma. Si borramos el símbolo de comentario (#) de la línea 5 y ejecutamos el programa nos muestra
+        un error indicándonos la incompatibilidad de tipos de datos.
+        <br><br>
+        En términos generales, una expresión en python se define en términos de cuatro tipos de expresiones básicas:
+        <ul>
+            <li>Expresiones numéricas</li>
+            <li>Expresiones relacionales</li>
+            <li>Expresiones lógicas</li>
+            <li>Expresiones de asignación</li>
+        </ul>
+    </div>       
+    </div>
+
+	<script>
+        python({
+            "modules":[{'name':'main.py',
+            'content':'a = 5.0\nb = -3.0\nc = a+b\nprint(c)\n#d = a + "Hola Mundo"'}]
+        })
+	</script>
+</body>
+</html>

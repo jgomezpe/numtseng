@@ -44,9 +44,13 @@
         "complex":{
             "url":"complex.html",
             "prev":"real",
+            "next":"boolean"
+        },
+        "boolean":{
+            "url":"boolean.html",
+            "prev":"complex",
             "next":"var"
         },
-        "boolean":{},
         "var":{
             "url":"var.html",
             "prev":"boolean",

@@ -5,7 +5,7 @@ let PARENT = ''
 let MAIN = ''
 let ICON = ''
 
-function numtseng(parent='', main='', rel_url='/general/', icon=''){
+function numtseng(main='', parent='', rel_url='/general/', icon=''){
     PARENT = parent 
     MAIN = main
     ICON = icon

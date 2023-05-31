@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+	<meta name="mobile-web-app-capable" content='yes'>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>Konekti Video</title>
+	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+	<script type='text/javascript' src='https://jgomezpe.github.io/base64/src/base64.js'></script> 
+</head>
+
+<body>
+
+<script>
+
+Konekti.uses('header','navbar', 'canvas')
+
+/*
+ * Environment (Cannot be modified or any of its attributes accesed directly)
+ */
+ class Environment extends MainClient{
+	constructor(){ 
+        super()
+        this.board = new Board()
+    }
+
+    encode(){
+        var str = Konekti.vc('in').value
+        var encoder=new TextEncoder()
+        var data = encoder.encode(str)
+        Konekti.vc('out').innerHTML = "<p>Original text: " + str + "</p>" +
+        "<p>Byte array representing the string (blob): " + data + "</p>" +
+        "<p>Base64: " + Base64.encode(data) + "</p>" +
+        "<p>Using atob method directly: " + Base64.atob(str) + "</p>"
+    }
+
+    decode(){
+        var str = Konekti.vc('in').value
+        var data = Base64.decode(str)
+        var decoder = new TextEncoder()
+        Konekti.vc('out').innerHTML = "<p>Original base64: " + str + "</p>" +
+        "<p>Decoded byte array (blob): " + data + "</p>" +
+        "<p>Decoded: " + decoder.decode(data) + "</p>" +
+        "<p>Using btoa method directly: " + Base64.btoa(str) + "</p>"
+    }
+
+}
+
+// Main function using the Konekti infrastructure
+function KonektiMain(){
+	Konekti.header('title', '', 'Base 64', 3, {'class':'w3-black w3-center'} )
+	// Connects the video with the HTML component
+	var btn2=[
+		{'plugin':'raw', 'setup':["in", '', {'tag':'input', 'width':'150px', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge",
+			'placeholder':"To Encode", 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]},
+        {'plugin':'btn', 'setup':["play","fa fa-arrow-down", 'Encode', {'client':'client', 'method':'encode'}]},
+		{'plugin':'btn', 'setup':["play","fa fa-arrow-up", 'Decode', {'client':'client', 'method':'decode'}]}
+ 	]		
+	Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'class':'w3-black w3-medium'}) 
+
+    Konekti.raw('out', '', {'width':'100%', 'height':'fit'} )
+}
+
+</script>
+
+</body>
+</html>

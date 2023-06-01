@@ -21,6 +21,7 @@ class KMain extends MainClient{
         this.level = level
         this.i18n = i18n
         this.navigation = navigation
+        this.gui()
     }
 
     getLevel(obj, level){
@@ -64,13 +65,12 @@ class KMain extends MainClient{
                 }
                 var c = '?'
                 if(vlo.params !== undefined){
-                    console.log('params..')
                     for( var p in x.i18n[vlo.params] ){
                         url += c + p + '=' + x.i18n[vlo.params][p]
                         c = '&'
                     }
-                    Konekti.client['vlo'].setText(url)
-                }else Konekti.resource.TXT(url, function(txt){ Konekti.client['vlo'].setText(txt) })
+                    x.seturl(url)
+                }else Konekti.resource.TXT(url, function(html){ x.setvlo(html) })
             })						
         }
     }
@@ -93,44 +93,56 @@ class KMain extends MainClient{
         if(typeof t == 'string') this.select(t)
         else this.select(this.getLevel(t,this.level)) 
     }
-}
 
-function gui(level, dict, navigation){
-    function TOC(toc){
-        for(var i=0; i<toc.length; i++){
-            toc[i].splice(2,0,dict.toc[toc[i][0]])
-            if(Array.isArray(toc[i][4])) toc[i][4] = TOC(toc[i][4])
+    seturl(url){ Konekti.client['vlo'].setText(url) }
+
+    setvlo(html){ Konekti.client['vlo'].setText(html) }
+
+    vlo(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
+
+    gui(){
+        var level=this.level
+        var dict=this.dict
+        var navigation=this.navigation
+
+        function TOC(toc){
+            for(var i=0; i<toc.length; i++){
+                toc[i].splice(2,0,dict.toc[toc[i][0]])
+                if(Array.isArray(toc[i][4])) toc[i][4] = TOC(toc[i][4])
+            }
+            return toc
         }
-        return toc
-    }
-
-    var toc = navigation.levels[level]
-    if(typeof toc == 'string') toc = navigation.levels[toc]
-    toc = TOC(toc)
-
-    toc = {'plugin':'toc', 'setup':['tockonekti', toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
-    var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
-        {"client":'client', "method":"language"}, {'width':'200px', 'title':'Selecting language'}]}
-    var levels = []
-    var i=0
-    for(var y in dict.navbar.levels){
-        levels[i] = [y, '', dict.navbar.levels[y]]
-        i++
-    }
-    var ld = {'plugin':'toc', 'setup': ['sel_level', levels,
-        {"client":'client', "method":"setlevel"}, {'width':'200px', 'title':'Selecting level'}]}	
-    var btn=[
-        {'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':dict.navbar.left}]},
-        {'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':dict.navbar.right}]},
-        {'plugin':'dropdown', 'setup':["dd4", "fa-sort-amount-asc", "", ld,{'title':dict.navbar.level}]},
-        {'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':dict.navbar.language}]}
-    ]
-    var title = {'plugin':'header', 'setup':['title',ICON, dict.title, 3, {'class':'w3-teal w3-center'}]}
-    var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
-    var control = {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]}
-    var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
-    Konekti.sidebar('root', toc, main, {'style':'width:100%;height:100%;'})	
+    
+        var toc = navigation.levels[level]
+        if(typeof toc == 'string') toc = navigation.levels[toc]
+        toc = TOC(toc)
+    
+        toc = {'plugin':'toc', 'setup':['tockonekti', toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
+        var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
+            {"client":'client', "method":"language"}, {'width':'200px', 'title':'Selecting language'}]}
+        var levels = []
+        var i=0
+        for(var y in dict.navbar.levels){
+            levels[i] = [y, '', dict.navbar.levels[y]]
+            i++
+        }
+        var ld = {'plugin':'toc', 'setup': ['sel_level', levels,
+            {"client":'client', "method":"setlevel"}, {'width':'200px', 'title':'Selecting level'}]}	
+        var btn=[
+            {'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':dict.navbar.left}]},
+            {'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':dict.navbar.right}]},
+            {'plugin':'dropdown', 'setup':["dd4", "fa-sort-amount-asc", "", ld,{'title':dict.navbar.level}]},
+            {'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':dict.navbar.language}]}
+        ]
+        var title = {'plugin':'header', 'setup':['title',ICON, dict.title, 3, {'class':'w3-teal w3-center'}]}
+        var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
+        var control = this.vlo()
+        var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
+        Konekti.sidebar('root', toc, main, {'style':'width:100%;height:100%;'})	
+    } 
 }
+
+let CLIENT = null 
 
 function KonektiMain(){
     var lang = Konekti.dom.getUserLanguage()
@@ -150,9 +162,9 @@ function KonektiMain(){
             Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'nav.json', function(navigation){
                 // With the navigation information create the gui and init the main client
                 if(navigation.levels[level]===undefined) level='advanced'
-                var client = new KMain(lang, level, dict, navigation)
+                if(CLIENT==null) CLIENT = function(lang, level, i18n, navigation){ return new KMain(lang, level, i18n, navigation) }
+                var client = CLIENT(lang, level, dict, navigation)
                 client.select(page)
-                gui(level, dict, navigation)
             })
         }
     }

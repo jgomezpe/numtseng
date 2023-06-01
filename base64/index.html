@@ -9,7 +9,7 @@
 	<meta http-equiv="Last-Modified" content="0">
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
-	<title>Konekti Video</title>
+	<title>Numtseng: Base64 encoder/decoder</title>
 	<script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
 	<script type='text/javascript' src='https://jgomezpe.github.io/base64/src/base64.js'></script> 
 </head>
@@ -23,11 +23,8 @@ Konekti.uses('header','navbar', 'canvas')
 /*
  * Environment (Cannot be modified or any of its attributes accesed directly)
  */
- class Environment extends MainClient{
-	constructor(){ 
-        super()
-        this.board = new Board()
-    }
+ class TheClient extends MainClient{
+	constructor(){ super() }
 
     encode(){
         var str = Konekti.vc('in').value
@@ -36,32 +33,43 @@ Konekti.uses('header','navbar', 'canvas')
         Konekti.vc('out').innerHTML = "<p>Original text: " + str + "</p>" +
         "<p>Byte array representing the string (blob): " + data + "</p>" +
         "<p>Base64: " + Base64.encode(data) + "</p>" +
-        "<p>Using atob method directly: " + Base64.atob(str) + "</p>"
+        "<p>Using atob method directly: " + Base64.atob(str) + "</p>" +
+        "<p>JAVASCRIPT CODE</p>"+
+        "var encoder = new TextEncoder() // To produce a blob from a string<br>"+
+        "var data = encoder.encode(str) // Getting the blob (uint8 array) representing the string<br>"+
+        "var enc = Base64.encode(data) // Encodes the blob <br>" +
+        "var enc2 = Base64.atob(str) // Encodes the string using the atob function (to a base64 string) <br>"
     }
 
     decode(){
         var str = Konekti.vc('in').value
         var data = Base64.decode(str)
-        var decoder = new TextEncoder()
+        var decoder = new TextDecoder()
         Konekti.vc('out').innerHTML = "<p>Original base64: " + str + "</p>" +
         "<p>Decoded byte array (blob): " + data + "</p>" +
         "<p>Decoded: " + decoder.decode(data) + "</p>" +
-        "<p>Using btoa method directly: " + Base64.btoa(str) + "</p>"
+        "<p>Using btoa method directly: " + Base64.btoa(str) + "</p>"+
+        "<p>JAVASCRIPT CODE</p>"+
+        "var data = Base64.decode(data) // Decodes the base64 string<br>" +
+        "var decoder = new TextDecoder() // To produce a string from a blob (uint8 array)<br>"+
+        "var dec = decoder.decode(data) // Getting the string representing the blob<br>"+
+        "var dec2 = Base64.btoa(str) // Decodes a base64 string using the btoa function (to a string)<br>"
     }
 
 }
 
 // Main function using the Konekti infrastructure
 function KonektiMain(){
-	Konekti.header('title', '', 'Base 64', 3, {'class':'w3-black w3-center'} )
+    var client = new TheClient()
+	Konekti.header('title', '', 'Base 64', 3, {'class':'w3-teal w3-center'} )
 	// Connects the video with the HTML component
 	var btn2=[
-		{'plugin':'raw', 'setup':["in", '', {'tag':'input', 'width':'150px', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge",
+		{'plugin':'raw', 'setup':["in", '', {'tag':'input', 'width':'200px', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge",
 			'placeholder':"To Encode", 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]},
         {'plugin':'btn', 'setup':["play","fa fa-arrow-down", 'Encode', {'client':'client', 'method':'encode'}]},
 		{'plugin':'btn', 'setup':["play","fa fa-arrow-up", 'Decode', {'client':'client', 'method':'decode'}]}
  	]		
-	Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'class':'w3-black w3-medium'}) 
+	Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'class':'w3-blue-grey w3-medium'}) 
 
     Konekti.raw('out', '', {'width':'100%', 'height':'fit'} )
 }

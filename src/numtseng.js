@@ -1,6 +1,6 @@
 let ABSOLUTE_RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
 let RELATIVE_RES_URL = ""
-let SERVER_URL = "https://numtseng.com/" // Change this to your server name
+let SERVER_URL = "https://numtseng.com/" // Change this to your server's name
 let PARENT = ''
 let MAIN = ''
 let ICON = ''
@@ -102,9 +102,8 @@ class KMain extends MainClient{
 
     gui(){
         var level=this.level
-        var dict=this.dict
+        var dict=this.i18n
         var navigation=this.navigation
-
         function TOC(toc){
             for(var i=0; i<toc.length; i++){
                 toc[i].splice(2,0,dict.toc[toc[i][0]])

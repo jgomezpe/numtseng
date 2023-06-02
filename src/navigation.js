@@ -1,10 +1,8 @@
 let ABSOLUTE_RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
 
 class Navigation{
-    constructor(client, lang, i18n, navigation){
+    constructor(client, navigation){
         this.client = client
-        this.lang = lang
-        this.i18n = i18n
         this.levels = navigation.levels
         this.tocs = navigation.tocs
         this.topics = navigation.topics
@@ -49,6 +47,7 @@ class Navigation{
         if(idx<this.levels.length){
             this.level = idx
             this.checkTopic()
+            this.client.setVLO(this.level, this.topic)
         }
     }
 
@@ -58,6 +57,7 @@ class Navigation{
         if(idx<this.topics.length){
             this.topic = idx
             this.checkTopic()
+            this.client.setVLO(this.level, this.topic)
         }
     }
 
@@ -87,4 +87,21 @@ class Navigation{
                 this.client.txt2vlo(html)
             })
     }
+}
+
+class NumtsengClient extends MainClient{
+    constructor(lang, level, i18n, navigation){
+        super()
+        this.page = ''
+        this.lang = lang
+        this.level = level
+        this.i18n = i18n
+        this.navigation = new Navigation(this, navigation)
+        this.gui()
+    }
+
+    setVLO(level, topic){
+        
+    }
+
 }

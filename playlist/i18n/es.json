@@ -1,34 +1,32 @@
 {
     "title":"Lista de Videos del Profesor Jonatan Gomez",
     "developed":"Desarrollado por el profesor Jonatan Gomez (jgomezpe@unal.edu.co)",
-    "toc":[
-        ["home", "fa fa-home", "Lista de videos"], 
-        ["unkids",  "fa-child", "Universidad Niños"],
-        ["programmer", "fa fa-laptop", "Programador", {}, 
-            [
-                ["programmerspath", "fa fa-map-signs",  "Camino"],
-                ["programmersawake", "fa fa-fire", "Despertar"]
-            ], false, false
-        ],    
-        ["ai",  "fa-magic", "I.A."],
-        ["aiindustry",  "fa-industry", "Industria 4.0"],
-        ["cyber", "fa fa-cloud", "Ciber espacio", {}, 
-            [
-                ["cyberspy", "fa fa-user-secret",  "Espionaje"],
-                ["cybercrime", "fa fa-bomb", "Crimen"],
-                ["cybersecurity", "fa fa-lock", "Seguridad"],
-                ["cybersuicide", "fa  fa-frown-o", "Suicidio"]
-            ], false, false
-        ],    
-        ["smartcity", "fa fa-map-signs",  "Ciudad inteligente"]
-    ],    
     "navbar":{
-        "left":"Tema previo",
-        "right":"Tema siguiente",
-        "up": "Tema padre",
-        "down": "Tema hijo",
+        "left":"Al tema previo",
+        "right":"Al siguiente tema",
+        "level":"Nivel del contenido",
+        "levels":{
+            "basic":"Básico",
+            "medium":"Medio",
+            "advanced":"Avanzado"
+        },
         "language":"Idiomas"
     },
+    "toc":{
+        "home":"Lista de videos", 
+        "unkids":"Universidad Niños",
+        "programmer":"Programador", 
+        "programmerspath":"Camino",
+        "programmersawake":"Despertar",
+        "ai":"I.A.",
+        "aiindustry":"Industria 4.0",
+        "cyber":"Ciber espacio", 
+        "cyberspy":"Espionaje",
+        "cybercrime":"Crimen",
+        "cybersecurity":"Seguridad",
+        "cybersuicide":"Suicidio",
+        "smartcity":"Ciudad inteligente"
+    },    
     "unkidsinfo":{
         "title":"UNiversidad%20de%20los%20Niños",
         "id":"rPjpA4sn7yI"

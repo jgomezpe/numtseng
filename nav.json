@@ -29,5 +29,6 @@
             ], true, false
         ],
         ["about", "fa fa-info-circle"]
-    ]
+    ],
+    "icon":"fa fa-university"
 }

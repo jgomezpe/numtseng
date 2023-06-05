@@ -3,12 +3,10 @@ let RELATIVE_RES_URL = ""
 let SERVER_URL = "https://numtseng.com/" // Change this to your server's name
 let PARENT = ''
 let MAIN = ''
-let ICON = ''
 
-function numtseng(main='', parent='', rel_url='/general/', icon=''){
+function numtseng(main='', parent='', rel_url='/general/'){
     PARENT = parent 
     MAIN = main
-    ICON = icon
     RELATIVE_RES_URL=rel_url
     Konekti.uses('sidebar') 
 }
@@ -21,7 +19,8 @@ class NumtsengClient extends MainClient{
         this.toc = config.toc
         this.i18n = i18n
         this.content = config.content
-        this.topi = -1
+        this.icon = config.icon || ''
+        this.topic = -1
         this.gui()
     }
 
@@ -97,7 +96,6 @@ class NumtsengClient extends MainClient{
     vlogui(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
 
     gui(){
-        var level=this.level
         var dict=this.i18n
         function TOC(toc){
             for(var i=0; i<toc.length; i++){
@@ -117,7 +115,7 @@ class NumtsengClient extends MainClient{
             {'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':dict.navbar.right}]},
             {'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':dict.navbar.language}]}
         ]
-        var title = {'plugin':'header', 'setup':['title',ICON, dict.title, 3, {'class':'w3-teal w3-center'}]}
+        var title = {'plugin':'header', 'setup':['title',this.icon, dict.title, 3, {'class':'w3-teal w3-center'}]}
         var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
         var control = this.vlogui()
         var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}

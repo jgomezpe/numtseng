@@ -1,5 +1,5 @@
 {
-    "topic":{
+    "content":{
         "home":"general/playlist.html",
         "unkids":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"},
         "programmerspath":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"},
@@ -12,17 +12,26 @@
         "cybersuicide":"https://television.unal.edu.co/detalle/internet-y-suicidio",
         "smartcity":"https://television.unal.edu.co/detalle/ciudades-inteligentes"
     },
-    "basic":[
-        "home",
-        "unkids",
-        "programmerspath",
-        "programmersawake",
-        "ai",
-        "aiindustry",
-        "cyberspy",
-        "cybercrime",
-        "cybersecurity",
-        "cybersuicide",
-        "smartcity"
-    ]
+    "toc":[
+        ["home", "fa fa-home"], 
+        ["unkids",  "fa-child"],
+        ["programmer", "fa fa-laptop", {}, 
+            [
+                ["programmerspath", "fa fa-map-signs"],
+                ["programmersawake", "fa fa-fire"]
+            ], false, false
+        ],    
+        ["ai",  "fa-magic"],
+        ["aiindustry",  "fa-industry"],
+        ["cyber", "fa fa-cloud", {}, 
+            [
+                ["cyberspy", "fa fa-user-secret"],
+                ["cybercrime", "fa fa-bomb"],
+                ["cybersecurity", "fa fa-lock"],
+                ["cybersuicide", "fa  fa-frown-o"]
+            ], false, false
+        ],    
+        ["smartcity", "fa fa-map-signs"]
+    ],
+    "icon":"fa fa-video-camera"
 }

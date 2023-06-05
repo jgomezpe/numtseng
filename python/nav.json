@@ -1,5 +1,5 @@
 {
-    "topic":[
+    "content":[
         {"id":"numtseng", "url":"/"},
         {"id":"home", "url":"intro.html"},
         {"id":"io", "url":"io.html"},
@@ -89,5 +89,6 @@
         ["json", ""],
         ["module", "fa fa-cubes"],
         ["about", "fa fa-info-circle"]
-    ]
+    ],
+    "icon":{"type":"img", "src":"https://jgomezpe.github.io/konekti/img/python.png"}
 }

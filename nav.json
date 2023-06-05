@@ -22,7 +22,7 @@
             ], 
             true, false
         ],
-        ["resources", "fa fa-desktop", {},
+        ["resources", "fa fa-wrench", {},
             [
                 ["konekti", "fa fa-cubes"],
                 ["playlist", "fa fa-video-camera"]

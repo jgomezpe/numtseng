@@ -16,7 +16,7 @@
         ["math", "fa fa-superscript"],
         ["programming", "fa fa-desktop", {}, 
             [
-                ["python", "fa fa-edit"],
+                ["python", {"type":"img", "src":"https://jgomezpe.github.io/konekti/img/python.png"}],
                 ["quilt", "fa fa-th"],
                 ["toyplus", "fa fa-plus"]
             ], 

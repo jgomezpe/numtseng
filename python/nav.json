@@ -1,152 +1,93 @@
 {
-    "topic":{
-        "numtseng":"/",
-        "home":{
-            "url":"intro.html",
-            "prev":"numtseng",
-            "next":"io"
-        },
-        "io":{
-            "url":"io.html",
-            "prev":"home",
-            "next":"print"
-        },
-        "print":{
-            "url":"print.html",
-            "prev":"io",
-            "next":"input"
-        },
-        "input":{
-            "url":"input.html",
-            "prev":"print",
-            "next":"type"
-        },
-        "type":{
-            "url":"type.html",
-            "prev":"input",
-            "next":"str"
-        },
-        "str":{
-            "url":"str.html",
-            "prev":"type",
-            "next":"integer"
-        },
-        "integer":{
-            "url":"integer.html",
-            "prev":"str",
-            "next":"real"
-        },
-        "real":{
-            "url":"real.html",
-            "prev":"integer",
-            "next":"complex"
-        },
-        "complex":{
-            "url":"complex.html",
-            "prev":"real",
-            "next":"boolean"
-        },
-        "boolean":{
-            "url":"boolean.html",
-            "prev":"complex",
-            "next":"var"
-        },
-        "var":{
-            "url":"var.html",
-            "prev":"boolean",
-            "next":"id"
-        },
-        "id":{
-            "url":"id.html",
-            "prev":"var",
-            "next":"expr"
-        },
-        "expr":{            
-            "url":"expression.html",
-            "prev":"id",
-            "next":"about"
-        },
-            "numeric":{},
-            "relational":{},
-            "logic":{},
-            "eval":{},
-        "control":{},
-            "condition":{},
-                "if":{},
-                "ifelse":{},
-                "elif":{},
-            "loop":{},
-                "for":{},
-                "while":{},
-                "dowhile":{},
-        "function":{},
-        "recursion":{},
-        "structure":{},
-            "string":{},
-            "tuple":{},
-            "list":{},
-            "array":{},
-            "matrix":{},
-            "dict":{},
-        "file":{},
-        "json":{},
-        "module":{},
-        "about":{
-            "url":"general/about.html",
-            "prev":"id"
-        }
-    },
+    "topic":[
+        {"id":"numtseng", "url":"/"},
+        {"id":"home", "url":"intro.html"},
+        {"id":"io", "url":"io.html"},
+        {"id":"print", "url":"print.html"},
+        {"id":"input" , "url":"input.html"},
+        {"id":"type", "url":"type.html"},
+        {"id":"str", "url":"str.html"},
+        {"id":"integer", "url":"integer.html"},
+        {"id":"real", "url":"real.html"},
+        {"id":"complex", "url":"complex.html"},
+        {"id":"boolean", "url":"boolean.html"},
+        {"id":"var", "url":"var.html"},
+        {"id":"id", "url":"id.html"},
+        {"id":"expr", "url":"expression.html"},
+        {"id":"numeric"},
+        {"id":"relational"},
+        {"id":"logic"},
+        {"id":"eval"},
+        {"id":"control"},
+        {"id":"condition"},
+        {"id":"if"},
+        {"id":"ifelse"},
+        {"id":"elif"},
+        {"id":"loop"},
+        {"id":"for"},
+        {"id":"while"},
+        {"id":"dowhile"},
+        {"id":"function"},
+        {"id":"recursion"},
+        {"id":"structure"},
+        {"id":"string"},
+        {"id":"tuple"},
+        {"id":"list"},
+        {"id":"array"},
+        {"id":"matrix"},
+        {"id":"dict"},
+        {"id":"file"},
+        {"id":"json"},
+        {"id":"module"},
+        {"id":"about", "url":"general/about.html"}
+    ],
 
-    "levels":{
-        "basic":[
-            ["home","fa fa-home"],
-            ["io","fa fa-comments-o", {}, [
-                ["print", "fa fa-desktop"],
-                ["input", "fa fa-keyboard-o"]
+    "toc":[
+        ["home","fa fa-home"],
+        ["io","fa fa-comments-o", {}, [
+            ["print", "fa fa-desktop"],
+            ["input", "fa fa-keyboard-o"]
+            ], false, true],
+        ["type","&#x1d54b;", {}, [
+            ["str", "&#x1d54a;"],
+            ["integer", "&#x2124;"],
+            ["real", "&#x211D;"],
+            ["complex", "&#x2102;"],
+            ["boolean", "&#x1d539;"] 
+            ], false, true], 
+        ["var", "<i>x</i>"],
+        ["id", "fa fa-info"],
+        ["expr", "fa fa-subscript", {}, [
+            ["numeric", "fa fa-plus"],
+            ["relational", "&#x2264;"],
+            ["logic", "&#x2227;"],
+            ["eval", "&#x0192;"]
+            ], false, true],
+        ["control", "fa fa-sliders", {}, [
+            ["condition", "fa fa-code-fork fa-rotate-90", {}, [
+                ["if", ""],
+                ["ifelse", ""],
+                ["elif", ""]
                 ], false, true],
-            ["type","&#x1d54b;", {}, [
-                ["str", "&#x1d54a;"],
-                ["integer", "&#x2124;"],
-                ["real", "&#x211D;"],
-                ["complex", "&#x2102;"],
-                ["boolean", "&#x1d539;"] 
-                ], false, true], 
-            ["var", "<i>x</i>"],
-            ["id", "fa fa-info"],
-            ["expr", "fa fa-subscript", {}, [
-                ["numeric", "fa fa-plus"],
-                ["relational", "&#x2264;"],
-                ["logic", "&#x2227;"],
-                ["eval", "&#x0192;"]
-                ], false, true],
-            ["control", "fa fa-sliders", {}, [
-                ["condition", "fa fa-code-fork fa-rotate-90", {}, [
-                    ["if", ""],
-                    ["ifelse", ""],
-                    ["elif", ""]
-                    ], false, true],
-                ["loop", "fa fa-spinner", {}, [
-                    ["for", ""], 
-                    ["while", ""],
-                    ["dowhile", ""]
-                    ], false, true]
-                ], true, true],
-            ["function", "&#x0192;"],
-            ["recursion", ""],
-            ["structure", "fa fa-object-group", {}, [
-                ["string", "&#x1d54a;"],
-                ["tuple", "fa fa-close"],
-                ["list", "fa fa-list-ol"],
-                ["array", "fa fa-ellipsis-h"],
-                ["matrix", "fa fa-th"],
-                ["dictionary", "fa fa-list"]
-                ], true, true],
-            ["file", "fa fa-file-o"],
-            ["json", ""],
-            ["module", "fa fa-cubes"],
-            ["about", "fa fa-info-circle"]
-        ],
-        "medium":"basic",
-        "advanced":"basic"
-    }    
+            ["loop", "fa fa-spinner", {}, [
+                ["for", ""], 
+                ["while", ""],
+                ["dowhile", ""]
+                ], false, true]
+            ], true, true],
+        ["function", "&#x0192;"],
+        ["recursion", ""],
+        ["structure", "fa fa-object-group", {}, [
+            ["string", "&#x1d54a;"],
+            ["tuple", "fa fa-close"],
+            ["list", "fa fa-list-ol"],
+            ["array", "fa fa-ellipsis-h"],
+            ["matrix", "fa fa-th"],
+            ["dictionary", "fa fa-list"]
+            ], true, true],
+        ["file", "fa fa-file-o"],
+        ["json", ""],
+        ["module", "fa fa-cubes"],
+        ["about", "fa fa-info-circle"]
+    ]
 }

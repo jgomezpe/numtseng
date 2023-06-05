@@ -25,6 +25,10 @@ class NumtsengClient extends MainClient{
         this.gui()
     }
 
+    url2vlo(url){ Konekti.client['vlo'].setText(url) }
+
+    txt2vlo(html){ Konekti.client['vlo'].setText(html) }
+
     iframe(t){
         if(t.params !== undefined){
             var url = t.url
@@ -40,7 +44,7 @@ class NumtsengClient extends MainClient{
     html(t){
         var x = this
         var url = t.url
-        Konekti.resource.TXT( url, function(html){ this.client.txt2vlo(html) })
+        Konekti.resource.TXT( url, function(html){ x.txt2vlo(html) })
     }
 
     VLO(){
@@ -90,10 +94,6 @@ class NumtsengClient extends MainClient{
 
     next(){ this.select(this.content[this.topic+1]) }
 
-    seturl(url){ Konekti.client['vlo'].setText(url) }
-
-    setvlo(html){ Konekti.client['vlo'].setText(html) }
-
     vlogui(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
 
     gui(){
@@ -112,8 +112,6 @@ class NumtsengClient extends MainClient{
         toc = {'plugin':'toc', 'setup':['tockonekti', toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
         var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
             {"client":'client', "method":"language"}, {'width':'200px', 'title':'Selecting language'}]}
-        var ld = {'plugin':'toc', 'setup': ['sel_level', levels,
-            {"client":'client', "method":"setlevel"}, {'width':'200px', 'title':'Selecting level'}]}	
         var btn=[
             {'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':dict.navbar.left}]},
             {'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':dict.navbar.right}]},
@@ -144,11 +142,10 @@ function KonektiMain(){
             // With a valid dictionary we must set the web title
             document.title = dict.title
             // and bring the navigation
-            Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'nav.json', function(navigation){
+            Konekti.resource.JSON(ABSOLUTE_RES_URL+PARENT+MAIN+'nav.json', function(config){
                 // With the navigation information create the gui and init the main client
-                if(navigation.levels[level]===undefined) level='advanced'
-                if(CLIENT==null) CLIENT = function(lang, level, i18n, navigation){ return new KMain(lang, level, i18n, navigation) }
-                var client = CLIENT(lang, level, dict, navigation)
+                if(CLIENT==null) CLIENT = function(lang, i18n, config){ return new NumtsengClient(lang, i18n, config) }
+                var client = CLIENT(lang, dict, config)
                 client.select(page)
             })
         }

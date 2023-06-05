@@ -6,11 +6,12 @@ let MAIN = ''
 
 function numtseng(main='', parent='', rel_url=''){
     PARENT = parent
-    if(PARENT.length>0 && !PARENT.endsWidth('/')) PARENT += '/'
+    if(PARENT.length>0 && !PARENT.endsWith('/')) PARENT += '/'
     MAIN = main
-    if(MAIN.length>0 && !MAIN.endsWidth('/')) MAIN += '/'
+    if(MAIN.length>0 && !MAIN.endsWith('/')) MAIN += '/'
     RELATIVE_RES_URL=rel_url
-    if(RELATIVE_RES_URL.length>0 && !RELATIVE_RES_URL.endsWidth('/')) RELATIVE_RES_URL += '/'
+    if(!RELATIVE_RES_URL.startsWith('/')) RELATIVE_RES_URL = '/' + RELATIVE_RES_URL
+    if(RELATIVE_RES_URL.length>0 && !RELATIVE_RES_URL.endsWith('/')) RELATIVE_RES_URL += '/'
     Konekti.uses('sidebar') 
 }
 
@@ -50,7 +51,7 @@ class NumtsengClient extends MainClient{
     }
 
     VLO(){
-        var t = (this.topic<this.content.length)?this.content[this.topic]:{'url':ABSOLUTE_RES_URL+'vlo/'+this.lang+'notfound.html'}
+        var t = (this.topic<this.content.length)?this.content[this.topic]:{'url':ABSOLUTE_RES_URL+'vlo/'+this.lang+'/notfound.html'}
         if(!t.url.startsWith("https://")){
             var RES_URL = '/'
             if(!t.url.startsWith('/')) RES_URL = RELATIVE_RES_URL
@@ -87,6 +88,9 @@ class NumtsengClient extends MainClient{
                     })
                 }
             }else{
+                x.topic = i
+                Konekti.dom.setURLSearchParam('page',page)
+                Konekti.dom.setURLSearchParam('lang',x.lang)
                 Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
 
                     var btn = Konekti.vc("prev")

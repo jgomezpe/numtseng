@@ -1,17 +1,17 @@
 {
-    "content":{
-        "home":"general/playlist.html",
-        "unkids":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"},
-        "programmerspath":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"},
-        "programmersawake":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progawakeinfo"},
-        "ai":"https://television.unal.edu.co/detalle/inteligencia-artificial",
-        "aiindustry":{"url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"aiindustryinfo"},
-        "cyberspy":"https://television.unal.edu.co/detalle/ciberespionaje",
-        "cybercrime":"https://television.unal.edu.co/detalle/seguridad-en-redes-sociales",
-        "cybersecurity":"https://periodico.unal.edu.co/articulos/ataques-ciberneticos-y-la-tarea-de-mitigar-riesgos",
-        "cybersuicide":"https://television.unal.edu.co/detalle/internet-y-suicidio",
-        "smartcity":"https://television.unal.edu.co/detalle/ciudades-inteligentes"
-    },
+    "content":[
+        {"id":"home", "url":"general/playlist.html"},
+        {"id":"unkids", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"},
+        {"id":"programmerspath", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"},
+        {"id":"programmersawake", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progawakeinfo"},
+        {"id":"ai", "url":"https://television.unal.edu.co/detalle/inteligencia-artificial"},
+        {"id":"aiindustry", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"aiindustryinfo"},
+        {"id":"cyberspy", "url":"https://television.unal.edu.co/detalle/ciberespionaje"},
+        {"id":"cybercrime", "url":"https://television.unal.edu.co/detalle/seguridad-en-redes-sociales"},
+        {"id":"cybersecurity", "url":"https://periodico.unal.edu.co/articulos/ataques-ciberneticos-y-la-tarea-de-mitigar-riesgos"},
+        {"id":"cybersuicide", "url":"https://television.unal.edu.co/detalle/internet-y-suicidio"},
+        {"id":"smartcity", "url":"https://television.unal.edu.co/detalle/ciudades-inteligentes"}
+    ],
     "toc":[
         ["home", "fa fa-home"], 
         ["unkids",  "fa-child"],

@@ -106,9 +106,9 @@ class NumtsengClient extends MainClient{
 
     language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
 
-    prev(){ this.select(this.content[this.topic-1]) }
+    prev(){ this.select(this.content[this.topic-1].id) }
 
-    next(){ this.select(this.content[this.topic+1]) }
+    next(){ this.select(this.content[this.topic+1].id) }
 
     vlogui(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
 

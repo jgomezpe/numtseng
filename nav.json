@@ -1,86 +1,33 @@
 
 {
-    "topic":{
-        "home":{ 
-            "url":"intro.html", 
-            "next":"learn" 
-        }, 
-        "learn":{ 
-            "url":"learn/intro.html", 
-            "next":{"basic":"math", "medium":"welldefined"}, 
-            "prev":"home" 
-        },
-        "welldefined":{ 
-            "url":{"basic":"learn/welldefined.html", "medium":"learn/medium/welldefined.html"}, 
-            "next":{"basic":"math", "medium":"problem"}, 
-            "prev":"learn" 
-        },
-        "problem":{ 
-            "url":"problem/intro.html", 
-            "next":"math", 
-            "prev":{"basic":"learn", "medium":"welldefined"} 
-        },
-        "math":"*",
-        "python":"*",
-        "quilt":"*",
-        "toyplus":"*",
-        "konekti":"*",
-        "playlist":"*",
-        "about":{
-            "url":"about.html",
-            "prev":"playlist"
-        }
-    },
+    "content":[
+        { "id": "home", "url":"intro.html" }, 
+        { "id": "math", "url":"*" },
+        { "id": "python", "url":"*" },
+        { "id": "quilt", "url":"*" },
+        { "id": "toyplus", "url":"*" },
+        { "id": "konekti", "url":"*" },
+        { "id": "playlist", "url":"*" },
+        { "id": "about", "url":"about.html" }
+    ],
 
-    "levels":{
-        "basic":[
-            ["home", "fa fa-home"],	
-            ["learn", "fa fa-paw"],	
-            ["math", "fa fa-superscript"],
-            ["computer", "fa fa-desktop", {}, 
-                [
-                    ["languages",  "", {}, 
-                        [
-                            ["python", "fa fa-edit"],
-                            ["quilt", "fa fa-th"],
-                            ["toyplus", "fa fa-plus"]
-                        ], 
-                        false, false
-                    ],
-                    ["konekti", "fa fa-cubes"]
-                ], false, false
-            ],
-            ["playlist", "fa fa-video-camera"],
-            ["about", "fa fa-info-circle"]
+    "toc":[
+        ["home", "fa fa-home"],	
+        ["math", "fa fa-superscript"],
+        ["programming", "fa fa-desktop", {}, 
+            [
+                ["python", "fa fa-edit"],
+                ["quilt", "fa fa-th"],
+                ["toyplus", "fa fa-plus"]
+            ], 
+            true, false
         ],
-
-        "medium":[
-            ["home", "fa fa-home"],	
-            ["learn", "fa fa-paw", {}, 
-                [
-                    ["welldefined", "fa fa-edit"],
-                    ["problem", "fa fa-question-circle-o"]
-                ], 
-                true, true
-            ],	
-            ["math", "fa fa-superscript"],
-            ["computer", "fa fa-desktop", {}, 
-                [
-                    ["languages",  "", {}, 
-                        [
-                            ["python", "fa fa-edit"],
-                            ["quilt", "fa fa-th"],
-                            ["toyplus", "fa fa-plus"]
-                        ], 
-                        false, false
-                    ],
-                    ["konekti", "fa fa-cubes"]
-                ], false, false
-            ],
-            ["playlist", "fa fa-video-camera"],
-            ["about", "fa fa-info-circle"]
+        ["resources", "fa fa-desktop", {},
+            [
+                ["konekti", "fa fa-cubes"],
+                ["playlist", "fa fa-video-camera"]
+            ], true, false
         ],
-
-        "advanced":"medium"
-    }    
+        ["about", "fa fa-info-circle"]
+    ]
 }

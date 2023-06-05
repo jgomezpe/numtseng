@@ -13,97 +13,92 @@ function numtseng(main='', parent='', rel_url='/general/', icon=''){
     Konekti.uses('sidebar') 
 }
 
-class KMain extends MainClient{
-    constructor(lang, level, i18n, navigation){
+class NumtsengClient extends MainClient{
+    constructor(lang, i18n, config){
         super()
         this.page = ''
         this.lang = lang
-        this.level = level
+        this.toc = config.toc
         this.i18n = i18n
-        this.navigation = navigation
+        this.content = config.content
+        this.topi = -1
         this.gui()
     }
 
-    getLevel(obj, level){
-        if(obj[level] !== undefined) return obj[level]
-        if(level=='advanced') return this.getLevel(obj,'medium')
-        return this.getLevel(obj, 'basic')
+    iframe(t){
+        if(t.params !== undefined){
+            var url = t.url
+            var c = '?'
+            for( var p in this.i18n[t.params] ){
+                url += c + p + '=' + this.i18n[t.params][p]
+                c = '&'
+            }
+            this.url2vlo(url)
+        }
+    }
+
+    html(t){
+        var x = this
+        var url = t.url
+        Konekti.resource.TXT( url, function(html){ this.client.txt2vlo(html) })
+    }
+
+    VLO(){
+        var t = this.content[this.topic]
+        if(!t.url.startsWith("https://")){
+            var RES_URL = ''
+            if(!t.url.startsWith('/')) RES_URL = RELATIVE_RES_URL
+            t.url = ABSOLUTE_RES_URL + 'vlo/' + this.lang + RES_URL + t.url
+        }
+        if(t.type === undefined){
+            if(t.url.indexOf('?')==-1 && t.params==null) t.type='html'
+            else t.type ='iframe'
+        }        
+        this[t.type](t)
     }
 
     select(page){
         var x = this
         if( x.page != page ){
-            x.page = page
-
-            if(x.navigation.topic[page] == "*") window.open(page+"/index.html?page=home&level="+x.level+"&lang="+x.lang, '_self')
-            if(x.navigation.topic[page] == "/") window.open(SERVER_URL+PARENT+"/index.html?page=home&level="+x.level+"&lang="+x.lang, '_self')
-
-            Konekti.dom.setURLSearchParam('page',page)
-            Konekti.dom.setURLSearchParam('level',x.level)
-            Konekti.dom.setURLSearchParam('lang',x.lang)
-
-            Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
-                var btn = Konekti.vc("prev")
-                if(x.navigation.topic[page].prev !== undefined) btn.className = btn.className.replace(" w3-disabled", "")
-                else btn.className += " w3-disabled"
-                btn = Konekti.vc("next")
-                if(x.navigation.topic[page].next !== undefined) btn.className = btn.className.replace(" w3-disabled", "")
-                else btn.className += " w3-disabled"
-
-                var vlo = x.navigation.topic[page].url
-                if(typeof vlo==="string"){ vlo = {"basic":vlo}}
-                vlo = x.getLevel(vlo, x.level)
-                if(typeof vlo==="string"){ vlo = {"url":vlo}}
-
-                var url = vlo.url
-                if(!url.startsWith("https://")){
-                    var RES_URL = ''
-                    if(!url.startsWith('/')){
-                        RES_URL = RELATIVE_RES_URL
-                    }
-                    url = ABSOLUTE_RES_URL + 'vlo/' + x.lang + RES_URL + url
+            var i=0
+            while(i<x.content.length && x.content[i].id!=page) i++
+            if(i<x.content.length){
+                x.page = page
+                x.topic = i
+                if(x.content[x.topic].url == "*") window.open(page+"/index.html?page=home&lang="+x.lang, '_self')
+                else if(x.content[x.topic].url == "/") window.open(SERVER_URL+PARENT+"/index.html?page=home&lang="+x.lang, '_self')
+                else{
+                    Konekti.dom.setURLSearchParam('page',page)
+                    Konekti.dom.setURLSearchParam('lang',x.lang)
+                    Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
+                        var btn = Konekti.vc("prev")
+                        if(x.topic>0) btn.className = btn.className.replace(" w3-disabled", "")
+                        else btn.className += " w3-disabled"
+                        btn = Konekti.vc("next")
+                        if(x.topic<x.content.length-1) btn.className = btn.className.replace(" w3-disabled", "")
+                        else btn.className += " w3-disabled"
+                        x.VLO()    
+                    })
                 }
-                var c = '?'
-                if(vlo.params !== undefined){
-                    for( var p in x.i18n[vlo.params] ){
-                        url += c + p + '=' + x.i18n[vlo.params][p]
-                        c = '&'
-                    }
-                    x.seturl(url)
-                }else Konekti.resource.TXT(url, function(html){ x.setvlo(html) })
-            })						
+            }
         }
     }
 
-    language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&level="+this.level+"&page="+this.page,"_self")	}
+    language(lang){	if( lang != this.lang ) window.open("index.html?lang="+lang+"&page="+this.page,"_self")	}
 
-    setlevel(level){
-        if( level != this.level ) window.open("index.html?lang="+this.lang+"&level="+level+"&page="+this.page,"_self")
-        else Konekti.client['dd4'].click()
-    }
+    prev(){ this.select(this.content[this.topic-1]) }
 
-    prev(){
-        var t = this.navigation.topic[this.page].prev
-        if(typeof t == 'string') this.select(t)
-        else this.select(this.getLevel(t,this.level)) 
-    }
-
-    next(){ 
-        var t = this.navigation.topic[this.page].next
-        if(typeof t == 'string') this.select(t)
-        else this.select(this.getLevel(t,this.level)) 
-    }
+    next(){ this.select(this.content[this.topic+1]) }
 
     seturl(url){ Konekti.client['vlo'].setText(url) }
 
     setvlo(html){ Konekti.client['vlo'].setText(html) }
 
-    vlo(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
+    vlogui(){ return {'plugin':'iframe', 'setup':['vlo', '', {'style':'width:100%;height:fit;'}]} }
 
     gui(){
         var level=this.level
         var dict=this.i18n
-        var navigation=this.navigation
         function TOC(toc){
             for(var i=0; i<toc.length; i++){
                 toc[i].splice(2,0,dict.toc[toc[i][0]])
@@ -112,30 +107,21 @@ class KMain extends MainClient{
             return toc
         }
     
-        var toc = navigation.levels[level]
-        if(typeof toc == 'string') toc = navigation.levels[toc]
-        toc = TOC(toc)
+        var toc = TOC(this.toc)
     
         toc = {'plugin':'toc', 'setup':['tockonekti', toc, {'client':'client', 'method':'select'}, {'style':'width:200px;'}]}
         var dd = {'plugin':'toc', 'setup': ['sel_lang', [['en','', "English"], ['es','',"Español"]],
             {"client":'client', "method":"language"}, {'width':'200px', 'title':'Selecting language'}]}
-        var levels = []
-        var i=0
-        for(var y in dict.navbar.levels){
-            levels[i] = [y, '', dict.navbar.levels[y]]
-            i++
-        }
         var ld = {'plugin':'toc', 'setup': ['sel_level', levels,
             {"client":'client', "method":"setlevel"}, {'width':'200px', 'title':'Selecting level'}]}	
         var btn=[
             {'plugin':'btn', 'setup':["prev","fa-arrow-left", '', {'client':'client'},{'title':dict.navbar.left}]},
             {'plugin':'btn', 'setup':["next","fa-arrow-right", '', {'client':'client'},{'title':dict.navbar.right}]},
-            {'plugin':'dropdown', 'setup':["dd4", "fa-sort-amount-asc", "", ld,{'title':dict.navbar.level}]},
             {'plugin':'dropdown', 'setup':["dd3", "fa-language", "", dd,{'title':dict.navbar.language}]}
         ]
         var title = {'plugin':'header', 'setup':['title',ICON, dict.title, 3, {'class':'w3-teal w3-center'}]}
         var navbar = {'plugin':'navbar', 'setup':['navbar', btn, '', {'class':'w3-blue-grey'}]}			
-        var control = this.vlo()
+        var control = this.vlogui()
         var main = {'plugin':'raw', 'setup':['main-content', [title,navbar,control], {'style':'width:100%;height:fit;'}]}
         Konekti.sidebar('root', toc, main, {'style':'width:100%;height:100%;'})	
     } 

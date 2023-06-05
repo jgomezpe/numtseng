@@ -1,6 +1,6 @@
 {
     "content":[
-        {"id":"home", "url":"general/playlist.html"},
+        {"id":"home", "url":"playlist.html"},
         {"id":"unkids", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"unkidsinfo"},
         {"id":"programmerspath", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progpathinfo"},
         {"id":"programmersawake", "url":"https://jgomezpe.github.io/numtseng/tools/youtube.html", "params":"progawakeinfo"},

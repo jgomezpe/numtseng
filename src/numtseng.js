@@ -1,13 +1,16 @@
 let ABSOLUTE_RES_URL = "https://jgomezpe.github.io/numtseng/" // Resources are stored in github
-let RELATIVE_RES_URL = ""
+let RELATIVE_RES_URL = "/"
 let SERVER_URL = "https://numtseng.com/" // Change this to your server's name
 let PARENT = ''
 let MAIN = ''
 
-function numtseng(main='', parent='', rel_url='/general/'){
-    PARENT = parent 
+function numtseng(main='', parent='', rel_url=''){
+    PARENT = parent
+    if(PARENT.length>0 && !PARENT.endsWidth('/')) PARENT += '/'
     MAIN = main
+    if(MAIN.length>0 && !MAIN.endsWidth('/')) MAIN += '/'
     RELATIVE_RES_URL=rel_url
+    if(RELATIVE_RES_URL.length>0 && !RELATIVE_RES_URL.endsWidth('/')) RELATIVE_RES_URL += '/'
     Konekti.uses('sidebar') 
 }
 
@@ -47,9 +50,9 @@ class NumtsengClient extends MainClient{
     }
 
     VLO(){
-        var t = this.content[this.topic]
+        var t = (this.topic<this.content.length)?this.content[this.topic]:{'url':ABSOLUTE_RES_URL+'vlo/'+this.lang+'notfound.html'}
         if(!t.url.startsWith("https://")){
-            var RES_URL = ''
+            var RES_URL = '/'
             if(!t.url.startsWith('/')) RES_URL = RELATIVE_RES_URL
             t.url = ABSOLUTE_RES_URL + 'vlo/' + this.lang + RES_URL + t.url
         }
@@ -83,6 +86,16 @@ class NumtsengClient extends MainClient{
                         x.VLO()    
                     })
                 }
+            }else{
+                Konekti.daemon( function(){ return Konekti.client['vlo'] !== undefined && Konekti.vc("prev")!=null }, function(){
+
+                    var btn = Konekti.vc("prev")
+                    btn.className += " w3-disabled"
+                    btn = Konekti.vc("next")
+                    btn.className += " w3-disabled"
+                    x.VLO()    
+                })
+
             }
         }
     }

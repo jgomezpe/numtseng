@@ -1,12 +1,23 @@
 let VLO = ''
 
+function modules(){
+    var m = []
+    const source = Konekti.vc('source')
+    for(var child in source.children) {
+        var c = child.innerHTML
+        c = c.substring(1,c.length)
+        m.append({"name":child.id+".py", "content":c});
+    }
+    return m
+}
+
 function python(vlo){
     vlo.ide={
         "server":"https://numtseng.com/server/",
         "title":"Ambiente de desarrollo"
     }
-    vlo.info=Konekti.vc('hiddeninfo').innerHTML
-
+    vlo.info=Konekti.vc('infotext').innerHTML
+    vlo.modules = modules()
     VLO = vlo
     Konekti.uses('hypermedia')
 }

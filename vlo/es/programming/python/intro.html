@@ -16,70 +16,76 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        ¡¡Bienvenido a la escuela de Python de Numtseng!!. 
-        <br><br>
-        En este curso aprenderemos los fundamentos del lenguaje de programación Python, el cual fue diseñado por Guido van Rossum con el fin de
-        facilitar la lectura de código fuente. Python es considerado un lenguaje multi-paradigma
-        pues soporta parcialmente la programación orientada a objetos, la programación imperativa y la programación funcional.
-        A diferencia de lenguajes como <i>C</i> o <i>Pascal</i>, Python es un lenguaje interpretado, esto es, se va ejecutando linea por linea el código.
-        <br><br>
-        El contenido del curso se presenta en un componente enriquecido con matemáticas y se usa el 
-        ambiente de programación de Python de Numtseng, disponible en la dirección <a href="https://numtseng.com/python/ide?lang=es" target="_blank">https://numtseng.com/python/ide</a>,
-        para escribir código.
-        <br><br>
-        Por ejemplo, en el programa:
-        <ul>
-            <li>Se imprime en consola el texto Hola Mundo (línea 1),</li>
-            <li>Se solicita al usuario que ingrese un nombre (línea 2),</li>
-            <li>y finalmente se muestra el nombre leido acompañado de un saludo (línea 3).</li>
-        </ul>
-        Para ejecutar el programa debemos seleccionar el botón <i class='fa fa-play'></i> del ambiente
-        y usar la consola para interactuar con el programa.
-        <br><br>
-        El curso está organizado en capítulos como un libro, los 
-        capítulos se desarrollan en secciones, las secciones en unidades y las unidades en sesiones.
-        Podemos navegar el curso mediante la tabla de contenidos ubicada a la izquierda 
-        (inicialmente oculta en pantallas de tamaño pequeño) o mediante los botones en la barra de navegacion:
-        <br><br>
-        <i class='fa fa-arrow-left'></i> para ir al tema anterior.
-        <br><br>
-        <i class='fa fa-arrow-right'></i> para ir al siguiente tema.
-        <br><br>
-        Podemos seguir el contenido como una presentación dinámica si un botón de tocar <i class='fa fa-play'></i> 
-        aparece en la parte superior izquierda de la página.
-        <br><br>
-    </div>
-    </div>
-        
-	<script>
-        python({
-            "audio":"https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/intro.mp3",
-            "scripts":[
-                {"target":"info", "mark":[
-                    {"time":0.1, "replace":[{"start":109, "text":"<br><br>"}]}, 
-                    {"time":2, "replace":[{"start":292, "text":"<br><br>"}]}, 
-                    {"time":10.5, "replace":[{"start":477, "text":"<br><br>"}]}, 
-                    {"time":19, "replace":[{"start":648, "text":"<br><br>"}]}, 
-                    {"time":26.5, "replace":[{"start":982, "text":"<br><br>"}]}, 
-                    {"time":41.5, "replace":[{"start":1019, "text":"<br><br>"}]}, 
-                    {"time":43.2, "replace":[{"start":1110, "text":"</ul><br><br>"}]}, 
-                    {"time":46.8, "replace":[{"start":1187, "text":"</ul><br><br>"}]}, 
-                    {"time":50, "replace":[{"start":1293, "text":"<br><br>"}]}, 
-                    {"time":54.2, "replace":[{"start":1473, "text":"<br><br>"}]}, 
-                    {"time":67, "replace":[{"start":1857, "text":"<br><br>"}]}, 
-                    {"time":83.2, "replace":[{"start":2027, "text":"<br><br>"}]}, 
-                    {"time":88, "replace":[]}
-                ]},
-                {"target":"viewermain.py", "mark":[
-                    {"time":43.2, "replace":[{"start":20, "text":""}]},
-                    {"time":46.8, "replace":[{"start":44, "text":""}]},
-                    {"time":50, "replace":[]}
-                ]}
-            ],
-            "modules":[{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}]
-        })
-	</script>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    ¡¡Bienvenido a la escuela de Python de Numtseng!!. 
+    <br><br>
+    En este curso aprenderemos los fundamentos del lenguaje de programación Python, el cual fue diseñado por Guido van Rossum con el fin de
+    facilitar la lectura de código fuente. Python es considerado un lenguaje multi-paradigma
+    pues soporta parcialmente la programación orientada a objetos, la programación imperativa y la programación funcional.
+    A diferencia de lenguajes como <i>C</i> o <i>Pascal</i>, Python es un lenguaje interpretado, esto es, se va ejecutando linea por linea el código.
+    <br><br>
+    El contenido del curso se presenta en un componente enriquecido con matemáticas y se usa el 
+    ambiente de programación de Python de Numtseng, disponible en la dirección <a href="https://numtseng.com/python/ide?lang=es" target="_blank">https://numtseng.com/python/ide</a>,
+    para escribir código.
+    <br><br>
+    Por ejemplo, en el programa:
+    <ul>
+        <li>Se imprime en consola el texto Hola Mundo (línea 1),</li>
+        <li>Se solicita al usuario que ingrese un nombre (línea 2),</li>
+        <li>y finalmente se muestra el nombre leido acompañado de un saludo (línea 3).</li>
+    </ul>
+    Para ejecutar el programa debemos seleccionar el botón <i class='fa fa-play'></i> del ambiente
+    y usar la consola para interactuar con el programa.
+    <br><br>
+    El curso está organizado en capítulos como un libro, los 
+    capítulos se desarrollan en secciones, las secciones en unidades y las unidades en sesiones.
+    Podemos navegar el curso mediante la tabla de contenidos ubicada a la izquierda 
+    (inicialmente oculta en pantallas de tamaño pequeño) o mediante los botones en la barra de navegacion:
+    <br><br>
+    <i class='fa fa-arrow-left'></i> para ir al tema anterior.
+    <br><br>
+    <i class='fa fa-arrow-right'></i> para ir al siguiente tema.
+    <br><br>
+    Podemos seguir el contenido como una presentación dinámica si un botón de tocar <i class='fa fa-play'></i> 
+    aparece en la parte superior izquierda de la página.
+    <br><br>
+</div>
+<div id="source">
+<div id="main">
+print("Hola Mundo!")
+x = input("Tu nombre?")
+print("Un gusto", x)   
+</div>
+</div>
+</div>
+    
+<script>
+    python({
+        "audio":"https://jgomezpe.github.io/numtseng/vlo/es/programming/python/intro.mp3",
+        "scripts":[
+            {"target":"info", "mark":[
+                {"time":0.1, "replace":[{"start":109, "text":"<br><br>"}]}, 
+                {"time":2, "replace":[{"start":292, "text":"<br><br>"}]}, 
+                {"time":10.5, "replace":[{"start":477, "text":"<br><br>"}]}, 
+                {"time":19, "replace":[{"start":648, "text":"<br><br>"}]}, 
+                {"time":26.5, "replace":[{"start":982, "text":"<br><br>"}]}, 
+                {"time":41.5, "replace":[{"start":1019, "text":"<br><br>"}]}, 
+                {"time":43.2, "replace":[{"start":1110, "text":"</ul><br><br>"}]}, 
+                {"time":46.8, "replace":[{"start":1187, "text":"</ul><br><br>"}]}, 
+                {"time":50, "replace":[{"start":1293, "text":"<br><br>"}]}, 
+                {"time":54.2, "replace":[{"start":1473, "text":"<br><br>"}]}, 
+                {"time":67, "replace":[{"start":1857, "text":"<br><br>"}]}, 
+                {"time":83.2, "replace":[{"start":2027, "text":"<br><br>"}]}, 
+                {"time":88, "replace":[]}
+            ]},
+            {"target":"viewermain.py", "mark":[
+                {"time":43.2, "replace":[{"start":20, "text":""}]},
+                {"time":46.8, "replace":[{"start":44, "text":""}]},
+                {"time":50, "replace":[]}
+            ]}
+        ]
+    })
+</script>
 </body>
 </html>

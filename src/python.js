@@ -6,7 +6,7 @@ function modules(){
     for(var i=0; i<source.children.length; i++) {
         var c = source.children[i].innerHTML
         c = c.substring(1,c.length)
-        m.append({"name":child.id+".py", "content":c});
+        m.append({"name":children.id+".py", "content":c});
     }
     return m
 }

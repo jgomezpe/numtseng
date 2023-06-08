@@ -16,34 +16,43 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        La función <i>input</i> nos permite leer valores ingresados por el usuario desde la consola. Estos valores los
-        recibe la función <i>input</i> como una cadena de caracteres apenas el usuario presione la tecla 
-        <i>enter</i> ($\hookleftarrow$). Es posible enviarle un mensaje al usuario para que sepa que esta ingresando con la 
-        funcion <i>input</i>.
-        <br><br>
-        Por ejemplo, en la línea 1 del programa, se le muestra al usuario el mensaje <i>"Tu nombre?"</i> y se le pide que
-        ingrese un valor, el cual es mostrado en la línea 2 antecedido por el texto <i>"Un gusto"</i>. 
-        <br><br>
-        Si queremos leer un número entero (sin parte decimal), aplicamos a la cadena leida la función <i>int</i>, ver línea 3.
-        Si el usuario ingresa un valor que no corresponda con un entero nos generará un mensaje de error, pero si ingresa un 
-        valor que representa un entero, podremos operar dicho valor como en la suma que hacemos en la línea 4, y cuyo
-        resultado podemos ver con el <i>print</i> de la línea 5.
-        <br><br>
-        Si queremos leer un número real (con parte decimal), aplicamos a la cadena leida la función <i>float</i>, ver línea 6.
-        Si el usuario ingresa un valor que no corresponda con un real nos generará un mensaje de error, pero si ingresa un 
-        valor que representa un real, podremos operar dicho valor como en la división que hacemos en la línea 7, y cuyo 
-        resultado podemos ver con el <i>print</i> de la línea 8.
-        <br><br>
-    </div>
-    </div>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    La función <i>input</i> nos permite leer valores ingresados por el usuario desde la consola. Estos valores los
+    recibe la función <i>input</i> como una cadena de caracteres apenas el usuario presione la tecla 
+    <i>enter</i> ($\hookleftarrow$). Es posible enviarle un mensaje al usuario para que sepa que esta ingresando con la 
+    funcion <i>input</i>.
+    <br><br>
+    Por ejemplo, en la línea 1 del programa, se le muestra al usuario el mensaje <i>"Tu nombre?"</i> y se le pide que
+    ingrese un valor, el cual es mostrado en la línea 2 antecedido por el texto <i>"Un gusto"</i>. 
+    <br><br>
+    Si queremos leer un número entero (sin parte decimal), aplicamos a la cadena leida la función <i>int</i>, ver línea 3.
+    Si el usuario ingresa un valor que no corresponda con un entero nos generará un mensaje de error, pero si ingresa un 
+    valor que representa un entero, podremos operar dicho valor como en la suma que hacemos en la línea 4, y cuyo
+    resultado podemos ver con el <i>print</i> de la línea 5.
+    <br><br>
+    Si queremos leer un número real (con parte decimal), aplicamos a la cadena leida la función <i>float</i>, ver línea 6.
+    Si el usuario ingresa un valor que no corresponda con un real nos generará un mensaje de error, pero si ingresa un 
+    valor que representa un real, podremos operar dicho valor como en la división que hacemos en la línea 7, y cuyo 
+    resultado podemos ver con el <i>print</i> de la línea 8.
+    <br><br>
+</div>
+<div id="source">
+<div id="main">
+nombre = input("Tu nombre?")
+print('Un gusto', nombre)
+edad = int(input("Tu edad?"))
+n=edad+10 
+print("En diez años tendrás ",n,"años")
+dinero=float(input("Cuánto dinero tienes?"))
+prestar = dinero/7
+print("Me prestas una séptima parte de tus", dinero, ", es decir,", prestar)
+</div>
+</div>      
+</div>
 
-	<script>
-        python({
-            "modules":[{'name':'main.py',
-            'content':'nombre = input("Tu nombre?")\nprint("Un gusto", nombre)\nedad=int(input("Tu edad?"))\nn=edad+10\nprint("En diez años tendrás ",n,"años")\ndinero=float(input("Cuánto dinero tienes?"))\nprestar = dinero / 7\nprint("Me prestas una séptima parte de tus", dinero, ", es decir,", valor)'}]
-        })
-	</script>
+<script>
+    python()
+</script>
 </body>
 </html>

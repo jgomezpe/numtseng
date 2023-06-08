@@ -30,92 +30,99 @@
     </style>
 </head>
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        Un <b>identificador</b> es una secuencia de símbolos que utilizamos como nombre para las variables,
-        funciones, arreglos, clases y otras estructuras propias de los lenguajes de programación. Los
-        identificadores en Python los escribimos como secuencias de caracteres alfanuméricos (letras del 
-        abecedario inglés o los dígitos) o el guión bajo (_), secuencias en las que el primer símbolo no 
-        puede ser un dígito y que deben tener al menos una letra. Los identificadores en Python deben tener
-        una longitud mayor o igual a uno.
-        <br><br>
-        Adicionalmente, un identificador no debe ser una <b>palabra reservada</b> del lenguaje. En Python 
-        las palabras reservadas son las siguientes:
-        <div class="w3-container w3-center" style="width:100%;">
-            <div class="w3-card">
-                <table>
-                    <tr>
-                        <td>and</td>
-                        <td>as</td>
-                        <td>assert</td>
-                        <td>break</td>
-                        <td>class</td>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    Un <b>identificador</b> es una secuencia de símbolos que utilizamos como nombre para las variables,
+    funciones, arreglos, clases y otras estructuras propias de los lenguajes de programación. Los
+    identificadores en Python los escribimos como secuencias de caracteres alfanuméricos (letras del 
+    abecedario inglés o los dígitos) o el guión bajo (_), secuencias en las que el primer símbolo no 
+    puede ser un dígito y que deben tener al menos una letra. Los identificadores en Python deben tener
+    una longitud mayor o igual a uno.
+    <br><br>
+    Adicionalmente, un identificador no debe ser una <b>palabra reservada</b> del lenguaje. En Python 
+    las palabras reservadas son las siguientes:
+    <div class="w3-container w3-center" style="width:100%;">
+        <div class="w3-card">
+            <table>
+                <tr>
+                    <td>and</td>
+                    <td>as</td>
+                    <td>assert</td>
+                    <td>break</td>
+                    <td>class</td>
+                </tr>
+                <tr>
+                    <td>continue</td>
+                    <td>def</td>
+                    <td>del</td>
+                    <td>elif</td>
+                    <td>else</td>
                     </tr>
-                    <tr>
-                        <td>continue</td>
-                        <td>def</td>
-                        <td>del</td>
-                        <td>elif</td>
-                        <td>else</td>
-                        </tr>
-                    <tr>
-                        <td>except</td>
-                        <td>finally</td>
-                        <td>False</td>
-                        <td>for</td>
-                        <td>from</td>
-                    </tr>
-                    <tr>
-                        <td>global</td>
-                        <td>if</td>
-                        <td>import</td>
-                        <td>in</td>
-                        <td>is</td>
-                    </tr>
-                    <tr>
-                        <td>lambda</td>
-                        <td>nonlocal</td>
-                        <td>None</td>
-                        <td>not</td>
-                        <td>or</td>
-                    </tr>
-                    <tr>
-                        <td>pass</td>
-                        <td>raise</td>
-                        <td>return</td>
-                        <td>True</td>
-                        <td>try</td>
-                    </tr>
-                    <tr>
-                        <td>with</td>
-                        <td>while</td>
-                        <td>yield</td>
-                    </tr>
-                </table>        
-                <div class="w3-container">
-                    <h5>Tabla. Palabras reservadas en Python.</h5>
-                </div>
+                <tr>
+                    <td>except</td>
+                    <td>finally</td>
+                    <td>False</td>
+                    <td>for</td>
+                    <td>from</td>
+                </tr>
+                <tr>
+                    <td>global</td>
+                    <td>if</td>
+                    <td>import</td>
+                    <td>in</td>
+                    <td>is</td>
+                </tr>
+                <tr>
+                    <td>lambda</td>
+                    <td>nonlocal</td>
+                    <td>None</td>
+                    <td>not</td>
+                    <td>or</td>
+                </tr>
+                <tr>
+                    <td>pass</td>
+                    <td>raise</td>
+                    <td>return</td>
+                    <td>True</td>
+                    <td>try</td>
+                </tr>
+                <tr>
+                    <td>with</td>
+                    <td>while</td>
+                    <td>yield</td>
+                </tr>
+            </table>        
+            <div class="w3-container">
+                <h5>Tabla. Palabras reservadas en Python.</h5>
             </div>
         </div>
-        <br>
-        Notemos que los identificadores para los tipos de datos en Python, por ejemplo el identificador para los números enteros (<i>int</i>),
-        no son considerados palabras reservadas, esto quiere decir que podríamos usarlos como cualquier otro identificador. Sin embargo, 
-        en este curso, los trataremos y sugerimos que los consideremos como si fueran palabras reservadas. 
-        <br><br>
-        Es importante además que sepamos que Python es un lenguaje de programación sensible a mayúsculas y minúsculas, esto quiere decir 
-        que en los identificadores no es lo mismo una letra mayúscula a su correspondiente en minúscula, por ejemplo los 
-        identificadores <i>dia</i>, <i>Dia</i> y <i>DIA</i> pueden referirse a tres entidades diferentes (variables, funciones, etc.) 
-        en un mismo programa ya que aunque son la misma palabra, difieren en el uso de letras mayúsculas y/o minúsculas.
-        <br><br>
-        Por cierto, existen lenguajes que no son sensibles a mayúsculas y minúsculas, por ejemplo BASIC, FORTRAN y HTML.
-    </div>    
     </div>
+    <br>
+    Notemos que los identificadores para los tipos de datos en Python, por ejemplo el identificador para los números enteros (<i>int</i>),
+    no son considerados palabras reservadas, esto quiere decir que podríamos usarlos como cualquier otro identificador. Sin embargo, 
+    en este curso, los trataremos y sugerimos que los consideremos como si fueran palabras reservadas. 
+    <br><br>
+    Es importante además que sepamos que Python es un lenguaje de programación sensible a mayúsculas y minúsculas, esto quiere decir 
+    que en los identificadores no es lo mismo una letra mayúscula a su correspondiente en minúscula, por ejemplo los 
+    identificadores <i>dia</i>, <i>Dia</i> y <i>DIA</i> pueden referirse a tres entidades diferentes (variables, funciones, etc.)
+    en un mismo programa ya que aunque son la misma palabra, difieren en el uso de letras mayúsculas y/o minúsculas.
+    <br><br>
+    Por cierto, existen lenguajes que no son sensibles a mayúsculas y minúsculas, por ejemplo BASIC, FORTRAN y HTML.
+</div>
+<div id="source">
+<div id="main">
+dia = 100
+Dia = '13 de Octubre'
+DIA = 10.3
+print('dia:',dia)
+print('Dia:',Dia)
+print('DIA:',DIA)
+</div>
+</div>  
+</div>
 
-	<script>
-        python({
-            "modules":[{'name':'main.py',
-            'content':''}]
-        })
-	</script>
+<script>
+    python()
+</script>
 </body>
 </html>

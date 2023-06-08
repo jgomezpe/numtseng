@@ -11,7 +11,7 @@ function modules(){
     return m
 }
 
-function python(vlo){
+function python(vlo={}){
     vlo.ide={
         "server":"https://numtseng.com/server/",
         "title":"Ambiente de desarrollo"

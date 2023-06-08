@@ -16,49 +16,60 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        Un <b>tipo de dato</b> es un conjunto de valores que pueden tomar las variables
-        (y constantes) en Python.
-        <br><br>
-        Un <b>conjunto</b> $A$ es una colección 'bien-definida' de objetos. Una colección se dice 
-        bien-definida si es posible determinar de manera precisa tanto los objetos que están en la colección
-        como los que no están. Los objetos que pertenecen a un conjunto $A$ son llamados <b>elementos</b>
-        de $A$. En general, usamos $x \in A$ para decir que el objeto $x$ es un elemento de $A$ y 
-        $x \notin A$ para decir que el objeto $x$ no es un elemento de $A$. Si quieres saber más de 
-        conjuntos sigue este <a href="https://nutmseng.com/math/index.html/page=set&lang=es&level=medium">enlace</a>
-        que trata el tema de conjuntos en Numtseng: La Escuela de Matemáticas.
-        <br><br>
-        Como en la mayoría de lenguajes de programación, existen dos categorías de tipos de dato: <i>i)</i> 
-        <b>primitivos:</b> conjuntos de valores básicos con los que cuenta el lenguaje; <i>ii)</i> <b>no-primitivos</b>
-        conjuntos de valores que se construyen o componen a partir de tipos de datos primitivos y/o no-primitivos. 
-        En esta sección solamente estudiaremos los primitivos, los no-primitivos los estudiaremos más adelante.
-        <br><br>
-        Los cinco tipos de datos primitivos en Python que estudiaremos en este curso son:
-        <ul>
-            <li><i>str</i>: Las cadenas de caracteres o textos, ver líneas 1 y 2 del programa.</li>
-            <li><i>int</i>: Una aproximación a los números enteros ($\mathbb{Z}$), ver líneas 3 y 4 del programa.</li>
-            <li><i>float</i>: Una aproximación a los números reales ($\mathbb{R}$), ver líneas 5 y 6 del programa.</li>
-            <li><i>complex</i>: Una aproximación a los números complejos ($\mathbb{C}$), ver líneas 7 y 8 del programa.</li>
-            <li><i>bool</i>: Los valores de verdad (aquí los notaremos $\mathbb{B}$) verdadero (<i>True</i>) y falso 
-            (<i>False</i>), ver líneas 9 y 10 del programa.</li>
-        </ul>
-        <br>
-        Podemos escribir valores concretos de ciertos tipos de datos en Python mediante su representación <b>literal</b>. 
-        Por ejemplo, en la línea 1 del programa tenemos el literal <i>"Jonatan Gómez Perdomo"</i> que representa a la cadena de 
-        caracteres <i>Jonatan Gómez Perdomo</i>, en la línea 3 tenemos el literal <i>15</i> que representa al número entero
-        <i>15</i>, en la línea 5 tenemos el literal <i>100.2</i> que representa al número real <i>100.2</i>, en la línea 7 tenemos
-        el literal <i>5-4j</i> que representa al número complejo con parte real <i>5</i> y parte imaginaria <i>-4</i>, mientras que
-        en la línea 9 tenemos el literal <i>False</i> que representa al valor de verdad <i>F</i> o <i>falso</i>.
-        <br><br>
-    </div>
-    </div>
-    
-	<script>
-        python({
-            "modules":[{'name':'main.py',
-            'content':'nombre = "Jonatan Gómez Perdomo"\nprint("Un gusto", nombre)\nedad=15\nprint("Tu edad es ",edad,"!! no me lo creo.")\ndinero=100.2\nprint("Ganas solo", dinero, "!!")\ngasto=5-4j\nprint("Gastas",gasto,"!!!")\nmentira=False\nprint("Para mi lo que dices es", mentira, " ja ja ja")'}]
-        })
-	</script>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    Un <b>tipo de dato</b> es un conjunto de valores que pueden tomar las variables
+    (y constantes) en Python.
+    <br><br>
+    Un <b>conjunto</b> $A$ es una colección 'bien-definida' de objetos. Una colección se dice 
+    bien-definida si es posible determinar de manera precisa tanto los objetos que están en la colección
+    como los que no están. Los objetos que pertenecen a un conjunto $A$ son llamados <b>elementos</b>
+    de $A$. En general, usamos $x \in A$ para decir que el objeto $x$ es un elemento de $A$ y 
+    $x \notin A$ para decir que el objeto $x$ no es un elemento de $A$. Si quieres saber más de 
+    conjuntos sigue este <a href="https://nutmseng.com/math/index.html/page=set&lang=es&level=medium">enlace</a>
+    que trata el tema de conjuntos en Numtseng: La Escuela de Matemáticas.
+    <br><br>
+    Como en la mayoría de lenguajes de programación, existen dos categorías de tipos de dato: <i>i)</i> 
+    <b>primitivos:</b> conjuntos de valores básicos con los que cuenta el lenguaje; <i>ii)</i> <b>no-primitivos</b>
+    conjuntos de valores que se construyen o componen a partir de tipos de datos primitivos y/o no-primitivos. 
+    En esta sección solamente estudiaremos los primitivos, los no-primitivos los estudiaremos más adelante.
+    <br><br>
+    Los cinco tipos de datos primitivos en Python que estudiaremos en este curso son:
+    <ul>
+        <li><i>str</i>: Las cadenas de caracteres o textos, ver líneas 1 y 2 del programa.</li>
+        <li><i>int</i>: Una aproximación a los números enteros ($\mathbb{Z}$), ver líneas 3 y 4 del programa.</li>
+        <li><i>float</i>: Una aproximación a los números reales ($\mathbb{R}$), ver líneas 5 y 6 del programa.</li>
+        <li><i>complex</i>: Una aproximación a los números complejos ($\mathbb{C}$), ver líneas 7 y 8 del programa.</li>
+        <li><i>bool</i>: Los valores de verdad (aquí los notaremos $\mathbb{B}$) verdadero (<i>True</i>) y falso 
+        (<i>False</i>), ver líneas 9 y 10 del programa.</li>
+    </ul>
+    <br>
+    Podemos escribir valores concretos de ciertos tipos de datos en Python mediante su representación <b>literal</b>. 
+    Por ejemplo, en la línea 1 del programa tenemos el literal <i>"Jonatan Gómez Perdomo"</i> que representa a la cadena de 
+    caracteres <i>Jonatan Gómez Perdomo</i>, en la línea 3 tenemos el literal <i>15</i> que representa al número entero
+    <i>15</i>, en la línea 5 tenemos el literal <i>100.2</i> que representa al número real <i>100.2</i>, en la línea 7 tenemos
+    el literal <i>5-4j</i> que representa al número complejo con parte real <i>5</i> y parte imaginaria <i>-4</i>, mientras que
+    en la línea 9 tenemos el literal <i>False</i> que representa al valor de verdad <i>F</i> o <i>falso</i>.
+    <br><br>
+</div>
+<div id="source">
+<div id="main">
+nombre = "Jonatan Gómez Perdomo"
+print('Un gusto', nombre)
+edad=15
+print("Tu edad es ",edad,"!! no me lo creo.")
+dinero=100.2
+print("Ganas solo", dinero, "!!")
+gasto=5-4j
+print("Gastas",gasto,"!!!")
+mentira=False
+print("Para mi lo que dices es", mentira, 'ja ja ja')
+</div>
+</div>
+</div>
+
+<script>
+    python()
+</script>
 </body>
 </html>

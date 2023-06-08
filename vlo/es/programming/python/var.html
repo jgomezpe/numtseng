@@ -16,42 +16,46 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        Una <b>variable</b> es un espacio de memoria donde almacenamos un dato o valor. Es un espacio donde 
-        guardamos la información necesaria para realizar las acciones que ejecutan nuestros programas.
-        <br>
-        <div class="w3-container w3-center" style="width:100%;">
-            <div class="w3-card">
-            <img src="https://jgomezpe.github.io/numtseng/vlo/es/programming/var.png" style="width:100%">
-            <div class="w3-container">
-                <h5>Figura. Variable <i>x</i> en memoria.</h5>
-            </div>
-            </div>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    Una <b>variable</b> es un espacio de memoria donde almacenamos un dato o valor. Es un espacio donde 
+    guardamos la información necesaria para realizar las acciones que ejecutan nuestros programas.
+    <br>
+    <div class="w3-container w3-center" style="width:100%;">
+        <div class="w3-card">
+        <img src="https://jgomezpe.github.io/numtseng/vlo/es/programming/var.png" style="width:100%">
+        <div class="w3-container">
+            <h5>Figura. Variable <i>x</i> en memoria.</h5>
         </div>
-        <br>        
-        Python no nos obliga a <b>declarar</b> (decir) el tipo de dato de una variable de manera explícita, pues maneja 
-        los tipos de datos de manera implícita, esto es, infiere el tipo de dato de una variable de 
-        acuerdo a lo que tiene almacenado.
-        <br><br>
-        Si queremos declarar una variable $x$ requerimos un identificador para ella, su tipo de dato (que 
-        es opcional en Python), y un valor inicial para ella, declaración que escribimos <i>x:T valor</i>. A un 
-        valor concreto de un tipo de dato que podamos escribir en Python lo llamamos <b>literal</b> de ese 
-        tipo de dato.
-        <br><br>
-        Por ejemplo en el programa, la línea 1 declara la variable <i>nombre</i> implícitamente de tipo 
-        cadena de caracteres (textos) y le <b>asigna</b> (almacena en ella) el valor <i>Jonatan Gómez Perdomo</i>; 
-        la línea 2 declara la variable <i>edad</i> explícitamente de tipo entero y le asigna el valor de <i>15</i>; y
-        la línea 3 declara la variable <i>dinero</i> implícitamente de tipo real y le asigna el valor <i>100.2</i>.
-        <br><br>
-    </div>       
+        </div>
     </div>
+    <br>        
+    Python no nos obliga a <b>declarar</b> (decir) el tipo de dato de una variable de manera explícita, pues maneja 
+    los tipos de datos de manera implícita, esto es, infiere el tipo de dato de una variable de 
+    acuerdo a lo que tiene almacenado.
+    <br><br>
+    Si queremos declarar una variable $x$ requerimos un identificador para ella, su tipo de dato (que 
+    es opcional en Python), y un valor inicial para ella, declaración que escribimos <i>x:T valor</i>. A un 
+    valor concreto de un tipo de dato que podamos escribir en Python lo llamamos <b>literal</b> de ese 
+    tipo de dato.
+    <br><br>
+    Por ejemplo en el programa, la línea 1 declara la variable <i>nombre</i> implícitamente de tipo 
+    cadena de caracteres (textos) y le <b>asigna</b> (almacena en ella) el valor <i>Jonatan Gómez Perdomo</i>; 
+    la línea 2 declara la variable <i>edad</i> explícitamente de tipo entero y le asigna el valor de <i>15</i>; y
+    la línea 3 declara la variable <i>dinero</i> implícitamente de tipo real y le asigna el valor <i>100.2</i>.
+    <br><br>
+</div>
+<div id="source">
+<div id="main">
+nombre = "Jonatan Gómez Perdomo"
+edad:int = 15
+dinero = 100.2
+</div>
+</div>
+</div>
 
-	<script>
-        python({
-            "modules":[{'name':'main.py',
-            'content':'nombre = "Jonatan Gómez Perdomo"\nedad:int=15\ndinero=100.2'}]
-        })
-	</script>
+<script>
+    python()
+</script>
 </body>
 </html>

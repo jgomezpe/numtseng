@@ -31,71 +31,75 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        Un <b>caracter</b> es el elemento mínimo de información usado para representar, controlar, transmitir y visualizar datos. Al conjunto 
-        de caracteres usados con este fin se le llama <b>Esquema de codificación</b>. Los esquemas de codificación en general usan un número 
-        de bits o bytes fijos. En este curso, al conjunto de caracteres lo notamos $\mathbb{S}$.
-        <br><br>
-        En Python, Una cadena de caracteres (o simplemente cadena) es una secuencia de cero o más caracteres, 
-        esto es, es la cerradura de Kleene del conjunto de caracteres $\mathbb{S}^{*}$. Si quieres saber 
-        más de la cerradura de Kleene sigue este 
-        <a href="https://nutmseng.com/math/index.html/page=kleenestar&lang=es&level=medium" target="_blank">enlace</a>
-        que trata el tema de la cerradura de Kleene $\mathbb{T}^{*}$ en Numtseng: La Escuela de Matemáticas.
-        <br><br>   
-        Una cadena (como los otros tipos de datos primitivos) es <b>inmutable</b>, esto es, no la podemos
-        cambiar pero la podemos usar para crear nuevas cadenas a partir de ella. Si queremos que una variable sea de tipo cadena, 
-        esto es $x \in \mathbb{S}^{*}$, en Python la declaramos como <i>x:str</i>. Cuando declaramos una variable
-        debemos iniciarla con algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>nombre</i> 
-        pero la iniciamos con la cadena <i>Jonatan</i>, por lo que implícitamente la estamos declarando de 
-        tipo cadena. En la línea 2 estamos declarando a la variable <i>apellidos</i> de tipo cadena y le estamos dando el valor inicial de 
-        <i>Gómez Perdomo</i>. En la línea 3, estamos declarando la variable <i>profesion</i> de tipo cadena y le estamos dando el valor 
-        inicial de <i>Ingeniero de Sistemas</i>.
-        <br><br>
-        En Python, Los literales para representar cadenas se delimitan por (tienen al inicio y al final) el caracter <b>'</b>  o se 
-        delimitan por el caracter <b>"</b>. Por ejemplo, los siguientes son literales válidos en Python para representar cadenas:
-        <div class="w3-container w3-center" style="width:100%;">
-            <div class="w3-card">
-                <table>
-                    <tr>
-                        <th>Literales</th>
-                        <th>Representan</th>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>'Hola Mundo'</td><td>"Hola Mundo"</td></tr></table></td>
-                        <td>Hola Mundo</td>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>' '</td><td>" "</td></tr></table></td>
-                        <td>Un espacio en blanco</td>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>''</td><td>""</td></tr></table></td>
-                        <td>Cadena vacia (sin caracteres)</td>
-                    </tr>
-                    <tr>
-                        <td>"Tabulado\t y nueva \n línea"</td>
-                        <td>Tabulado&nbsp;&nbsp;&nbsp;&nbsp; y nueva<br>&nbsp;línea</td>
-                    </tr>
-                    <tr>
-                        <td>"Unicode \u9730"</td>
-                        <td>Unicode &#9730;</td>
-                    </tr>
-                </table>        
-                <div class="w3-container">
-                    <h5>Tabla. Literales para algunas cadenas en Python.</h5>
-                </div>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    Un <b>caracter</b> es el elemento mínimo de información usado para representar, controlar, transmitir y visualizar datos. Al conjunto 
+    de caracteres usados con este fin se le llama <b>Esquema de codificación</b>. Los esquemas de codificación en general usan un número 
+    de bits o bytes fijos. En este curso, al conjunto de caracteres lo notamos $\mathbb{S}$.
+    <br><br>
+    En Python, Una cadena de caracteres (o simplemente cadena) es una secuencia de cero o más caracteres, 
+    esto es, es la cerradura de Kleene del conjunto de caracteres $\mathbb{S}^{*}$. Si quieres saber 
+    más de la cerradura de Kleene sigue este 
+    <a href="https://nutmseng.com/math/index.html/page=kleenestar&lang=es&level=medium" target="_blank">enlace</a>
+    que trata el tema de la cerradura de Kleene $\mathbb{T}^{*}$ en Numtseng: La Escuela de Matemáticas.
+    <br><br>   
+    Una cadena (como los otros tipos de datos primitivos) es <b>inmutable</b>, esto es, no la podemos
+    cambiar pero la podemos usar para crear nuevas cadenas a partir de ella. Si queremos que una variable sea de tipo cadena, 
+    esto es $x \in \mathbb{S}^{*}$, en Python la declaramos como <i>x:str</i>. Cuando declaramos una variable
+    debemos iniciarla con algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>nombre</i> 
+    pero la iniciamos con la cadena <i>Jonatan</i>, por lo que implícitamente la estamos declarando de 
+    tipo cadena. En la línea 2 estamos declarando a la variable <i>apellidos</i> de tipo cadena y le estamos dando el valor inicial de 
+    <i>Gómez Perdomo</i>. En la línea 3, estamos declarando la variable <i>profesion</i> de tipo cadena y le estamos dando el valor 
+    inicial de <i>Ingeniero de Sistemas</i>.
+    <br><br>
+    En Python, Los literales para representar cadenas se delimitan por (tienen al inicio y al final) el caracter <b>'</b>  o se 
+    delimitan por el caracter <b>"</b>. Por ejemplo, los siguientes son literales válidos en Python para representar cadenas:
+    <div class="w3-container w3-center" style="width:100%;">
+        <div class="w3-card">
+            <table>
+                <tr>
+                    <th>Literales</th>
+                    <th>Representan</th>
+                </tr>
+                <tr>
+                    <td><table><tr><td>'Hola Mundo'</td><td>"Hola Mundo"</td></tr></table></td>
+                    <td>Hola Mundo</td>
+                </tr>
+                <tr>
+                    <td><table><tr><td>' '</td><td>" "</td></tr></table></td>
+                    <td>Un espacio en blanco</td>
+                </tr>
+                <tr>
+                    <td><table><tr><td>''</td><td>""</td></tr></table></td>
+                    <td>Cadena vacia (sin caracteres)</td>
+                </tr>
+                <tr>
+                    <td>"Tabulado\t y nueva \n línea"</td>
+                    <td>Tabulado&nbsp;&nbsp;&nbsp;&nbsp; y nueva<br>&nbsp;línea</td>
+                </tr>
+                <tr>
+                    <td>"Unicode \u9730"</td>
+                    <td>Unicode &#9730;</td>
+                </tr>
+            </table>        
+            <div class="w3-container">
+                <h5>Tabla. Literales para algunas cadenas en Python.</h5>
             </div>
         </div>
-        <br>
-    </div>       
     </div>
-        
-	<script>
-        python({
-            "modules":[{'name':'main.py',
-            'content':'nombre = "Jonatan"\napellidos : str = "Gómez Perdomo"\nprofesion : str = "Ingeniero de Sistemas"'}]
-        })
-	</script>
+    <br>
+</div>       
+<div id="source">
+<div id="main">
+nombre = "Jonatan"
+apellidos : str = "Gómez Perdomo"
+profesion : str = 'Ingeniero de Sistemas'
+</div>
+</div>
+</div>
+    
+<script>
+    python()
+</script>
 </body>
 </html>

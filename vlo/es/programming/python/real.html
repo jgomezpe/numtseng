@@ -31,79 +31,88 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        En Python, la aproximación al conjunto de los reales usa el literal <i>float</i>. Decimos 
-        que es una aproximación pues el conjunto de los reales es infinito y continuo mientras que en un 
-        computador contamos con una cantidad finita (por lo tanto discreta) de espacio (memoria) para 
-        representarlos. Si quieres saber más del conjunto de los números reales sigue este 
-        <a href="https://nutmseng.com/math/index.html/page=reals&lang=es&level=medium" target="_blank">enlace</a>
-        que trata el tema del conjunto de los reales $\mathbb{R}$ en Numtseng: La Escuela de Matemáticas.
-        <br><br>
-        Si queremos que una variable sea de tipo real, esto es $x \in \mathbb{R}$, 
-        en Python la declaramos como <i>x:float</i>. Cuando declaramos una variable debemos iniciarla con 
-        algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>x</i> 
-        pero la iniciamos con el valor real <i>0.0</i>, por lo que implícitamente la estamos declarando de 
-        tipo real. En la línea 2 estamos declarando a la variable <i>y</i> de tipo real y le estamos
-        dando un valor inicial de -1.5. En la línea 3, estamos declarando la variable <i>z</i> de tipo real 
-        y le estamos dando un valor inicial de 50000.0 ($5e4 = 5*10^{4} = 5*10000 = 50000.0$).  
-        <br><br>
-        En Python, un literal para números reales usa notación científica. Por ejemplo, los siguientes son 
-        literales válidos en Python para representar números reales:
-        <div class="w3-container w3-center" style="width:100%;">
-            <div class="w3-card">
-                <table>
-                    <tr>
-                        <th>Literales</th>
-                        <th>Representan</th>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    En Python, la aproximación al conjunto de los reales usa el literal <i>float</i>. Decimos 
+    que es una aproximación pues el conjunto de los reales es infinito y continuo mientras que en un 
+    computador contamos con una cantidad finita (por lo tanto discreta) de espacio (memoria) para 
+    representarlos. Si quieres saber más del conjunto de los números reales sigue este 
+    <a href="https://nutmseng.com/math/index.html/page=reals&lang=es&level=medium" target="_blank">enlace</a>
+    que trata el tema del conjunto de los reales $\mathbb{R}$ en Numtseng: La Escuela de Matemáticas.
+    <br><br>
+    Si queremos que una variable sea de tipo real, esto es $x \in \mathbb{R}$, 
+    en Python la declaramos como <i>x:float</i>. Cuando declaramos una variable debemos iniciarla con 
+    algún valor. Por ejemplo, en la línea 1 del programa, no declaramos el tipo de la variable <i>x</i> 
+    pero la iniciamos con el valor real <i>0.0</i>, por lo que implícitamente la estamos declarando de 
+    tipo real. En la línea 2 estamos declarando a la variable <i>y</i> de tipo real y le estamos
+    dando un valor inicial de -1.5. En la línea 3, estamos declarando la variable <i>z</i> de tipo real 
+    y le estamos dando un valor inicial de 50000.0 ($5e4 = 5*10^{4} = 5*10000 = 50000.0$).  
+    <br><br>
+    En Python, un literal para números reales usa notación científica. Por ejemplo, los siguientes son 
+    literales válidos en Python para representar números reales:
+    <div class="w3-container w3-center" style="width:100%;">
+        <div class="w3-card">
+            <table>
+                <tr>
+                    <th>Literales</th>
+                    <th>Representan</th>
+                </tr>
+                <tr>
+                    <td><table><tr><td>0.0</td><td>+0.0</td><td>-0.0</td></tr></table></td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td><table><tr><td>127.4</td><td>+127.4</td></tr></table></td>
+                    <td>127.4</td>
                     </tr>
-                    <tr>
-                        <td><table><tr><td>0.0</td><td>+0.0</td><td>-0.0</td></tr></table></td>
-                        <td>0.0</td>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>127.4</td><td>+127.4</td></tr></table></td>
-                        <td>127.4</td>
-                        </tr>
-                    <tr>
-                        <td><table><tr><td>5.0e4</td><td>5e+4</td><td>+5.0E4</td></tr></table></td>
-                        <td>50000.0</td>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>5.0e-4</td><td>5e-4</td><td>+5.0E-4</td></tr></table></td>
-                        <td>0.0005</td>
-                    </tr>
-                    <tr>
-                        <td><table><tr><td>-5.3e-4</td><td>-5.3E-4</td><td>-53E-3</td></tr></table></td>
-                        <td>0.00053</td>
-                    </tr>
-                </table>        
-                <div class="w3-container">
-                    <h5>Tabla. Literales para algunos números reales en Python.</h5>
-                </div>
+                <tr>
+                    <td><table><tr><td>5.0e4</td><td>5e+4</td><td>+5.0E4</td></tr></table></td>
+                    <td>50000.0</td>
+                </tr>
+                <tr>
+                    <td><table><tr><td>5.0e-4</td><td>5e-4</td><td>+5.0E-4</td></tr></table></td>
+                    <td>0.0005</td>
+                </tr>
+                <tr>
+                    <td><table><tr><td>-5.3e-4</td><td>-5.3E-4</td><td>-53E-3</td></tr></table></td>
+                    <td>0.00053</td>
+                </tr>
+            </table>        
+            <div class="w3-container">
+                <h5>Tabla. Literales para algunos números reales en Python.</h5>
             </div>
         </div>
-        <br>
-        El subconjunto de los números reales que puede ser representado en Python, es un subconjunto 
-        propio de los racionales $\mathbb{Q}$, que se representa con 64 bits (8 bytes) y que usa el tipo 
-        de codificación de punto flotante (de aquí que el identificador para los números reales sea <i>float</i>),
-        definido por el <i>IEEE standard for Binary Floating-Point Arithmetic 754</i> de 1985.
-        <br><br> 
-        Los números reales distintos de $0$ que se pueden representar se acumulan alrededor del $0$ mientras 
-        que hacia los extremos superior (muy positivos) e inferior (muy negativos) están más dispersos.
-        <br><br>
-        Las líneas 4 a la 6 del programa muestran como al ir dividiendo el número uno (1) por dos (2) llegamos a cero (0), que
-        aunque teóricamente en los reales no debería pasar pues 0 es el límite teórico de dividir 1 por 2 infinitamente 
-        ($\lim_{n\to\inf}\frac{1}{2^n} = 0$), en programación pasa por no poder representar todos los reales.
-        Es por eso que un programa operando sobre reales puede darnos respuestas no exactas por lo cual se nos puede solicitar
-        determinar la precisión del programa. En este curso no profundizaremos mucho en estas nociones. 
     </div>
-    </div>
+    <br>
+    El subconjunto de los números reales que puede ser representado en Python, es un subconjunto 
+    propio de los racionales $\mathbb{Q}$, que se representa con 64 bits (8 bytes) y que usa el tipo 
+    de codificación de punto flotante (de aquí que el identificador para los números reales sea <i>float</i>),
+    definido por el <i>IEEE standard for Binary Floating-Point Arithmetic 754</i> de 1985.
+    <br><br> 
+    Los números reales distintos de $0$ que se pueden representar se acumulan alrededor del $0$ mientras 
+    que hacia los extremos superior (muy positivos) e inferior (muy negativos) están más dispersos.
+    <br><br>
+    Las líneas 4 a la 6 del programa muestran como al ir dividiendo el número uno (1) por dos (2) llegamos a cero (0), que
+    aunque teóricamente en los reales no debería pasar pues 0 es el límite teórico de dividir 1 por 2 infinitamente 
+    ($\lim_{n\to\inf}\frac{1}{2^n} = 0$), en programación pasa por no poder representar todos los reales.
+    Es por eso que un programa operando sobre reales puede darnos respuestas no exactas por lo cual se nos puede solicitar
+    determinar la precisión del programa. En este curso no profundizaremos mucho en estas nociones. 
+</div>
+<div id="source">
+<div id="main">
+x = 0.0
+y : float = -1.5
+z : float = 5e4
+x=1.0
+while(x>0.0):
+  print(x)  
+  x = x/2.0
+</div>
+</div>
+</div>
 
-	<script>
-        python({
-            "modules":[{'name':'main.py','content':'x = 0.0\ny : float = -1.5\nz : float = 5e4\nx=1.0\nwhile(x>0.0):\n  print(x)\n  x = x/2.0'}]
-        })
-	</script>
+<script>
+    python()
+</script>
 </body>
 </html>

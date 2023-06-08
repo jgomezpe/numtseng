@@ -16,26 +16,31 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        Una de las formas en las que un usuario de un programa puede interactuar con el mismo es mediante la consola o terminal.
-        La consola es un espacio donde el usuario puede ver resultados y/o mensajes en forma de texto que son enviados por el programa 
-        mediante la función <i>print</i>, y donde el usuario puede ingresar valores al programa con el teclado, entradas que son 
-        recibidas por el programa en forma de cadenas de caracter mediante la función <i>input</i>.
-        <br><br>
-        Por ejemplo, en el programa:
-        <ul>
-            <li>Se imprime en consola el texto Hola Mundo en la línea 1,</li>
-            <li>Se solicita al usuario que ingrese un nombre en formato de texto en la línea 2,</li>
-            <li>y finalmente se muestra el nombre leido (texto) acompañado de un saludo (otro texto) en la línea 3.</li>
-        </ul>
-    </div>       
-    </div>
-    
-	<script>
-        python({
-            "modules":[{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x)'}]
-        })
-	</script>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    Una de las formas en las que un usuario de un programa puede interactuar con el mismo es mediante la consola o terminal.
+    La consola es un espacio donde el usuario puede ver resultados y/o mensajes en forma de texto que son enviados por el programa 
+    mediante la función <i>print</i>, y donde el usuario puede ingresar valores al programa con el teclado, entradas que son 
+    recibidas por el programa en forma de cadenas de caracter mediante la función <i>input</i>.
+    <br><br>
+    Por ejemplo, en el programa:
+    <ul>
+        <li>Se imprime en consola el texto Hola Mundo en la línea 1,</li>
+        <li>Se solicita al usuario que ingrese un nombre en formato de texto en la línea 2,</li>
+        <li>y finalmente se muestra el nombre leido (texto) acompañado de un saludo (otro texto) en la línea 3.</li>
+    </ul>
+</div>
+<div id="source">
+<div id="main">
+print("Hola Mundo!")
+x = input("Tu nombre?")
+print("Un gusto", x)
+</div>
+</div>
+</div>
+
+<script>
+    python()
+</script>
 </body>
 </html>

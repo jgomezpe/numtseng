@@ -16,57 +16,65 @@
 </head>
     
 <body>        
-    <div id='hiddeninfo' class="hidden">
-    <div id='infotext'>
-        La función <i>print</i> nos permite presentar mensajes y resultados en la consola. En general, la función <i>print</i> recibe
-        la cantidad de elementos que queremos mostrar, todos separados por una coma (<i>,</i>). 
-        <br><br>
-        Por defecto, la función <i>print</i>  presenta estos valores separados por un espacio <i>' '</i> (una cadena con un solo 
-        espacio). Nosotros podemos cambiar esta cadena por cualquier otra cadena de caracteres, si agregamos al final la 
-        opción <i>sep</i>. Por ejemplo, en la línea 3 del programa, se imprimen los valores <i>"Un gusto"</i> y 
-        el nombre leido separados por dos asteriscos <i>"**"</i>, pues dimos la opción <i>sep="**"</i> al final. 
-        <br><br>
-        Probemos usando al final la opción <i>sep=""</i> (con la cadena vacia). Notemos que los valores son mostrados sin separarlos. 
-        Ahora, probemos con la opción <i>sep="++++"</i>. En esta ocasión muestra los valores separados por la cadena <i>"++++"</i>.
-        <br><br>
-        Otro de los comportamientos por defecto de la función <i>print</i> es agregar al final un cambio de línea (<i>'\n'</i>) 
-        para que el siguiente <i>print</i> muestre valores en una nueva línea de la consola. Podemos cambiar este comportamiento 
-        al agregar la opción <i>end</i>. Por ejemplo, en la línea 4 del programa se da la opción <i>end=":"</i> lo que hace que 
-        se imprima <i>"El nombre del gato es"</i> con un <i>":"</i> en lugar del cambio de línea. De esta manera, el <i>print</i> 
-        de la línea 5 se realiza en la misma línea quedando el texto <i>"Misifu"</i> al lado.
-        Probemos usando la opción <i>end=""</i> (con la cadena vacia) y la opción <i>end="++++"</i>.
-        <br><br>
-        Siempre que querramos cambiar el comportamiento por defecto de la función <i>print</i>, lo podremos hacer si agregamos al
-        final la opción que querramos (o las dos de ser necesario).
-    </div>
-    </div>
+<div id='hiddeninfo' class="hidden">
+<div id='infotext'>
+    La función <i>print</i> nos permite presentar mensajes y resultados en la consola. En general, la función <i>print</i> recibe
+    la cantidad de elementos que queremos mostrar, todos separados por una coma (<i>,</i>). 
+    <br><br>
+    Por defecto, la función <i>print</i>  presenta estos valores separados por un espacio <i>' '</i> (una cadena con un solo 
+    espacio). Nosotros podemos cambiar esta cadena por cualquier otra cadena de caracteres, si agregamos al final la 
+    opción <i>sep</i>. Por ejemplo, en la línea 3 del programa, se imprimen los valores <i>"Un gusto"</i> y 
+    el nombre leido separados por dos asteriscos <i>"**"</i>, pues dimos la opción <i>sep="**"</i> al final. 
+    <br><br>
+    Probemos usando al final la opción <i>sep=""</i> (con la cadena vacia). Notemos que los valores son mostrados sin separarlos. 
+    Ahora, probemos con la opción <i>sep="++++"</i>. En esta ocasión muestra los valores separados por la cadena <i>"++++"</i>.
+    <br><br>
+    Otro de los comportamientos por defecto de la función <i>print</i> es agregar al final un cambio de línea (<i>'\n'</i>) 
+    para que el siguiente <i>print</i> muestre valores en una nueva línea de la consola. Podemos cambiar este comportamiento 
+    al agregar la opción <i>end</i>. Por ejemplo, en la línea 4 del programa se da la opción <i>end=":"</i> lo que hace que 
+    se imprima <i>"El nombre del gato es"</i> con un <i>":"</i> en lugar del cambio de línea. De esta manera, el <i>print</i> 
+    de la línea 5 se realiza en la misma línea quedando el texto <i>"Misifu"</i> al lado.
+    Probemos usando la opción <i>end=""</i> (con la cadena vacia) y la opción <i>end="++++"</i>.
+    <br><br>
+    Siempre que querramos cambiar el comportamiento por defecto de la función <i>print</i>, lo podremos hacer si agregamos al
+    final la opción que querramos (o las dos de ser necesario).
+</div>
+<div id="source">
+<div id="main">
+print("Hola Mundo!")
+x = input("Tu nombre?")
+print("Un gusto", x, sep="**")
+print("El nombre del gato es",end=":")
+print("Misifu")
+</div>
+</div>
+</div>
 
-	<script>
-        python({
-            "audio":"https://jgomezpe.github.io/numtseng/vlo/es/computer/program/python/print.mp3",
-            "scripts":[
-                {"target":"info", "mark":[
-                    {"time":0.1, "replace":[{"start":280, "text":"<br><br>"}]}, 
-                    {"time":9.5, "replace":[{"start":776, "text":"<br><br>"}]}, 
-                    {"time":36.5, "replace":[{"start":848, "text":"<br><br>"}]}, 
-                    {"time":42.8, "replace":[{"start":911, "text":"<br><br>"}]}, 
-                    {"time":45.5, "replace":[{"start":960, "text":"<br><br>"}]}, 
-                    {"time":51.5, "replace":[{"start":1060, "text":"<br><br>"}]}, 
-                    {"time":57.3, "replace":[{"start":1352, "text":"</ul><br><br>"}]}, 
-                    {"time":70, "replace":[{"start":1673, "text":"</ul><br><br>"}]}, 
-                    {"time":89.2, "replace":[{"start":1791, "text":"<br><br>"}]}, 
-                    {"time":101, "replace":[]}
-                ]},
-                {"target":"viewermain.py", "mark":[
-                    {"time":36.5, "replace":[{"start":71, "end":73, "text":""}]},
-                    {"time":45.5, "replace":[{"start":71, "end":73, "text":"++++"}]},
-                    {"time":89.2, "replace":[{"start":111, "end":112, "text":""}]},
-                    {"time":93, "replace":[{"start":111, "end":112, "text":"++++"}]},
-                    {"time":101, "replace":[]}
-                ]}
-            ],
-            "modules":[{'name':'main.py','content':'print("Hola Mundo!")\nx = input("Tu nombre?")\nprint("Un gusto", x, sep="**")\nprint("El nombre del gato es",end=":")\nprint("Misifu")'}]
-        })
-	</script>
+<script>
+    python({
+        "audio":"https://jgomezpe.github.io/numtseng/vlo/es/programming/python/print.mp3",
+        "scripts":[
+            {"target":"info", "mark":[
+                {"time":0.1, "replace":[{"start":243, "text":"<br><br>"}]}, 
+                {"time":9.5, "replace":[{"start":739, "text":"<br><br>"}]}, 
+                {"time":36.5, "replace":[{"start":811, "text":"<br><br>"}]}, 
+                {"time":42.8, "replace":[{"start":874, "text":"<br><br>"}]}, 
+                {"time":45.5, "replace":[{"start":923, "text":"<br><br>"}]}, 
+                {"time":51.5, "replace":[{"start":1023, "text":"<br><br>"}]}, 
+                {"time":57.3, "replace":[{"start":1315, "text":"</ul><br><br>"}]}, 
+                {"time":70, "replace":[{"start":1636, "text":"</ul><br><br>"}]}, 
+                {"time":89.2, "replace":[{"start":1754, "text":"<br><br>"}]}, 
+                {"time":101, "replace":[]}
+            ]},
+            {"target":"viewermain.py", "mark":[
+                {"time":36.5, "replace":[{"start":71, "end":73, "text":""}]},
+                {"time":45.5, "replace":[{"start":71, "end":73, "text":"++++"}]},
+                {"time":89.2, "replace":[{"start":111, "end":112, "text":""}]},
+                {"time":93, "replace":[{"start":111, "end":112, "text":"++++"}]},
+                {"time":101, "replace":[]}
+            ]}
+        ]
+    })
+</script>
 </body>
 </html>

@@ -2,8 +2,10 @@ let VLO = ''
 
 function modules(){
     var m = []
-    const source = Konekti.vc('source')
+    var source = Konekti.vc('source')
+    console.log(source)
     for(var child in source.children) {
+        console.log(child)
         var c = child.innerHTML
         c = c.substring(1,c.length)
         m.append({"name":child.id+".py", "content":c});

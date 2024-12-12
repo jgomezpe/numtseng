@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no"> 
+        <meta name="mobile-web-app-capable" content='yes'> <meta charset="UTF-8"> 
+        <meta http-equiv="Expires" content="0"> 
+        <meta http-equiv="Last-Modified" content="0"> 
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate"> 
+        <meta http-equiv="Pragma" content="no-cache"> 
+        <title>Numtseng Lifya Language Tools</title> 
+        <script type='text/javascript' src='https://ace.c9.io/build/src/ace.js'></script> 
+        <script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
+        <script type='text/javascript' src='https://jgomezpe.github.io/kompari/src/kompari.js'></script> 
+        <script type='text/javascript' src='https://jgomezpe.github.io/lifya/src/lifya.js'></script> 
+        <script type='text/javascript' src='https://jgomezpe.github.io/json/src/json.js'></script> 
+    </head>
+
+    <body>
+        <script>
+            /* Developed by Professor Jonatan Gomez */
+            /* Using the Konekti infrastructure with the provide plugins */
+            Konekti.uses('ace','header','navbar','split')
+
+            /* Main class answering button events */ 
+            class TheClient extends MainClient{ 
+                constructor(){ super() }
+
+                code1(str, rule){
+                    return  'class LangReader extends Language{\n' + 
+                            "  constructor(){\n" +
+                            "    super( ParserGenerator.parser("+str+", '" + Konekti.vc('rule').value + "'))\n" +
+                            "  }\n" +
+                            "  process(t) { \n" 
+                }
+
+                code2(){
+                    return  "    // Write your semantic code here. t is a derivation tree\n" +
+                            "    return t.toString()\n"
+                }
+
+                code3(pt){
+                    return "  }\n" + 
+                            "  mean(t) {\n" + 
+                            "    t = ProcessDerivationTree.apply(t, " + pt +")\n" + 
+                            "    var obj = this.process(t)\n" + 
+                            "    t.value = obj\n" + 
+                            "    return t\n" + 
+                            "  }\n" + 
+                            "  apply(input){\n" + 
+                            "    return this.get(new Source('noname',input))\n" + 
+                            "  }\n" + 
+                            "}\n" 
+                }
+
+                compile(){ 
+                    var pt = Konekti.client.proc.getText().split('\n') 
+                    for( var i=0; i<pt.length; i++){ pt[i] = pt[i].split(',') } 
+                    pt = JSON.stringify(pt) 
+                    var str = Konekti.client.in.getText() 
+                    str = JSON.stringify(str)
+                    var code =  this.code1(str, Konekti.vc('rule').value )+ 
+                                this.code2() + 
+                                this.code3(pt) 
+                    Konekti.client.source.setText(code) 
+                }
+                
+                json(){ 
+                    var str = JSONReader.parser 
+                    Konekti.client.in.setText(str) 
+                    Konekti.vc('rule').value = '<object>' 
+                    Konekti.client.proc.setText('LAMBDA\n' + 'DEL,<list>oper\n' + 'REPLACE,<itemlist>-item-1,<itemlist>\n'+ 'REPLACE,<attrlist>-item-1,<attrlist>\n'+ 'REDUCE\n'+ 'REDUCE,<list>\n'+ 'REDUCE,<itemlist>\n'+ 'REDUCE,<attrlist>') 
+                }
+
+                semantic_code(){
+                    return  "    Array<Token> a\n" +
+                            "    switch(t.type) {\n" +
+                            "      case '<attrlist>':\n" +
+                            "        var json = {}\n" +
+                            "        var a = t.value\n" +
+                            "        for( var i=0; i<a.length; i++ ) {\n" +
+                            "          var b = a[i].value\n" +
+                            "          var key = ParserGenerator.raw_string(b[0].value,'\"')\n" +
+                            "          var attr = this.process(b[1])\n" +
+                            "          json[key] = attr\n" +
+                            "        }\n" +
+                            "        return json\n" +
+                            "      case '<string>': return ParserGenerator.raw_string(t.value,'\"')\n" +
+                            "      case '<number>': return parseFloat(t.value)\n" +
+                            "      case '<reserved>':\n" +
+                            "        switch(t.value) {\n" +
+                            "          case 'true': return true\n" +
+                            "          case 'false': return false\n" +
+                            "          default: return null\n" +
+                            "        }\n" +
+                            "      case '<list>': return []\n" +
+                            "      case '<object>': return {}\n" +
+                            "      default:\n" +
+                            "        var a = t.value\n" +
+                            "        var list = []\n" +
+                            "        for( var i=0; i<a.length; i++)\n" +
+                            "          list.push(this.process(a[i]))\n" +
+                            "        return list\n" +
+                            "    }\n"       
+                }
+
+                semantic(){
+                    var pt = Konekti.client.proc.getText().split('\n') 
+                    for( var i=0; i<pt.length; i++){ pt[i] = pt[i].split(',') } 
+                    pt = JSON.stringify(pt) 
+                    var str = Konekti.client.in.getText() 
+                    str = JSON.stringify(str)
+                    var code =  this.code1(str, Konekti.vc('rule').value )+ 
+                                this.semantic_code() + 
+                                this.code3(pt) 
+                    Konekti.client.source.setText(code) 
+                }
+
+                analyze(){
+                    var code = "(" + Konekti.client.source.getText() + ")"
+                    var A = eval(code)
+                    var lang = new A()
+                    try{
+                        var t = lang.apply(Konekti.client.out.getText())
+                        Konekti.client.res.setText("Produces:" + t + "\nChecking...\n" + JSON.stringify(t))
+                    }catch(e){ Konekti.client.res.setText("Error.."+e) }
+                }
+            }                
+                
+            // Main function using the Konekti infrastructurefunction 
+            function KonektiMain(){ 
+                var client = new TheClient() // GUI 
+                Konekti.header('title', '', 'Numtseng: Lifya Language Processor', 3, {'class':'w3-teal w3-center'} ) 
+                var btn2=[ {'plugin':'btn', 'setup':["compile","fa fa-gear", '', {'client':'client', 'method':'compile'}, {'title':'Generate code'}]}, 
+                           {'plugin':'btn', 'setup':["play","fa fa-play", '', {'client':'client', 'method':'analyze'}, {'title':'Analyze Language Input'}]}, 
+                           {'plugin':'raw', 'setup':["rule", '', {'tag':'input', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge", 'placeholder':"&#xf002; Main Rule...", 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]}, 
+                           {'plugin':'btn', 'setup':["json", "fa fa-cubes", '', {'client':'client', 'method':'json'},{'title':'Test JSON Grammar'}]},
+                           {'plugin':'btn', 'setup':["semantic", "fa fa-file-code-o", '', {'client':'client', 'method':'semantic'},{'title':'Test JSON Semantics'}]},
+                         ] 
+                Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'class':'w3-blue-grey w3-medium'}) 
+                Konekti.split('coderviewer', 'col', 50, 
+                    [ 
+                      {'plugin':'header', 'setup':['inh', 'fa fa-code', 'Grammar', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'ace', 'setup':['in', '', '', '', '', {'width':'100%','height':'fit'}]}, 
+                      {'plugin':'header', 'setup':['proch', 'fa fa-sitemap', 'Clean Derivation Tree', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'ace', 'setup':['proc', '', '', '', '', {'width':'100%','height':'20%'}]},
+                      {'plugin':'header', 'setup':['sourceh', '', 'Generated Code', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'ace', 'setup':['source', '', 'javascript', '', '', {'width':'100%','height':'30%'}]}
+                    ], 
+                    [
+                      {'plugin':'header', 'setup':['outh', 'fa fa-terminal', 'Language Input', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'ace', 'setup':['out', '', '', '', '', {'width':'100%','height':'55%'}]},
+                      {'plugin':'header', 'setup':['resh', 'fa fa-desktop', 'Language Output', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'ace', 'setup':['res', '', '', '', '', {'width':'100%','height':'fit'}]},
+                    ], 
+                    {'width':'100%','height':'fit'} ) 
+            }
+        </script>
+    </body>
+</html>

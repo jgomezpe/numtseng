@@ -66,7 +66,7 @@
                 }
                 
                 json(){ 
-                    var str = JSONReader.parser 
+                    var str = "<string> = \"(-[\\\\|\"]|\\\\([\\\\|n|r|t|\"]|u[A-F|a-f|\\d][A-F|a-f|\\d][A-F|a-f|\\d][A-F|a-f|\\d]))*\"\n<number> = [\\+|\\-]?\\d+(\\.\\d+)?([e|E][\\+|\\-]?\\d+)?\n<reserved>  = {true|false|null}\n<%space> = [\\n|\\r|\\t|\\s]+\n<object> :- \\{ <attrlist>? \\}.\n<attrlist> :- <attribute> (, <attribute>)*.\n<attribute> :- <string> \\: <value>.\n<value> :- <object> | <list> | <reserved> | <number> | <string>.\n<list> :- \\[ <itemlist>? \\].\n<itemlist> :- <value> (, <value>)*.\n" 
                     Konekti.client.in.setText(str) 
                     Konekti.vc('rule').value = '<object>' 
                     Konekti.client.proc.setText('LAMBDA\n' + 'DEL,<list>oper\n' + 'REPLACE,<itemlist>-item-1,<itemlist>\n'+ 'REPLACE,<attrlist>-item-1,<attrlist>\n'+ 'REDUCE\n'+ 'REDUCE,<list>\n'+ 'REDUCE,<itemlist>\n'+ 'REDUCE,<attrlist>') 

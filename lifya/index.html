@@ -35,6 +35,7 @@
                         'code': 'Código Generado',
                         'input': 'Entrada para la Gramática',
                         'output': 'Resultados',
+                        'success' : 'Sin errores',
                         'addcode': '// Escriba su código semántico aquí. t es un árbol de derivación',
                         'unexpected': 'Inesperado ',
                         'check': ' revise si la regla anterior no término con el caracter .'
@@ -52,6 +53,7 @@
                         'code': 'Generated Code',
                         'input': 'Grammar Input',
                         'output': 'Results',
+                        'success' : 'Success',
                         'addcode': '// Write your semantic code here. t is a derivation tree',
                         'unexpected': 'Unexpected ',
                         'check': ' check if previous rule did not finished with character .'
@@ -106,6 +108,7 @@
                     try{
                         var A = eval(code)
                         this.lang = new A()
+                        Konekti.client.res.setText(obj.success) 
                     }catch(e){ 
                         try{
                             var json = JSON.parse(e)

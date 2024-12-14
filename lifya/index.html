@@ -13,7 +13,6 @@
         <script type='text/javascript' src='https://jgomezpe.github.io/konekti/src/konekti.js'></script> 
         <script type='text/javascript' src='https://jgomezpe.github.io/kompari/src/kompari.js'></script> 
         <script type='text/javascript' src='https://jgomezpe.github.io/lifya/src/lifya.js'></script> 
-        <script type='text/javascript' src='https://jgomezpe.github.io/json/src/json.js'></script> 
     </head>
 
     <body>
@@ -21,6 +20,46 @@
             /* Developed by Professor Jonatan Gomez */
             /* Using the Konekti infrastructure with the provide plugins */
             Konekti.uses('ace','header','navbar','split')
+
+            dict = {
+                    'es': {
+                        'title':'Lifya: Generador de Lenguajes',
+                        'compile':'Generar Código',
+                        'analyze':'Analizar Entrada',
+                        'main': 'Regla principal',
+                        'jsonG': 'Ejemplo Gramática de JSON',
+                        'jsonS': 'Ejemplo Semántica de JSON',
+                        'test': 'Analizar Entrada de Gramática',
+                        'grammar': 'Gramática',
+                        'tree': 'Posprocesamiento Árbol Derivación',
+                        'code': 'Código Generado',
+                        'input': 'Entrada para la Gramática',
+                        'output': 'Resultados',
+                        'addcode': '// Escriba su código semántico aquí. t es un árbol de derivación',
+                        'unexpected': 'Inesperado ',
+                        'check': ' revise si la regla anterior no término con el caracter .'
+                    },
+                    'en': {
+                        'title':"Lifya: Language Generator",
+                        'compile':'Generate Code',
+                        'analyze':'Analyze Input',
+                        'main': 'Main Rule',
+                        'jsonG': 'Example JSON Grammar',
+                        'jsonS': 'Example JSON Semantics',
+                        'test': 'Analyze Grammar Input',
+                        'grammar': 'Grammar',
+                        'tree': 'Posproccessing Derivation Tree',
+                        'code': 'Generated Code',
+                        'input': 'Grammar Input',
+                        'output': 'Results',
+                        'addcode': '// Write your semantic code here. t is a derivation tree',
+                        'unexpected': 'Unexpected ',
+                        'check': ' check if previous rule did not finished with character .'
+                    }
+                } 
+                
+            obj = null 
+
 
             /* Main class answering button events */ 
             class TheClient extends MainClient{ 
@@ -35,7 +74,7 @@
                 }
 
                 code2(){
-                    return  "    // Write your semantic code here. t is a derivation tree\n" +
+                    return  "    " + obj.addcode +"\n" +
                             "    return t.toString()\n"
                 }
 
@@ -58,11 +97,27 @@
                     for( var i=0; i<pt.length; i++){ pt[i] = pt[i].split(',') } 
                     pt = JSON.stringify(pt) 
                     var str = Konekti.client.in.getText() 
-                    str = JSON.stringify(str)
-                    var code =  this.code1(str, Konekti.vc('rule').value )+ 
+                    var sstr = JSON.stringify(str)
+                    var code =  this.code1(sstr, Konekti.vc('rule').value )+ 
                                 this.code2() + 
                                 this.code3(pt) 
                     Konekti.client.source.setText(code) 
+                    var code = "(" + Konekti.client.source.getText() + ")"
+                    try{
+                        var A = eval(code)
+                        this.lang = new A()
+                    }catch(e){ 
+                        try{
+                            var json = JSON.parse(e)
+                            Konekti.client.in.locateCursorIndex(json.start)
+                            Konekti.client.in.locateCursor(json.row,json.column+json.end-json.start)
+                            var msg = str.substring(json.start,(json.end>json.start)?json.end:json.start+1)
+                            if(msg == ':') msg += obj.check
+                            Konekti.client.res.setText(obj.unexpected + msg) 
+                        }catch(x){
+                            Konekti.client.res.setText(e) 
+                        }
+                    }
                 }
                 
                 json(){ 
@@ -117,40 +172,53 @@
                 }
 
                 analyze(){
-                    var code = "(" + Konekti.client.source.getText() + ")"
-                    var A = eval(code)
-                    var lang = new A()
                     try{
-                        var t = lang.apply(Konekti.client.out.getText())
+                        var t = this.lang.apply(Konekti.client.out.getText())
                         Konekti.client.res.setText("Produces:" + t + "\nChecking...\n" + JSON.stringify(t))
-                    }catch(e){ Konekti.client.res.setText("Error.."+e) }
+                    }catch(e){
+                        try{
+                            var json = JSON.parse(e)
+                            Konekti.client.source.locateCursorIndex(json.start)
+                            Konekti.client.source.locateCursor(json.row,json.column+json.end-json.start)
+                            var msg = str.substring(json.start,(json.end>json.start)?json.end:json.start+1)
+                            Konekti.client.res.setText('Unexpected ' + msg) 
+                        }catch(x){
+                            Konekti.client.res.setText(e) 
+                        }
+                    }
                 }
             }                
                 
             // Main function using the Konekti infrastructurefunction 
             function KonektiMain(){ 
                 var client = new TheClient() // GUI 
-                Konekti.header('title', '', 'Numtseng: Lifya Language Processor', 3, {'class':'w3-teal w3-center'} ) 
-                var btn2=[ {'plugin':'btn', 'setup':["compile","fa fa-gear", '', {'client':'client', 'method':'compile'}, {'title':'Generate code'}]}, 
-                           {'plugin':'btn', 'setup':["play","fa fa-play", '', {'client':'client', 'method':'analyze'}, {'title':'Analyze Language Input'}]}, 
-                           {'plugin':'raw', 'setup':["rule", '', {'tag':'input', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge", 'placeholder':"&#xf002; Main Rule...", 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]}, 
-                           {'plugin':'btn', 'setup':["json", "fa fa-cubes", '', {'client':'client', 'method':'json'},{'title':'Test JSON Grammar'}]},
-                           {'plugin':'btn', 'setup':["semantic", "fa fa-file-code-o", '', {'client':'client', 'method':'semantic'},{'title':'Test JSON Semantics'}]},
+                 
+                var lang = Konekti.dom.getUserLanguage()
+                obj = Object.hasOwn(dict, lang)? dict[lang]:  dict['en']
+                document.title = obj.title
+
+
+                Konekti.header('title', '', obj.title, 3, {'class':'w3-teal w3-center'} ) 
+                var btn2=[ {'plugin':'btn', 'setup':["compile","fa fa-gear", '', {'client':'client', 'method':'compile'}, {'title':obj.compile}]}, 
+                           {'plugin':'btn', 'setup':["play","fa fa-play", '', {'client':'client', 'method':'analyze'}, {'title':obj.analyze}]}, 
+                           {'plugin':'raw', 'setup':["rule", '', {'tag':'input', 'class':"w3-bar-item w3-input w3-border w3-round-xlarge", 'placeholder':"&#xf002; " + obj.main, 'style':"margin-top:2px;margin-bottom:2px;font-family: FontAwesome, Arial, Verdana, sans-serif;"}]}, 
+                           {'plugin':'btn', 'setup':["json", "fa fa-cubes", '', {'client':'client', 'method':'json'},{'title':obj.jsonG}]},
+                           {'plugin':'btn', 'setup':["semantic", "fa fa-cube", '', {'client':'client', 'method':'semantic'},{'title':obj.jsonS}]},
                          ] 
-                Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'class':'w3-blue-grey w3-medium'}) 
+                Konekti.navbar('navbar2', btn2, {'client':'client', 'method':'run'}, {'title':obj.test, 'class':'w3-blue-grey w3-medium'}) 
                 Konekti.split('coderviewer', 'col', 50, 
                     [ 
-                      {'plugin':'header', 'setup':['inh', 'fa fa-code', 'Grammar', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'header', 'setup':['inh', 'fa fa-code', obj.grammar, 4, {'class':'w3-teal w3-center'}]}, 
                       {'plugin':'ace', 'setup':['in', '', '', '', '', {'width':'100%','height':'fit'}]}, 
-                      {'plugin':'header', 'setup':['proch', 'fa fa-sitemap', 'Clean Derivation Tree', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'header', 'setup':['proch', 'fa fa-sitemap', obj.tree, 4, {'class':'w3-teal w3-center'}]}, 
                       {'plugin':'ace', 'setup':['proc', '', '', '', '', {'width':'100%','height':'20%'}]},
-                      {'plugin':'header', 'setup':['sourceh', '', 'Generated Code', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'header', 'setup':['sourceh', 'fa fa-file', obj.code, 4, {'class':'w3-teal w3-center'}]}, 
                       {'plugin':'ace', 'setup':['source', '', 'javascript', '', '', {'width':'100%','height':'30%'}]}
                     ], 
                     [
-                      {'plugin':'header', 'setup':['outh', 'fa fa-terminal', 'Language Input', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'header', 'setup':['outh', 'fa fa-terminal', obj.input, 4, {'class':'w3-teal w3-center'}]}, 
                       {'plugin':'ace', 'setup':['out', '', '', '', '', {'width':'100%','height':'55%'}]},
-                      {'plugin':'header', 'setup':['resh', 'fa fa-desktop', 'Language Output', 4, {'class':'w3-teal w3-center'}]}, 
+                      {'plugin':'header', 'setup':['resh', 'fa fa-desktop', obj.output, 4, {'class':'w3-teal w3-center'}]}, 
                       {'plugin':'ace', 'setup':['res', '', '', '', '', {'width':'100%','height':'fit'}]},
                     ], 
                     {'width':'100%','height':'fit'} ) 
